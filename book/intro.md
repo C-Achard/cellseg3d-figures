@@ -1,4 +1,4 @@
-# CellSeg3D figures
+# Home - CellSeg3D figures
 
 ## Welcome to the CellSeg3D figures book
 

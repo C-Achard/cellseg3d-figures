@@ -3,5 +3,7 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: splits_benchmark
+parts:
+- caption: Figures
+  chapters:
+  - file: figX-x-splits/splits_benchmark
