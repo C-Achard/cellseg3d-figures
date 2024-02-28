@@ -1,0 +1,17 @@
+name: cellseg3d-figures
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - napari[all]
+    - jupyterlab
+    - matplotlib
+    - seaborn
+    - scikit-image
+    - pandas
+    - stardist
+    - pyclesperanto-prototype
+
+# Run : conda env create -f conda.yaml
