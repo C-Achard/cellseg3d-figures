@@ -212,7 +212,7 @@ def plot_performance(
             # hue=m,
             # palette=GLOBAL_COLORMAP
         )
-    ax2.setxlim(min(taus), max(taus))
+    ax2.set_xlim(min(taus), max(taus))
     # ax2.set_ylim(0, max([stats['tp'].max(), stats['fp'].max(), stats['fn'].max()]))
     ax2.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
     ax2.set_ylabel("Number #", fontsize=FONT_SIZE)
