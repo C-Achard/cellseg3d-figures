@@ -180,7 +180,7 @@ def plot_performance(
         # ax1.plot(taus, [s._asdict()[m] for s in stats], '.-', lw=2, label=m)
         sns.lineplot(
             data=stats,
-            x=taus,
+            x="thresh",
             y=m,
             ax=ax1,
             label=m,
@@ -189,21 +189,24 @@ def plot_performance(
             #  hue=m,
             #  palette=GLOBAL_COLORMAP
         )
-    ax1.set_xlim(min(taus), max(taus))
-    ax1.set_ylim(-0.1, 1.1)
+    ax1.set(
+        xlim=(0.05, 0.95),
+        ylim=(-0.1, 1.1),
+        xticks=np.arange(0.1, 1, 0.1),
+    )
+    ax1.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
+    ax1.set_ylabel("Metric value", fontsize=FONT_SIZE)
     ax1.spines["right"].set_visible(False)
     ax1.spines["top"].set_visible(False)
     ax1.tick_params(axis="both", which="major", labelsize=LABEL_FONT_SIZE)
-    ax1.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
-    ax1.set_ylabel("Metric value", fontsize=FONT_SIZE)
     ax1.grid()
-    ax1.legend()
+    ax1.legend(fontsize=FONT_SIZE)
 
     for m in ("fp", "tp", "fn"):
         # ax2.plot(taus, [s._asdict()[m] for s in stats], '.-', lw=2, label=m)
         sns.lineplot(
             data=stats,
-            x=taus,
+            x="thresh",
             y=m,
             ax=ax2,
             label=m,
@@ -212,15 +215,15 @@ def plot_performance(
             # hue=m,
             # palette=GLOBAL_COLORMAP
         )
-    ax2.set_xlim(min(taus), max(taus))
+    ax2.set(xlim=(0.05, 0.95), xticks=np.arange(0.1, 1, 0.1))
     # ax2.set_ylim(0, max([stats['tp'].max(), stats['fp'].max(), stats['fn'].max()]))
     ax2.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
     ax2.set_ylabel("Number #", fontsize=FONT_SIZE)
     ax2.spines["right"].set_visible(False)
     ax2.spines["top"].set_visible(False)
-    ax2.tick_params(axis="both", which="major", labelsize=15)
+    ax2.tick_params(axis="both", which="major", labelsize=LABEL_FONT_SIZE)
     ax2.grid()
-    ax2.legend()
+    ax2.legend(fontsize=FONT_SIZE)
 
     sns.despine(
         left=False,
@@ -242,7 +245,7 @@ def plot_stat_comparison(
         sns.set_palette(COLORMAP)
     else:
         sns.set_palette("tab10")
-    fig, ax = plt.subplots(1, 1, figsize=(10, 5), dpi=DPI)
+    fig, ax = plt.subplots(1, 1, figsize=(16, 6), dpi=DPI)
     stat_title = (stat[0].upper() + stat[1:]).replace("_", " ")
     fig.suptitle(f"{stat_title} comparison", fontsize=TITLE_FONT_SIZE)
     stats_list = [dataset_matching_stats_to_df(stats) for stats in stats_list]
@@ -259,13 +262,14 @@ def plot_stat_comparison(
             # hue=stat,
             # palette=GLOBAL_COLORMAP
         )
-    ax.set_xlim(min(taus), max(taus))
-    ax.set_ylim(-0.1, 1.1)
+    ax.set_xlim(xmin=0.05, xmax=0.95)
+    ax.set_ylim(ymin=-0.1, ymax=0.9)
+    ax.tick_params(axis="both", which="major", labelsize=LABEL_FONT_SIZE)
+    ax.set_xticks(np.arange(0.1, 1, 0.1))
     ax.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
     ax.set_ylabel(stat_title, fontsize=FONT_SIZE)
     ax.spines["right"].set_visible(False)
     ax.spines["top"].set_visible(False)
-    ax.tick_params(axis="both", which="major", labelsize=LABEL_FONT_SIZE)
     sns.despine(
         left=False,
         right=True,
@@ -275,4 +279,4 @@ def plot_stat_comparison(
         offset={"bottom": 40, "left": 15},
     )
     ax.grid()
-    ax.legend()
+    ax.legend(fontsize=FONT_SIZE)
