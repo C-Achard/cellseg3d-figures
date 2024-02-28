@@ -6,4 +6,5 @@ root: intro
 parts:
 - caption: Figures
   chapters:
+  - file: figX-x-supervised/supervised_benchmark
   - file: figX-x-splits/splits_benchmark
