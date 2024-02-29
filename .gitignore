@@ -151,5 +151,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+# stardist
+stardist_repro/stardist_supervised_perf/models/*
+
 # jupyter-book
 book/_build/
