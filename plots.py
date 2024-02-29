@@ -22,8 +22,8 @@ DATA_PATH = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/"
 COLORMAP_LIGHT = [
     "#F72585",
     "#7209B7",
-    "#3A0CA3",
     "#4361EE",
+    "#3A0CA3",
     "#4CC9F0",
     "#FF0000",
     "#F0A500",
