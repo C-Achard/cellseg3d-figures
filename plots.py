@@ -153,11 +153,13 @@ def plot_performance(
             ylim=(-0.1, 1.1),
             xticks=np.arange(0.1, 1, 0.1),
         )
-        ax1.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
-        ax1.set_ylabel("Metric value", fontsize=FONT_SIZE)
+        ax1.set_xlabel(
+            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
+        )
+        ax1.set_ylabel("Metric value", fontsize=LABEL_FONT_SIZE)
         ax1.spines["right"].set_visible(False)
         ax1.spines["top"].set_visible(False)
-        ax1.tick_params(axis="both", which="major", labelsize=LABEL_FONT_SIZE)
+        ax1.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax1.grid()
         ax1.legend(fontsize=LEGEND_FONT_SIZE)
 
@@ -173,11 +175,13 @@ def plot_performance(
             )
         ax2.set(xlim=(0.05, 0.95), xticks=np.arange(0.1, 1, 0.1))
         # ax2.set_ylim(0, max([stats['tp'].max(), stats['fp'].max(), stats['fn'].max()]))
-        ax2.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
-        ax2.set_ylabel("Number #", fontsize=FONT_SIZE)
+        ax2.set_xlabel(
+            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
+        )
+        ax2.set_ylabel("Number #", fontsize=LABEL_FONT_SIZE)
         ax2.spines["right"].set_visible(False)
         ax2.spines["top"].set_visible(False)
-        ax2.tick_params(axis="both", which="major", labelsize=LABEL_FONT_SIZE)
+        ax2.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax2.grid()
         ax2.legend(fontsize=LEGEND_FONT_SIZE)
 
@@ -217,10 +221,12 @@ def plot_stat_comparison(
             )
         ax.set_xlim(xmin=0.05, xmax=0.95)
         ax.set_ylim(ymin=-0.1, ymax=0.9)
-        ax.tick_params(axis="both", which="major", labelsize=LABEL_FONT_SIZE)
+        ax.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax.set_xticks(np.arange(0.1, 1, 0.1))
-        ax.set_xlabel(f"{metric}" + r" threshold $\tau$", fontsize=FONT_SIZE)
-        ax.set_ylabel(stat_title, fontsize=FONT_SIZE)
+        ax.set_xlabel(
+            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
+        )
+        ax.set_ylabel(stat_title, fontsize=LABEL_FONT_SIZE)
         ax.spines["right"].set_visible(False)
         ax.spines["top"].set_visible(False)
         sns.despine(
