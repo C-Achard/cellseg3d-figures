@@ -40,6 +40,8 @@ FONT_SIZE = 15
 TITLE_FONT_SIZE = int(FONT_SIZE * 1.75)
 LABEL_FONT_SIZE = int(FONT_SIZE * 1.25)
 LEGEND_FONT_SIZE = int(FONT_SIZE * 0.75)
+BBOX_TO_ANCHOR = (1.05, 1)
+LOC = "lower left"
 ################
 
 
@@ -161,7 +163,9 @@ def plot_performance(
         ax1.spines["top"].set_visible(False)
         ax1.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax1.grid()
-        ax1.legend(fontsize=LEGEND_FONT_SIZE)
+        ax1.legend(
+            fontsize=LEGEND_FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
+        )
 
         for m in ("fp", "tp", "fn"):
             sns.lineplot(
@@ -183,7 +187,9 @@ def plot_performance(
         ax2.spines["top"].set_visible(False)
         ax2.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax2.grid()
-        ax2.legend(fontsize=LEGEND_FONT_SIZE)
+        ax2.legend(
+            fontsize=LEGEND_FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
+        )
 
         sns.despine(
             left=False,
@@ -220,7 +226,7 @@ def plot_stat_comparison(
                 marker="o",
             )
         ax.set_xlim(xmin=0.05, xmax=0.95)
-        ax.set_ylim(ymin=-0.1, ymax=0.9)
+        ax.set_ylim(ymin=-0, ymax=1)
         ax.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax.set_xticks(np.arange(0.1, 1, 0.1))
         ax.set_xlabel(
@@ -238,5 +244,6 @@ def plot_stat_comparison(
             offset={"bottom": 40, "left": 15},
         )
         ax.grid()
-        ax.legend(fontsize=LEGEND_FONT_SIZE)
+        # legend to right (outside) of plot
+        ax.legend(fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC)
         # return fig
