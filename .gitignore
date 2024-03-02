@@ -154,5 +154,8 @@ cython_debug/
 # stardist
 stardist_repro/stardist_supervised_perf/models/*
 
+# cellpose
+cellpose_repro/models/*
+
 # jupyter-book
 book/_build/
