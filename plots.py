@@ -249,5 +249,43 @@ def plot_stat_comparison(
         # return fig
 
 
-def plot_stat_comparison_fold(fold_df):
-    ...
+def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
+    with get_style_context():
+        sns.set_palette(COLORMAP)
+        fig, ax = plt.subplots(1, 1, figsize=(12, 6), dpi=DPI)
+        stat_title = (stat[0].upper() + stat[1:]).replace("_", " ")
+        # fig.suptitle(f"{stat_title} comparison", fontsize=TITLE_FONT_SIZE)
+        sns.lineplot(
+            data=fold_df,
+            x="thresh",
+            y=stat,
+            ax=ax,
+            hue="Model",
+            lw=2,
+            marker="o",
+            errorbar=("ci", 99),
+        )
+        ax.set_xlim(xmin=0.05, xmax=0.95)
+        ax.set_ylim(ymin=-0, ymax=1)
+        ax.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
+        ax.set_xticks(np.arange(0.1, 1, 0.1))
+        ax.set_xlabel(
+            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
+        )
+        ax.set_ylabel(stat_title, fontsize=LABEL_FONT_SIZE)
+        ax.spines["right"].set_visible(False)
+        ax.spines["top"].set_visible(False)
+        sns.despine(
+            left=False,
+            right=True,
+            bottom=False,
+            top=True,
+            trim=True,
+            offset={"bottom": 40, "left": 15},
+        )
+        ax.grid()
+        # legend to right (outside) of plot
+        ax.legend(
+            fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc="upper left"
+        )
+        # return fig
