@@ -41,7 +41,7 @@ TITLE_FONT_SIZE = int(FONT_SIZE * 1.75)
 LABEL_FONT_SIZE = int(FONT_SIZE * 1.25)
 LEGEND_FONT_SIZE = int(FONT_SIZE * 0.75)
 BBOX_TO_ANCHOR = (1.05, 1)
-LOC = "lower left"
+LOC = "best"
 ################
 
 
@@ -247,3 +247,7 @@ def plot_stat_comparison(
         # legend to right (outside) of plot
         ax.legend(fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC)
         # return fig
+
+
+def plot_stat_comparison_fold(fold_df):
+    ...
