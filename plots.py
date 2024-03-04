@@ -263,7 +263,8 @@ def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
             hue="Model",
             lw=2,
             marker="o",
-            errorbar=("ci", 99),
+            estimator="mean",
+            errorbar=("ci", 50),
         )
         ax.set_xlim(xmin=0.05, xmax=0.95)
         ax.set_ylim(ymin=-0, ymax=1)
