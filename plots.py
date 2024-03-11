@@ -253,6 +253,8 @@ def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
     with get_style_context():
         sns.set_palette(COLORMAP)
         fig, ax = plt.subplots(1, 1, figsize=(12, 6), dpi=DPI)
+        # make background transparent
+
         stat_title = (stat[0].upper() + stat[1:]).replace("_", " ")
         # fig.suptitle(f"{stat_title} comparison", fontsize=TITLE_FONT_SIZE)
         sns.lineplot(
@@ -286,7 +288,10 @@ def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
         )
         ax.grid()
         # legend to right (outside) of plot
-        ax.legend(
+        legend = ax.legend(
             fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc="upper left"
         )
+        legend.get_frame().set_alpha(0)
+        fig.patch.set_alpha(0)
+        ax.patch.set_alpha(0)
         # return fig
