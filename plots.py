@@ -36,10 +36,10 @@ DARK_MODE = False
 COLORMAP = COLORMAP_DARK if DARK_MODE else COLORMAP_LIGHT
 ################ Plot settings
 DPI = 200
-FONT_SIZE = 15
-TITLE_FONT_SIZE = int(FONT_SIZE * 1.75)
-LABEL_FONT_SIZE = int(FONT_SIZE * 1.25)
-LEGEND_FONT_SIZE = int(FONT_SIZE * 0.75)
+FONT_SIZE = 20
+TITLE_FONT_SIZE = np.floor(FONT_SIZE * 1.25)
+LABEL_FONT_SIZE = np.floor(FONT_SIZE * 1)
+LEGEND_FONT_SIZE = np.floor(FONT_SIZE * 0.75)
 BBOX_TO_ANCHOR = (1.05, 1)
 LOC = "best"
 ################
@@ -162,7 +162,7 @@ def plot_performance(
         ax1.spines["right"].set_visible(False)
         ax1.spines["top"].set_visible(False)
         ax1.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
-        ax1.grid()
+        ax1.grid(False)
         ax1.legend(
             fontsize=LEGEND_FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
         )
@@ -186,7 +186,7 @@ def plot_performance(
         ax2.spines["right"].set_visible(False)
         ax2.spines["top"].set_visible(False)
         ax2.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
-        ax2.grid()
+        ax2.grid(False)
         ax2.legend(
             fontsize=LEGEND_FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
         )
@@ -243,7 +243,7 @@ def plot_stat_comparison(
             trim=True,
             offset={"bottom": 40, "left": 15},
         )
-        ax.grid()
+        ax.grid(False)
         # legend to right (outside) of plot
         ax.legend(fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC)
         # return fig
@@ -286,7 +286,7 @@ def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
             trim=True,
             offset={"bottom": 40, "left": 15},
         )
-        ax.grid()
+        ax.grid(False)
         # legend to right (outside) of plot
         legend = ax.legend(
             fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc="upper left"
