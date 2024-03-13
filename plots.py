@@ -252,7 +252,7 @@ def plot_stat_comparison(
 def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
     with get_style_context():
         sns.set_palette(COLORMAP)
-        fig, ax = plt.subplots(1, 1, figsize=(12, 6), dpi=DPI)
+        fig, ax = plt.subplots(1, 1, figsize=(6, 6), dpi=DPI)
         # make background transparent
 
         stat_title = (stat[0].upper() + stat[1:]).replace("_", " ")
