@@ -6,6 +6,6 @@ root: intro
 parts:
 - caption: Figures
   chapters:
-  - file: figX-x-supervised/supervised_benchmark
-  - file: figX-x-splits/splits_benchmark
-  - file: figX-x-unsupervised-retrain/unsupervised_retrain
+  - file: fig2-b-supervised/supervised_benchmark
+  - file: fig2-c-d-splits/splits_benchmark
+  - file: fig2-e-unsupervised-retrain/unsupervised_retrain
