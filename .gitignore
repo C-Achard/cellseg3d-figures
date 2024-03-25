@@ -163,3 +163,6 @@ cellpose_repro/models/*
 
 # jupyter-book
 book/_build/
+
+# others
+other/wnet_train_screens/
