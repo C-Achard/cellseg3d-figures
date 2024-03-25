@@ -1,0 +1,597 @@
+
+Worker started at 14:57:15
+
+Worker is running...
+********************
+-- Parameters --
+Device: cuda:0
+Batch size: 2
+Epochs: 50
+Learning rate: 2e-05
+Validation interval: 2
+Using data augmentation
+-- Model --
+Using 2 classes
+Weight decay: 0.01
+* NCuts :
+- Intensity sigma 1.0
+- Spatial sigma 4.0
+- Radius : 2
+* Reconstruction loss : MSE
+Weighted sum : 0.5*NCuts + 0.5*Reconstruction
+-- Data --
+Training data :
+
+c1image_0_crop
+c1image_10_crop
+c1image_11_crop
+c1image_1_crop
+c1image_2_crop
+c1image_3_crop
+c1image_4_crop
+c1image_5_crop
+c1image_6_crop
+c1image_7_crop
+c1image_8_crop
+c1image_9_crop
+c2image_0_crop
+c2image_10_crop
+c2image_11_crop
+c2image_1_crop
+c2image_2_crop
+c2image_3_crop
+c2image_4_crop
+c2image_5_crop
+c2image_6_crop
+c2image_7_crop
+c2image_8_crop
+c2image_9_crop
+c3image_0_crop
+c3image_10_crop
+c3image_11_crop
+c3image_12_crop
+c3image_13_crop
+c3image_14_crop
+c3image_15_crop
+c3image_16_crop
+c3image_17_crop
+c3image_1_crop
+c3image_2_crop
+c3image_3_crop
+c3image_4_crop
+c3image_5_crop
+c3image_6_crop
+c3image_7_crop
+c3image_8_crop
+c3image_9_crop
+c4image_0_crop
+c4image_1_crop
+c4image_2_crop
+c4image_3_crop
+c4image_4_crop
+c4image_5_crop
+c4image_6_crop
+c4image_7_crop
+z_c5image_0_crop
+z_c5image_1_crop
+z_c5image_2_crop
+z_c5image_3_crop
+z_c5image_4_crop
+z_c5image_5_crop
+z_c5image_6_crop
+z_c5image_7_crop
+********************
+Initializing training...
+- Getting the data
+- Getting the model
+Model will be trained from scratch
+- Getting the optimizer
+- Getting the loss functions
+Ready
+Training the model
+********************
+Epoch 1 of 50
+4
+Ncuts loss: 0.99227
+Reconstruction loss: 57.08382
+Weighted sum of losses: 29.03805
+ETA: 44.7 minutes
+--------------------
+Epoch 2 of 50
+4
+Ncuts loss: 0.99046
+Reconstruction loss: 45.87604
+Weighted sum of losses: 23.43325
+Ncuts loss difference: -0.00181
+Reconstruction loss difference: -11.20778
+Weighted sum of losses difference: -5.60479
+ETA: 35.3 minutes
+--------------------
+Epoch 3 of 50
+4
+Ncuts loss: 0.92455
+Reconstruction loss: 42.65216
+Weighted sum of losses: 21.78835
+Ncuts loss difference: -0.06591
+Reconstruction loss difference: -3.22388
+Weighted sum of losses difference: -1.64490
+ETA: 31.7 minutes
+--------------------
+Epoch 4 of 50
+4
+Ncuts loss: 0.75902
+Reconstruction loss: 40.94435
+Weighted sum of losses: 20.85169
+Ncuts loss difference: -0.16553
+Reconstruction loss difference: -1.70781
+Weighted sum of losses difference: -0.93667
+ETA: 29.6 minutes
+--------------------
+Epoch 5 of 50
+4
+Ncuts loss: 0.66575
+Reconstruction loss: 39.98960
+Weighted sum of losses: 20.32768
+Ncuts loss difference: -0.09327
+Reconstruction loss difference: -0.95475
+Weighted sum of losses difference: -0.52401
+ETA: 28.0 minutes
+--------------------
+Epoch 6 of 50
+4
+Ncuts loss: 0.60914
+Reconstruction loss: 39.26025
+Weighted sum of losses: 19.93469
+Ncuts loss difference: -0.05661
+Reconstruction loss difference: -0.72936
+Weighted sum of losses difference: -0.39299
+ETA: 26.8 minutes
+--------------------
+Epoch 7 of 50
+4
+Ncuts loss: 0.58295
+Reconstruction loss: 38.63013
+Weighted sum of losses: 19.60654
+Ncuts loss difference: -0.02619
+Reconstruction loss difference: -0.63012
+Weighted sum of losses difference: -0.32815
+ETA: 25.9 minutes
+--------------------
+Epoch 8 of 50
+4
+Ncuts loss: 0.58262
+Reconstruction loss: 38.05232
+Weighted sum of losses: 19.31747
+Ncuts loss difference: -0.00033
+Reconstruction loss difference: -0.57781
+Weighted sum of losses difference: -0.28907
+ETA: 25.0 minutes
+--------------------
+Epoch 9 of 50
+4
+Ncuts loss: 0.56323
+Reconstruction loss: 37.59191
+Weighted sum of losses: 19.07757
+Ncuts loss difference: -0.01938
+Reconstruction loss difference: -0.46041
+Weighted sum of losses difference: -0.23989
+ETA: 24.2 minutes
+--------------------
+Epoch 10 of 50
+4
+Ncuts loss: 0.54814
+Reconstruction loss: 37.17325
+Weighted sum of losses: 18.86069
+Ncuts loss difference: -0.01510
+Reconstruction loss difference: -0.41866
+Weighted sum of losses difference: -0.21688
+ETA: 23.5 minutes
+--------------------
+Epoch 11 of 50
+4
+Ncuts loss: 0.52946
+Reconstruction loss: 36.81464
+Weighted sum of losses: 18.67205
+Ncuts loss difference: -0.01868
+Reconstruction loss difference: -0.35860
+Weighted sum of losses difference: -0.18864
+ETA: 22.8 minutes
+--------------------
+Epoch 12 of 50
+4
+Ncuts loss: 0.52598
+Reconstruction loss: 36.46110
+Weighted sum of losses: 18.49354
+Ncuts loss difference: -0.00348
+Reconstruction loss difference: -0.35355
+Weighted sum of losses difference: -0.17851
+ETA: 22.1 minutes
+--------------------
+Epoch 13 of 50
+4
+Ncuts loss: 0.51152
+Reconstruction loss: 36.14809
+Weighted sum of losses: 18.32981
+Ncuts loss difference: -0.01447
+Reconstruction loss difference: -0.31300
+Weighted sum of losses difference: -0.16373
+ETA: 21.4 minutes
+--------------------
+Epoch 14 of 50
+4
+Ncuts loss: 0.49954
+Reconstruction loss: 35.84817
+Weighted sum of losses: 18.17385
+Ncuts loss difference: -0.01198
+Reconstruction loss difference: -0.29993
+Weighted sum of losses difference: -0.15595
+ETA: 20.7 minutes
+--------------------
+Epoch 15 of 50
+4
+Ncuts loss: 0.48920
+Reconstruction loss: 35.58164
+Weighted sum of losses: 18.03542
+Ncuts loss difference: -0.01033
+Reconstruction loss difference: -0.26653
+Weighted sum of losses difference: -0.13843
+ETA: 20.1 minutes
+--------------------
+Epoch 16 of 50
+4
+Ncuts loss: 0.47675
+Reconstruction loss: 35.31505
+Weighted sum of losses: 17.89590
+Ncuts loss difference: -0.01245
+Reconstruction loss difference: -0.26659
+Weighted sum of losses difference: -0.13952
+ETA: 19.4 minutes
+--------------------
+Epoch 17 of 50
+4
+Ncuts loss: 0.46733
+Reconstruction loss: 35.06290
+Weighted sum of losses: 17.76511
+Ncuts loss difference: -0.00943
+Reconstruction loss difference: -0.25215
+Weighted sum of losses difference: -0.13079
+ETA: 18.9 minutes
+--------------------
+Epoch 18 of 50
+4
+Ncuts loss: 0.45689
+Reconstruction loss: 34.82457
+Weighted sum of losses: 17.64073
+Ncuts loss difference: -0.01044
+Reconstruction loss difference: -0.23833
+Weighted sum of losses difference: -0.12438
+ETA: 18.9 minutes
+--------------------
+Epoch 19 of 50
+4
+Ncuts loss: 0.44603
+Reconstruction loss: 34.59145
+Weighted sum of losses: 17.51874
+Ncuts loss difference: -0.01086
+Reconstruction loss difference: -0.23312
+Weighted sum of losses difference: -0.12199
+ETA: 18.3 minutes
+--------------------
+Epoch 20 of 50
+4
+Ncuts loss: 0.43645
+Reconstruction loss: 34.34674
+Weighted sum of losses: 17.39160
+Ncuts loss difference: -0.00958
+Reconstruction loss difference: -0.24471
+Weighted sum of losses difference: -0.12715
+ETA: 17.6 minutes
+--------------------
+Epoch 21 of 50
+4
+Ncuts loss: 0.42316
+Reconstruction loss: 34.11471
+Weighted sum of losses: 17.26893
+Ncuts loss difference: -0.01329
+Reconstruction loss difference: -0.23203
+Weighted sum of losses difference: -0.12266
+ETA: 17.0 minutes
+--------------------
+Epoch 22 of 50
+4
+Ncuts loss: 0.41604
+Reconstruction loss: 33.90068
+Weighted sum of losses: 17.15836
+Ncuts loss difference: -0.00712
+Reconstruction loss difference: -0.21402
+Weighted sum of losses difference: -0.11057
+ETA: 16.4 minutes
+--------------------
+Epoch 23 of 50
+4
+Ncuts loss: 0.40337
+Reconstruction loss: 33.66850
+Weighted sum of losses: 17.03593
+Ncuts loss difference: -0.01267
+Reconstruction loss difference: -0.23218
+Weighted sum of losses difference: -0.12243
+ETA: 15.8 minutes
+--------------------
+Epoch 24 of 50
+4
+Ncuts loss: 0.39882
+Reconstruction loss: 33.46028
+Weighted sum of losses: 16.92955
+Ncuts loss difference: -0.00454
+Reconstruction loss difference: -0.20822
+Weighted sum of losses difference: -0.10638
+ETA: 15.1 minutes
+--------------------
+Epoch 25 of 50
+4
+Ncuts loss: 0.38790
+Reconstruction loss: 33.24519
+Weighted sum of losses: 16.81654
+Ncuts loss difference: -0.01093
+Reconstruction loss difference: -0.21509
+Weighted sum of losses difference: -0.11301
+ETA: 14.5 minutes
+--------------------
+Epoch 26 of 50
+4
+Ncuts loss: 0.37429
+Reconstruction loss: 33.03520
+Weighted sum of losses: 16.70475
+Ncuts loss difference: -0.01360
+Reconstruction loss difference: -0.20999
+Weighted sum of losses difference: -0.11180
+ETA: 13.9 minutes
+--------------------
+Epoch 27 of 50
+4
+Ncuts loss: 0.37117
+Reconstruction loss: 32.82695
+Weighted sum of losses: 16.59906
+Ncuts loss difference: -0.00312
+Reconstruction loss difference: -0.20825
+Weighted sum of losses difference: -0.10569
+ETA: 13.3 minutes
+--------------------
+Epoch 28 of 50
+4
+Ncuts loss: 0.36206
+Reconstruction loss: 32.62820
+Weighted sum of losses: 16.49513
+Ncuts loss difference: -0.00911
+Reconstruction loss difference: -0.19875
+Weighted sum of losses difference: -0.10393
+ETA: 12.7 minutes
+--------------------
+Epoch 29 of 50
+4
+Ncuts loss: 0.35596
+Reconstruction loss: 32.40600
+Weighted sum of losses: 16.38098
+Ncuts loss difference: -0.00610
+Reconstruction loss difference: -0.22220
+Weighted sum of losses difference: -0.11415
+ETA: 12.1 minutes
+--------------------
+Epoch 30 of 50
+4
+Ncuts loss: 0.34413
+Reconstruction loss: 32.19054
+Weighted sum of losses: 16.26733
+Ncuts loss difference: -0.01183
+Reconstruction loss difference: -0.21546
+Weighted sum of losses difference: -0.11364
+ETA: 11.5 minutes
+--------------------
+Epoch 31 of 50
+4
+Ncuts loss: 0.33634
+Reconstruction loss: 32.00090
+Weighted sum of losses: 16.16862
+Ncuts loss difference: -0.00779
+Reconstruction loss difference: -0.18964
+Weighted sum of losses difference: -0.09872
+ETA: 10.9 minutes
+--------------------
+Epoch 32 of 50
+4
+Ncuts loss: 0.33110
+Reconstruction loss: 31.80333
+Weighted sum of losses: 16.06721
+Ncuts loss difference: -0.00524
+Reconstruction loss difference: -0.19757
+Weighted sum of losses difference: -0.10140
+ETA: 10.3 minutes
+--------------------
+Epoch 33 of 50
+4
+Ncuts loss: 0.32767
+Reconstruction loss: 31.58601
+Weighted sum of losses: 15.95684
+Ncuts loss difference: -0.00343
+Reconstruction loss difference: -0.21732
+Weighted sum of losses difference: -0.11037
+ETA: 9.7 minutes
+--------------------
+Epoch 34 of 50
+4
+Ncuts loss: 0.32160
+Reconstruction loss: 31.38450
+Weighted sum of losses: 15.85305
+Ncuts loss difference: -0.00607
+Reconstruction loss difference: -0.20152
+Weighted sum of losses difference: -0.10379
+ETA: 9.1 minutes
+--------------------
+Epoch 35 of 50
+4
+Ncuts loss: 0.31506
+Reconstruction loss: 31.19447
+Weighted sum of losses: 15.75477
+Ncuts loss difference: -0.00654
+Reconstruction loss difference: -0.19002
+Weighted sum of losses difference: -0.09828
+ETA: 8.6 minutes
+--------------------
+Epoch 36 of 50
+4
+Ncuts loss: 0.30943
+Reconstruction loss: 30.99892
+Weighted sum of losses: 15.65417
+Ncuts loss difference: -0.00563
+Reconstruction loss difference: -0.19556
+Weighted sum of losses difference: -0.10059
+ETA: 8.0 minutes
+--------------------
+Epoch 37 of 50
+4
+Ncuts loss: 0.30781
+Reconstruction loss: 30.79648
+Weighted sum of losses: 15.55215
+Ncuts loss difference: -0.00162
+Reconstruction loss difference: -0.20244
+Weighted sum of losses difference: -0.10203
+ETA: 7.4 minutes
+--------------------
+Epoch 38 of 50
+4
+Ncuts loss: 0.29929
+Reconstruction loss: 30.62829
+Weighted sum of losses: 15.46379
+Ncuts loss difference: -0.00852
+Reconstruction loss difference: -0.16819
+Weighted sum of losses difference: -0.08836
+ETA: 6.8 minutes
+--------------------
+Epoch 39 of 50
+4
+Ncuts loss: 0.29920
+Reconstruction loss: 30.42325
+Weighted sum of losses: 15.36122
+Ncuts loss difference: -0.00009
+Reconstruction loss difference: -0.20504
+Weighted sum of losses difference: -0.10256
+ETA: 6.3 minutes
+--------------------
+Epoch 40 of 50
+4
+Ncuts loss: 0.28847
+Reconstruction loss: 30.21615
+Weighted sum of losses: 15.25231
+Ncuts loss difference: -0.01073
+Reconstruction loss difference: -0.20710
+Weighted sum of losses difference: -0.10891
+ETA: 5.7 minutes
+--------------------
+Epoch 41 of 50
+4
+Ncuts loss: 0.28418
+Reconstruction loss: 30.03862
+Weighted sum of losses: 15.16140
+Ncuts loss difference: -0.00429
+Reconstruction loss difference: -0.17753
+Weighted sum of losses difference: -0.09091
+ETA: 5.1 minutes
+--------------------
+Epoch 42 of 50
+4
+Ncuts loss: 0.27881
+Reconstruction loss: 29.85732
+Weighted sum of losses: 15.06807
+Ncuts loss difference: -0.00537
+Reconstruction loss difference: -0.18130
+Weighted sum of losses difference: -0.09334
+ETA: 4.5 minutes
+--------------------
+Epoch 43 of 50
+4
+Ncuts loss: 0.27991
+Reconstruction loss: 29.66614
+Weighted sum of losses: 14.97303
+Ncuts loss difference: 0.00111
+Reconstruction loss difference: -0.19118
+Weighted sum of losses difference: -0.09504
+ETA: 4.0 minutes
+--------------------
+Epoch 44 of 50
+4
+Ncuts loss: 0.27281
+Reconstruction loss: 29.46947
+Weighted sum of losses: 14.87114
+Ncuts loss difference: -0.00710
+Reconstruction loss difference: -0.19667
+Weighted sum of losses difference: -0.10189
+ETA: 3.4 minutes
+--------------------
+Epoch 45 of 50
+4
+Ncuts loss: 0.26895
+Reconstruction loss: 29.29379
+Weighted sum of losses: 14.78137
+Ncuts loss difference: -0.00386
+Reconstruction loss difference: -0.17568
+Weighted sum of losses difference: -0.08977
+ETA: 2.8 minutes
+--------------------
+Epoch 46 of 50
+4
+Ncuts loss: 0.27796
+Reconstruction loss: 29.12376
+Weighted sum of losses: 14.70086
+Ncuts loss difference: 0.00901
+Reconstruction loss difference: -0.17003
+Weighted sum of losses difference: -0.08051
+ETA: 2.3 minutes
+--------------------
+Epoch 47 of 50
+4
+Ncuts loss: 0.26320
+Reconstruction loss: 28.94697
+Weighted sum of losses: 14.60509
+Ncuts loss difference: -0.01475
+Reconstruction loss difference: -0.17679
+Weighted sum of losses difference: -0.09577
+ETA: 1.7 minutes
+--------------------
+Epoch 48 of 50
+4
+Ncuts loss: 0.25966
+Reconstruction loss: 28.74820
+Weighted sum of losses: 14.50393
+Ncuts loss difference: -0.00354
+Reconstruction loss difference: -0.19877
+Weighted sum of losses difference: -0.10115
+ETA: 1.1 minutes
+--------------------
+Epoch 49 of 50
+4
+Ncuts loss: 0.25830
+Reconstruction loss: 28.56196
+Weighted sum of losses: 14.41013
+Ncuts loss difference: -0.00136
+Reconstruction loss difference: -0.18624
+Weighted sum of losses difference: -0.09380
+ETA: 0.6 minutes
+--------------------
+Epoch 50 of 50
+4
+Ncuts loss: 0.24921
+Reconstruction loss: 28.38370
+Weighted sum of losses: 14.31645
+Ncuts loss difference: -0.00909
+Reconstruction loss difference: -0.17827
+Weighted sum of losses difference: -0.09368
+ETA: 0.0 minutes
+--------------------
+Training finished
+Saving the model to: C:\Users\Cyril\cellseg3d\training\WNet_50e_2024_03_25_14_57_15/wnet.pth
+********************
+
+Worker finished at 15:25:36
+Saving in C:\Users\Cyril\cellseg3d\training\WNet_50e_2024_03_25_14_57_15
+Saving last loss plot
+Saving log

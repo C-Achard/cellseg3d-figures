@@ -295,3 +295,54 @@ def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
         fig.patch.set_alpha(0)
         ax.patch.set_alpha(0)
         # return fig
+
+
+def plot_losses(losses_df, loss_keys):
+    with get_style_context():
+        sns.set_palette(COLORMAP)
+        fig, ax = plt.subplots(1, 1, figsize=(6, 6), dpi=DPI)
+        ax2 = ax.twinx()
+        axes = [ax, ax2]
+        lines = []
+        labels = []
+
+        for i, key in enumerate(loss_keys):
+            curr_ax = 0 if i == 0 else 1
+            sns.lineplot(
+                data=losses_df,
+                x="Epoch",
+                y=key,
+                ax=axes[curr_ax],
+                label=key,
+                color=sns.color_palette()[i],
+                legend=False,
+            )
+            labels.append(key)
+            if i != 1:
+                lines.extend(axes[curr_ax].get_lines())
+
+        ax.set_xlabel("Epoch", fontsize=LABEL_FONT_SIZE)
+        ax.set_ylabel("SoftNCuts loss", fontsize=LABEL_FONT_SIZE)
+        ax2.set_ylabel(
+            "Reconstruction loss\nWeighted sum of losses",
+            fontsize=LABEL_FONT_SIZE,
+        )
+        for ax in axes:
+            ax.spines["right"].set_visible(False)
+            ax.spines["top"].set_visible(False)
+            sns.despine(
+                left=False,
+                right=False,
+                bottom=False,
+                top=True,
+                trim=True,
+                offset={"bottom": 40, "left": 15},
+            )
+            ax.grid(False)
+
+        # Create a single legend for both axes
+        fig.legend(
+            lines, labels, loc="upper right", bbox_to_anchor=BBOX_TO_ANCHOR
+        )
+        fig.patch.set_alpha(0)
+        ax.patch.set_alpha(0)

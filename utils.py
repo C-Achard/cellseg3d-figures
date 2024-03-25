@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -99,3 +101,37 @@ def models_stats_to_df(model_stats, names):
 
 def dataset_matching_stats_to_df(dataset_matching_stats):
     return pd.DataFrame(dataset_matching_stats).set_index("thresh")
+
+
+def extract_losses_from_log(path_to_log):
+    """Reads a log file and looks for :
+    - epoch ("Epoch e of E")
+    - NCuts ("NCuts loss: x")
+    - Reconstruction ("Reconstruction loss: x")
+    - Sum of losses ("Weighted sum of losses: x")
+    - Total number of epochs (E)
+    These are saved in a dict where the key is the epoch number and the value is a dict containing the losses.
+    """
+    file = Path.open(Path(path_to_log).resolve(), "r")
+    if not file:
+        raise FileNotFoundError("Log file not found")
+    lines = file.readlines()
+    file.close()
+    losses = {}
+    total_epochs = -1
+
+    for line in lines:
+        if "Epoch" in line:
+            if "Epochs" in line:
+                total_epochs = int(line.split(" ")[1])
+                continue
+            epoch = int(line.split(" ")[1])
+            losses[epoch] = {}
+        if "Ncuts loss:" in line:
+            losses[epoch]["Ncuts"] = float(line.split(":")[1])
+        if "Reconstruction loss:" in line:
+            losses[epoch]["Reconstruction"] = float(line.split(":")[1])
+        if "Weighted sum of losses:" in line:
+            losses[epoch]["Sum"] = float(line.split(":")[1])
+
+    return losses, total_epochs
