@@ -8,4 +8,6 @@ parts:
   chapters:
   - file: fig2-b-supervised/supervised_benchmark
   - file: fig2-c-d-splits/splits_benchmark
-  - file: fig2-e-unsupervised-retrain/unsupervised_retrain
+  - file: fig2-e-self-supervised-retrain/self-supervised_retrain
+  - file: fig2-x-wnet-losses/wnet_losses
+  - file: figX-x-extra-datasets/seéf-supervised-extra
