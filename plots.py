@@ -25,23 +25,25 @@ COLORMAP_LIGHT = [
     "#4361EE",  # dark blue - Cellpose
     "#7209B7",  # purple - SegRes
     "#F72585",  # pink - Swin
-    "#3A0CA3",  # dark blue - WNet
+    # "#3A0CA3",  # dark blue - WNet
+    "#FF4D00",  # dark orange - WNet
     ########### extra, not used
-    "#FF0000",
+    # "#FF0000", # red
+    # "#FF4D00", # dark orange
+    "#FF7A00",
     "#F0A500",
     "#FFD700",
-    "#FF7A00",
-    "#FF4D00",
 ]
 COLORMAP_DARK = [invert_color(color) for color in COLORMAP_LIGHT]
 DARK_MODE = False
 COLORMAP = COLORMAP_DARK if DARK_MODE else COLORMAP_LIGHT
 # expanded colormap has darker and lighter shades for each original color (see get_shades in utils.py)
+# See intensity parameter in get_shades to adjust the intensity of the shades
 EXPANDED_COLORMAP = []
-for color in COLORMAP_LIGHT[:4]:
+for color in COLORMAP[:4]:
     darker, lighter = get_shades(color)
     EXPANDED_COLORMAP.extend([darker, color, lighter])
-EXPANDED_COLORMAP.extend(COLORMAP_LIGHT[4:])
+EXPANDED_COLORMAP.extend(COLORMAP[4:])
 ################ Plot settings
 DPI = 200
 FONT_SIZE = 20

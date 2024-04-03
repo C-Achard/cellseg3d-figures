@@ -11,50 +11,6 @@ import seaborn as sns
 ###################
 
 
-def get_shades(hex_color, intensity=0.3):
-    """Generate a shade darker and a shade lighter of a color in hexadecimal format.
-
-    Args:
-        hex_color (str): A color in hexadecimal format.
-    Returns:
-        darker_hex_color (str): A shade darker of the color in hexadecimal format.
-        lighter_hex_color (str): A shade lighter of the color in hexadecimal format.
-    """
-
-    hex_color = hex_color.lstrip("#")
-    rgb_color = tuple(int(hex_color[i : i + 2], 16) / 255.0 for i in (0, 2, 4))
-    hsv_color = colorsys.rgb_to_hsv(*rgb_color)
-
-    if (
-        max(0, hsv_color[2] - intensity) == 0
-        or min(1, hsv_color[2] + intensity) == 1
-    ):
-        hsv_color = (hsv_color[0], hsv_color[1], 0.5)
-
-    darker_hsv_color = (
-        hsv_color[0],
-        hsv_color[1],
-        max(0, hsv_color[2] - intensity),
-    )
-    darker_rgb_color = colorsys.hsv_to_rgb(*darker_hsv_color)
-    darker_hex_color = "#%02x%02x%02x" % tuple(
-        int(c * 255) for c in darker_rgb_color
-    )
-
-    # Generate a lighter shade of the color
-    lighter_hsv_color = (
-        hsv_color[0],
-        hsv_color[1],
-        min(1, hsv_color[2] + intensity),
-    )
-    lighter_rgb_color = colorsys.hsv_to_rgb(*lighter_hsv_color)
-    lighter_hex_color = "#%02x%02x%02x" % tuple(
-        int(c * 255) for c in lighter_rgb_color
-    )
-
-    return darker_hex_color, lighter_hex_color
-
-
 def hex_to_rgb(hex_color):
     """Convert a color from hexadecimal to RGB."""
     hex_color = hex_color.lstrip("#")
@@ -64,6 +20,71 @@ def hex_to_rgb(hex_color):
 def rgb_to_hex(rgb_color):
     """Convert a color from RGB to hexadecimal."""
     return f"#{''.join([f'{c:02X}' for c in rgb_color])}"
+
+
+def get_shades(
+    hex_color,
+    saturation_intensity=0.1,
+    value_intensity=0.25,
+    prevent_clipping=False,
+):
+    """Generate a shade less saturated and a shade more saturated of a color in hexadecimal format.
+
+    Args:
+        hex_color (str): A color in hexadecimal format.
+        saturation_intensity (float): Intensity of the saturation change. Default is 0.1.
+        value_intensity (float): Intensity of the value change. Default is 0.35.
+        prevent_clipping (bool): If True, prevents the saturation and value from being clipped (outside [0, 1] range). Default is True.
+    Returns:
+        less_saturated_hex_color (str): A shade less saturated of the color in hexadecimal format.
+        more_saturated_hex_color (str): A shade more saturated of the color in hexadecimal format.
+    """
+
+    hex_color = hex_color.lstrip("#")
+    rgb_color = tuple(int(hex_color[i : i + 2], 16) / 255.0 for i in (0, 2, 4))
+    hsv_color = colorsys.rgb_to_hsv(*rgb_color)
+
+    if (
+        max(0, hsv_color[1] - saturation_intensity) == 0
+        or min(1, hsv_color[1] + saturation_intensity) == 1
+    ):
+        print(
+            f"Warning: Saturation in {hsv_color[1]} is too low or too high in hex color {hex_color}"
+        )
+        if prevent_clipping:
+            hsv_color = (hsv_color[0], 0.5, hsv_color[2])
+
+        if (
+            max(0, hsv_color[2] - value_intensity) == 0
+            or min(1, hsv_color[2] + value_intensity) == 1
+        ):
+            print(
+                f"Warning: Value in {hsv_color[2]} is too low or too high in hex color {hex_color}"
+            )
+            if prevent_clipping:
+                hsv_color = (hsv_color[0], hsv_color[1], 0.5)
+
+    lower_hsv_color = (
+        hsv_color[0],
+        max(0, hsv_color[1] - saturation_intensity),
+        max(0, hsv_color[2] - value_intensity),
+    )
+    lower_rgb_color = colorsys.hsv_to_rgb(*lower_hsv_color)
+    lower_hex_color = "#%02x%02x%02x" % tuple(
+        int(c * 255) for c in lower_rgb_color
+    )
+
+    higher_hsv_color = (
+        hsv_color[0],
+        min(1, hsv_color[1] + saturation_intensity),
+        min(1, hsv_color[2] + value_intensity),
+    )
+    higher_rgb_color = colorsys.hsv_to_rgb(*higher_hsv_color)
+    higher_hex_color = "#%02x%02x%02x" % tuple(
+        int(c * 255) for c in higher_rgb_color
+    )
+
+    return lower_hex_color, higher_hex_color
 
 
 def invert_color(hex_color):
