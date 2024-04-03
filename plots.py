@@ -8,6 +8,7 @@ import seaborn as sns
 from utils import (
     dataset_matching_stats_to_df,
     dice_coeff,
+    get_shades,
     intersection_over_union,
     invert_color,
     precision,
@@ -20,11 +21,12 @@ from utils import (
 DATA_PATH = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/"
 ############### Colormap and dark mode
 COLORMAP_LIGHT = [
-    "#F72585",
-    "#7209B7",
-    "#4361EE",
-    "#4CC9F0",
-    "#3A0CA3",
+    "#4CC9F0",  # light blue - Stardist
+    "#4361EE",  # dark blue - Cellpose
+    "#7209B7",  # purple - SegRes
+    "#F72585",  # pink - Swin
+    "#3A0CA3",  # dark blue - WNet
+    ########### extra, not used
     "#FF0000",
     "#F0A500",
     "#FFD700",
@@ -34,6 +36,12 @@ COLORMAP_LIGHT = [
 COLORMAP_DARK = [invert_color(color) for color in COLORMAP_LIGHT]
 DARK_MODE = False
 COLORMAP = COLORMAP_DARK if DARK_MODE else COLORMAP_LIGHT
+# expanded colormap has darker and lighter shades for each original color (see get_shades in utils.py)
+EXPANDED_COLORMAP = []
+for color in COLORMAP_LIGHT[:4]:
+    darker, lighter = get_shades(color)
+    EXPANDED_COLORMAP.extend([darker, color, lighter])
+EXPANDED_COLORMAP.extend(COLORMAP_LIGHT[4:])
 ################ Plot settings
 DPI = 200
 FONT_SIZE = 20
@@ -249,9 +257,18 @@ def plot_stat_comparison(
         # return fig
 
 
-def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
+def plot_stat_comparison_fold(
+    fold_df, stat="f1", metric="IoU", colormap=COLORMAP
+):
+    """Compare one stat for several models on a single plot.
+    Args:
+        fold_df: DataFrame with the stats for each model
+        stat: Statistic to plot
+        metric: Metric used for the threshold
+        colormap: Colormap to use for the plot
+    """
     with get_style_context():
-        sns.set_palette(COLORMAP)
+        sns.set_palette(colormap)
         fig, ax = plt.subplots(1, 1, figsize=(6, 6), dpi=DPI)
         # make background transparent
 
@@ -298,6 +315,7 @@ def plot_stat_comparison_fold(fold_df, stat="f1", metric="IoU"):
 
 
 def plot_losses(losses_df, loss_keys):
+    """Plot the losses for the model."""
     with get_style_context():
         sns.set_palette(COLORMAP)
         fig, ax = plt.subplots(1, 1, figsize=(6, 6), dpi=DPI)

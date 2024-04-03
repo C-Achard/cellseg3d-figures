@@ -1,3 +1,4 @@
+import colorsys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -8,6 +9,50 @@ import seaborn as sns
 ###################
 # UTILS FUNCTIONS #
 ###################
+
+
+def get_shades(hex_color, intensity=0.3):
+    """Generate a shade darker and a shade lighter of a color in hexadecimal format.
+
+    Args:
+        hex_color (str): A color in hexadecimal format.
+    Returns:
+        darker_hex_color (str): A shade darker of the color in hexadecimal format.
+        lighter_hex_color (str): A shade lighter of the color in hexadecimal format.
+    """
+
+    hex_color = hex_color.lstrip("#")
+    rgb_color = tuple(int(hex_color[i : i + 2], 16) / 255.0 for i in (0, 2, 4))
+    hsv_color = colorsys.rgb_to_hsv(*rgb_color)
+
+    if (
+        max(0, hsv_color[2] - intensity) == 0
+        or min(1, hsv_color[2] + intensity) == 1
+    ):
+        hsv_color = (hsv_color[0], hsv_color[1], 0.5)
+
+    darker_hsv_color = (
+        hsv_color[0],
+        hsv_color[1],
+        max(0, hsv_color[2] - intensity),
+    )
+    darker_rgb_color = colorsys.hsv_to_rgb(*darker_hsv_color)
+    darker_hex_color = "#%02x%02x%02x" % tuple(
+        int(c * 255) for c in darker_rgb_color
+    )
+
+    # Generate a lighter shade of the color
+    lighter_hsv_color = (
+        hsv_color[0],
+        hsv_color[1],
+        min(1, hsv_color[2] + intensity),
+    )
+    lighter_rgb_color = colorsys.hsv_to_rgb(*lighter_hsv_color)
+    lighter_hex_color = "#%02x%02x%02x" % tuple(
+        int(c * 255) for c in lighter_rgb_color
+    )
+
+    return darker_hex_color, lighter_hex_color
 
 
 def hex_to_rgb(hex_color):
