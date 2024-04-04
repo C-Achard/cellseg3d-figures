@@ -174,7 +174,9 @@ def plot_performance(
         ax1.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax1.grid(False)
         ax1.legend(
-            fontsize=LEGEND_FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
+            fontsize=LEGEND_FONT_SIZE,
+            # bbox_to_anchor=BBOX_TO_ANCHOR,
+            loc="best",
         )
 
         for m in ("fp", "tp", "fn"):
@@ -198,7 +200,9 @@ def plot_performance(
         ax2.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
         ax2.grid(False)
         ax2.legend(
-            fontsize=LEGEND_FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
+            fontsize=LEGEND_FONT_SIZE,
+            # bbox_to_anchor=BBOX_TO_ANCHOR,
+            loc="best",
         )
 
         sns.despine(
