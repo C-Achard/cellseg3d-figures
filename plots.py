@@ -25,8 +25,8 @@ COLORMAP_LIGHT = [
     "#4361EE",  # dark blue - Cellpose
     "#7209B7",  # purple - SegRes
     "#F72585",  # pink - Swin
-    # "#3A0CA3",  # dark blue - WNet
-    "#FF4D00",  # dark orange - WNet
+    # "#3A0CA3",  # dark blue - WNet3D
+    "#FF4D00",  # dark orange - WNet3D
     ########### extra, not used
     # "#FF0000", # red
     # "#FF4D00", # dark orange
