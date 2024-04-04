@@ -1,4 +1,5 @@
 import colorsys
+import time
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -201,3 +202,43 @@ def extract_losses_from_log(path_to_log):
             losses[epoch]["Sum"] = float(line.split(":")[1])
 
     return losses, total_epochs
+
+
+def add_bbox_to_viewer(viewer, array, name="bbox", color="white"):
+    """Adds a bounding box to a napari viewer, shaped after the input array."""
+    bbox_layer = viewer.add_image(np.zeros_like(array), name=name)
+    bbox_layer.bounding_box.visible = True
+    bbox_layer.bounding_box.line_color = color
+    bbox_layer.bounding_box.points = False
+    # bbox_layer.bounding_box.blending = "additive"
+
+
+def take_napari_screenshots(viewer, save_path, bbox_layer_name="bbox"):
+    """Iterates over all layers in a napari viewer and saves a screenshot of each layer. Skips the bbox layer."""
+    for layer in viewer.layers:
+        if layer.name == bbox_layer_name:
+            continue
+        for l in viewer.layers:
+            if l.name == bbox_layer_name:
+                continue
+            l.visible = False
+        layer.visible = True
+        print(f"Taking screenshot of {layer.name}")
+        viewer.screenshot(
+            str(Path(save_path) / f"{layer.name}_screenshot.png")
+        )
+        # wait 1s to avoid overlapping screenshots
+        time.sleep(1)
+
+        #     for layer in viewer.layers:
+        # print(layer.name)
+        # if layer.name == bbox_layer_name:
+        #     continue
+        # for layer in viewer.layers:
+        #     if layer.name == bbox_layer_name:
+        #         continue
+        #     layer.visible = False
+        # viewer.layers[layer.name].visible = True
+        # viewer.screenshot(Path(save_path, f"{layer.name}_screenshot.png"))
+        # # wait 1s to avoid overlapping screenshots
+        # time.sleep(1)
