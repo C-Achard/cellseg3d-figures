@@ -320,11 +320,11 @@ def plot_stat_comparison_fold(
         # return fig
 
 
-def plot_losses(losses_df, loss_keys):
+def plot_losses(losses_df, loss_keys, colormap=COLORMAP):
     """Plot the losses for the model."""
     with get_style_context():
-        sns.set_palette(COLORMAP)
-        fig, ax = plt.subplots(1, 1, figsize=(6, 6), dpi=DPI)
+        sns.set_palette(colormap)
+        fig, ax = plt.subplots(1, 1, figsize=(9, 3), dpi=DPI)
         ax2 = ax.twinx()
         axes = [ax, ax2]
         lines = []
