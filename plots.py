@@ -76,6 +76,49 @@ def get_style_context():
     return contextlib.nullcontext()
 
 
+def _format_plot(
+    ax,
+    xticks_arange=None,
+    yticks_arange=None,
+    xlabel=None,
+    ylabel=None,
+    xlims=None,
+    ylims=None,
+    title=None,
+    despine=True,
+    minor_xticks=False,
+    minor_yticks=False,
+):
+    """Format the plot with the specified elements."""
+    if xlims is not None:
+        ax.set_xlim(xmin=xlims[0], xmax=xlims[1])
+    if ylims is not None:
+        ax.set_ylim(ymin=ylims[0], ymax=ylims[1])
+    ax.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
+    if xticks_arange is not None:
+        ax.set_xticks(xticks_arange, minor=minor_xticks)
+    if yticks_arange is not None:
+        ax.set_yticks(yticks_arange, minor=minor_yticks)
+    if xlabel is not None:
+        ax.set_xlabel(xlabel, fontsize=LABEL_FONT_SIZE)
+    if ylabel is not None:
+        ax.set_ylabel(ylabel, fontsize=LABEL_FONT_SIZE)
+    if title is not None:
+        ax.set_title(title, fontsize=TITLE_FONT_SIZE)
+    ax.spines["right"].set_visible(False)
+    ax.spines["top"].set_visible(False)
+    # if despine:
+    #     sns.despine(
+    #         left=False,
+    #         right=True,
+    #         bottom=False,
+    #         top=True,
+    #         trim=True,
+    #         offset={"bottom": 40, "left": 15},
+    #     )
+    ax.grid(False)
+
+
 ###################
 # PLOT FUNCTIONS  #
 ###################
@@ -160,23 +203,17 @@ def plot_performance(
                 lw=2,
                 marker="o",
             )
-        ax1.set(
-            xlim=(0.05, 0.95),
-            ylim=(-0.1, 1.1),
-            xticks=np.arange(0.1, 1, 0.1),
-        )
-        ax1.set_xlabel(
-            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
-        )
-        ax1.set_ylabel("Metric value", fontsize=LABEL_FONT_SIZE)
-        ax1.spines["right"].set_visible(False)
-        ax1.spines["top"].set_visible(False)
-        ax1.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
-        ax1.grid(False)
         ax1.legend(
             fontsize=LEGEND_FONT_SIZE,
             # bbox_to_anchor=BBOX_TO_ANCHOR,
             loc="best",
+        )
+        _format_plot(
+            ax1,
+            xticks_arange=np.arange(0.1, 1, 0.1),
+            xlabel=f"{metric}" + r" threshold $\tau$",
+            ylabel="Metric value",
+            title=name,
         )
 
         for m in ("fp", "tp", "fn"):
@@ -189,16 +226,15 @@ def plot_performance(
                 lw=2,
                 marker="o",
             )
-        ax2.set(xlim=(0.05, 0.95), xticks=np.arange(0.1, 1, 0.1))
         # ax2.set_ylim(0, max([stats['tp'].max(), stats['fp'].max(), stats['fn'].max()]))
-        ax2.set_xlabel(
-            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
+        _format_plot(
+            ax2,
+            xticks_arange=np.arange(0.1, 1, 0.1),
+            xlims=(0.05, 0.95),
+            xlabel=f"{metric}" + r" threshold $\tau",
+            ylabel="Number #",
+            title=name,
         )
-        ax2.set_ylabel("Number #", fontsize=LABEL_FONT_SIZE)
-        ax2.spines["right"].set_visible(False)
-        ax2.spines["top"].set_visible(False)
-        ax2.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
-        ax2.grid(False)
         ax2.legend(
             fontsize=LEGEND_FONT_SIZE,
             # bbox_to_anchor=BBOX_TO_ANCHOR,
@@ -239,25 +275,15 @@ def plot_stat_comparison(
                 lw=2,
                 marker="o",
             )
-        ax.set_xlim(xmin=0.05, xmax=0.95)
-        ax.set_ylim(ymin=-0, ymax=1)
-        ax.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
-        ax.set_xticks(np.arange(0.1, 1, 0.1))
-        ax.set_xlabel(
-            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
+        _format_plot(
+            ax,
+            xticks_arange=np.arange(0.1, 1, 0.1),
+            xlims=(0.05, 0.95),
+            ylims=(0, 1),
+            xlabel=f"{metric}" + r" threshold $\tau$",
+            ylabel=stat_title,
+            # title=f"{stat_title} comparison"
         )
-        ax.set_ylabel(stat_title, fontsize=LABEL_FONT_SIZE)
-        ax.spines["right"].set_visible(False)
-        ax.spines["top"].set_visible(False)
-        sns.despine(
-            left=False,
-            right=True,
-            bottom=False,
-            top=True,
-            trim=True,
-            offset={"bottom": 40, "left": 15},
-        )
-        ax.grid(False)
         # legend to right (outside) of plot
         ax.legend(fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC)
         # return fig
@@ -291,25 +317,16 @@ def plot_stat_comparison_fold(
             estimator="mean",
             errorbar=("ci", 50),
         )
-        ax.set_xlim(xmin=0.05, xmax=0.95)
-        ax.set_ylim(ymin=-0, ymax=1)
-        ax.tick_params(axis="both", which="major", labelsize=LEGEND_FONT_SIZE)
-        ax.set_xticks(np.arange(0.1, 1, 0.1))
-        ax.set_xlabel(
-            f"{metric}" + r" threshold $\tau$", fontsize=LABEL_FONT_SIZE
+
+        _format_plot(
+            ax,
+            xlims=(0.05, 0.95),
+            ylims=(0, 1),
+            xlabel=f"{metric}" + r" threshold $\tau$",
+            ylabel=stat_title,
+            xticks_arange=np.arange(0.1, 1, 0.1),
         )
-        ax.set_ylabel(stat_title, fontsize=LABEL_FONT_SIZE)
-        ax.spines["right"].set_visible(False)
-        ax.spines["top"].set_visible(False)
-        sns.despine(
-            left=False,
-            right=True,
-            bottom=False,
-            top=True,
-            trim=True,
-            offset={"bottom": 40, "left": 15},
-        )
-        ax.grid(False)
+
         # legend to right (outside) of plot
         legend = ax.legend(
             fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc="upper left"
@@ -346,33 +363,24 @@ def plot_losses(losses_df, loss_keys, colormap=COLORMAP):
             if i != 1:
                 lines.extend(axes[curr_ax].get_lines())
 
-        ax.set_xlabel("Epoch", fontsize=LABEL_FONT_SIZE)
-        # minor ticks on x axis
-        ax.set_xticks(np.arange(0, len(losses_df), 1), minor=True)
-        ax.set_ylabel("SoftNCuts loss", fontsize=LABEL_FONT_SIZE)
-        ax2.set_ylabel(
-            "Reconstruction loss\nWeighted sum of losses",
-            fontsize=LABEL_FONT_SIZE,
+        _format_plot(
+            ax,
+            ylims=(0.2, 1),
+            xlabel="Epoch",
+            ylabel="SoftNCuts loss",
+            xticks_arange=np.arange(0, len(losses_df), 1),
+            minor_xticks=True,
+            yticks_arange=np.arange(0.2, 1.1, 0.1),
+        )
+        _format_plot(
+            ax2,
+            ylims=(10, 60),
+            ylabel="Reconstruction loss\nWeighted sum of losses",
+            yticks_arange=np.arange(10, 65, 5),
         )
 
-        ax.set_ylim(0.2, 1)
-        ax.set_yticks(np.arange(0.2, 1.1, 0.1))
-        ax2.set_ylim(10, 60)
-        ax2.set_yticks(np.arange(10, 65, 5))
-
-        for ax in axes:
-            ax.spines["right"].set_visible(False)
-            ax.spines["top"].set_visible(False)
-            sns.despine(
-                left=False,
-                right=False,
-                bottom=False,
-                top=True,
-                trim=True,
-                offset={"bottom": 40, "left": 15},
-            )
-            ax.grid(False)
-            ax.patch.set_alpha(0)
+        ax.patch.set_alpha(0)
+        ax2.patch.set_alpha(0)
 
         legend = fig.legend(
             lines, labels, loc="lower right", bbox_to_anchor=BBOX_TO_ANCHOR
