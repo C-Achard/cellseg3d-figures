@@ -12,7 +12,6 @@ The data should then be placed in the...
 
 Please refer to ... for a full file list.
 
-## Figures
 
 ```{tableofcontents}
 ```
