@@ -30,9 +30,9 @@ COLORMAP_LIGHT = [
     ########### extra, not used
     # "#FF0000", # red
     # "#FF4D00", # dark orange
-    "#FF7A00",
-    "#F0A500",
-    "#FFD700",
+    "#FFD700",  # yellow
+    "#F0A500",  # light orange
+    "#FF7A00",  # orange
 ]
 COLORMAP_DARK = [invert_color(color) for color in COLORMAP_LIGHT]
 DARK_MODE = False
