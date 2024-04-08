@@ -254,11 +254,11 @@ def plot_performance(
 
 
 def plot_stat_comparison(
-    taus, stats_list, model_names, stat="f1", metric="IoU"
+    taus, stats_list, model_names, stat="f1", metric="IoU", colormap=COLORMAP
 ):
     """Compare one stat for several models on a single plot."""
     with get_style_context():
-        sns.set_palette(COLORMAP)
+        sns.set_palette(colormap)
         fig, ax = plt.subplots(1, 1, figsize=(12, 6), dpi=DPI)
         stat_title = (stat[0].upper() + stat[1:]).replace("_", " ")
         fig.suptitle(f"{stat_title} comparison", fontsize=TITLE_FONT_SIZE)
@@ -283,6 +283,14 @@ def plot_stat_comparison(
             xlabel=f"{metric}" + r" threshold $\tau$",
             ylabel=stat_title,
             # title=f"{stat_title} comparison"
+        )
+        sns.despine(
+            left=False,
+            right=True,
+            bottom=False,
+            top=True,
+            trim=True,
+            offset={"bottom": 40, "left": 15},
         )
         # legend to right (outside) of plot
         ax.legend(fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC)
@@ -326,7 +334,14 @@ def plot_stat_comparison_fold(
             ylabel=stat_title,
             xticks_arange=np.arange(0.1, 1, 0.1),
         )
-
+        sns.despine(
+            left=False,
+            right=True,
+            bottom=False,
+            top=True,
+            trim=True,
+            offset={"bottom": 40, "left": 15},
+        )
         # legend to right (outside) of plot
         legend = ax.legend(
             fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc="upper left"
@@ -378,7 +393,14 @@ def plot_losses(losses_df, loss_keys, colormap=COLORMAP):
             ylabel="Reconstruction loss\nWeighted sum of losses",
             yticks_arange=np.arange(10, 65, 5),
         )
-
+        sns.despine(
+            left=False,
+            right=True,
+            bottom=False,
+            top=True,
+            trim=True,
+            offset={"bottom": 40, "left": 15},
+        )
         ax.patch.set_alpha(0)
         ax2.patch.set_alpha(0)
 
