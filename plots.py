@@ -324,6 +324,7 @@ def plot_stat_comparison_fold(
             marker="o",
             estimator="mean",
             errorbar=("ci", 50),
+            # errorbar=("ci", 95),
         )
 
         _format_plot(

@@ -88,6 +88,23 @@ def get_shades(
     return lower_hex_color, higher_hex_color
 
 
+def get_n_shades(
+    hex_color,
+    n_shades=5,
+):
+    """Generate n shades of a color in hexadecimal format.
+
+    Color is obtained as hsv, then n evenly spaced values are generated for the value channel.
+    """
+    hsv_color = colorsys.rgb_to_hsv(*hex_to_rgb(hex_color))
+    shades = []
+    values = np.linspace(0, 1, n_shades)
+    for value in values:
+        rgb_color = colorsys.hsv_to_rgb(hsv_color[0], hsv_color[1], value)
+        shades.append(rgb_to_hex(tuple(int(c * 255) for c in rgb_color)))
+    return shades
+
+
 def invert_color(hex_color):
     """Invert a color from hexadecimal to its complementary color."""
     rgb = hex_to_rgb(hex_color)
