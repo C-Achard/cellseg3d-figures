@@ -298,7 +298,7 @@ def plot_stat_comparison(
 
 
 def plot_stat_comparison_fold(
-    fold_df, stat="f1", metric="IoU", colormap=COLORMAP
+    fold_df, stat="f1", metric="IoU", colormap=COLORMAP, ylims=(0, 1)
 ):
     """Compare one stat for several models on a single plot.
     Args:
@@ -330,7 +330,7 @@ def plot_stat_comparison_fold(
         _format_plot(
             ax,
             xlims=(0.05, 0.95),
-            ylims=(0, 1),
+            ylims=ylims,
             xlabel=f"{metric}" + r" threshold $\tau$",
             ylabel=stat_title,
             xticks_arange=np.arange(0.1, 1, 0.1),
