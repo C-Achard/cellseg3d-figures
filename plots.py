@@ -2,6 +2,7 @@ import contextlib
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
 import seaborn as sns
 
@@ -37,6 +38,10 @@ COLORMAP_LIGHT = [
 COLORMAP_DARK = [invert_color(color) for color in COLORMAP_LIGHT]
 DARK_MODE = False
 COLORMAP = COLORMAP_DARK if DARK_MODE else COLORMAP_LIGHT
+# create sequential colormap from cellpose color to Swin color
+SEQUENTIAL_COLORMAP = LinearSegmentedColormap.from_list(
+    "sequential_colormap", [COLORMAP[0], COLORMAP[1], COLORMAP[3]]
+)
 # expanded colormap has darker and lighter shades for each original color (see get_shades in utils.py)
 # See intensity parameter in get_shades to adjust the intensity of the shades
 EXPANDED_COLORMAP = []
