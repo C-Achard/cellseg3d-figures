@@ -13,5 +13,6 @@ dependencies:
     - pandas
     - stardist
     - pyclesperanto-prototype
+    - scikit-posthocs
 
 # Run : conda env create -f conda.yaml

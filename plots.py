@@ -2,9 +2,9 @@ import contextlib
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-from matplotlib.colors import LinearSegmentedColormap
 import numpy as np
 import seaborn as sns
+from matplotlib.colors import LinearSegmentedColormap
 
 from utils import (
     dataset_matching_stats_to_df,
@@ -415,3 +415,40 @@ def plot_losses(losses_df, loss_keys, colormap=COLORMAP):
         )
         legend.get_frame().set_alpha(0)
         fig.patch.set_alpha(0)
+
+
+def plot_threshold_optimization(
+    data_df, x, y, hue, vline_xs, title, show_hline=True, y_label="Dice"
+):
+    fig, ax = plt.subplots(1, 1, figsize=(8, 6), dpi=DPI)
+    sns.lineplot(data=data_df, x=x, y=y, hue=hue, palette=COLORMAP, ax=ax)
+
+    if show_hline:
+        plt.axhline(
+            y=data_df.groupby(x).Dice.median().max(),
+            color="black",
+            linestyle="--",
+        )
+    _format_plot(
+        ax,
+        xlabel="Threshold",
+        ylabel=y_label,
+        title=title,
+        yticks_arange=np.arange(0, 1.1, 0.1),
+    )
+    for x in vline_xs:
+        plt.axvline(x=x, color="black", linestyle="--")
+    sns.despine(
+        left=False,
+        right=True,
+        bottom=False,
+        top=True,
+        trim=True,
+        offset={"bottom": 40, "left": 15},
+    )
+    ax.patch.set_alpha(0)
+    legend = ax.legend(
+        fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
+    )
+    legend.get_frame().set_alpha(0)
+    fig.patch.set_alpha(0)
