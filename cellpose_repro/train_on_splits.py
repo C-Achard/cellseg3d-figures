@@ -1,7 +1,5 @@
 # --------- REQUIRES A SEPARATE CONDA ENVIRONMENT WITH CELLPOSE INSTALLED --------- #
-# --------- REQUIRES A SEPARATE CONDA ENVIRONMENT WITH CELLPOSE INSTALLED --------- #
-# --------- REQUIRES A SEPARATE CONDA ENVIRONMENT WITH CELLPOSE INSTALLED --------- #
-# --------- REQUIRES A SEPARATE CONDA ENVIRONMENT WITH CELLPOSE INSTALLED --------- #
+
 import pathlib as pt
 from glob import glob
 
@@ -9,8 +7,8 @@ import numpy as np
 from cellpose.models import CellposeModel
 from tifffile import imread
 
-VAL_PERCENT = 0.29
-SAVE_NAME = "fold2_cellpose.cellpose"
+VAL_PERCENT = 0.8
+SAVE_NAME = "c1245_v_2080.cellpose"
 CELL_MEAN_DIAM = 3.3
 
 
@@ -33,7 +31,7 @@ if __name__ == "__main__":
         "/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
     )
     # path_images = path_images / "ALL"
-    # path_images = path_images / "SPLITS/3_c1245_visual"
+    path_images = path_images / "SPLITS/3_c1245_visual"
     # path_images = path_images / "SPLITS/2_c1_c4_visual"
     X_paths = sorted(glob(str(path_images / "*.tif")))
     Y_paths = sorted(glob(str(path_images / "labels/*.tif")))
