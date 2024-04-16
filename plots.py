@@ -9,6 +9,7 @@ from matplotlib.colors import LinearSegmentedColormap
 from utils import (
     dataset_matching_stats_to_df,
     dice_coeff,
+    get_n_shades,
     get_shades,
     intersection_over_union,
     invert_color,
@@ -45,9 +46,13 @@ SEQUENTIAL_COLORMAP = LinearSegmentedColormap.from_list(
 # expanded colormap has darker and lighter shades for each original color (see get_shades in utils.py)
 # See intensity parameter in get_shades to adjust the intensity of the shades
 EXPANDED_COLORMAP = []
+# for color in COLORMAP[:4]:
+#     darker, lighter = get_shades(color)
+#     EXPANDED_COLORMAP.extend([darker, color, lighter])
+# EXPANDED_COLORMAP.extend(COLORMAP[4:])
 for color in COLORMAP[:4]:
-    darker, lighter = get_shades(color)
-    EXPANDED_COLORMAP.extend([darker, color, lighter])
+    colors = get_n_shades(color, 4)
+    EXPANDED_COLORMAP.extend(colors)
 EXPANDED_COLORMAP.extend(COLORMAP[4:])
 ################ Plot settings
 DPI = 200
