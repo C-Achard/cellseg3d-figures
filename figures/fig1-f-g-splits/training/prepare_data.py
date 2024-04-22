@@ -6,7 +6,7 @@ from tifffile import imread, imwrite
 sys.path.append("../../..")
 
 DATA = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
-SPLITS = [10, 20, 40, 60, 80]
+SPLITS = [10, 20, 40, 80]
 
 
 def create_training_data_folders(source_folder="ALL", target_folder="SPLITS"):
