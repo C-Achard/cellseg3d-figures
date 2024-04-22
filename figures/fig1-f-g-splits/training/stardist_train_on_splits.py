@@ -141,7 +141,7 @@ def train_stardist(path_images, seed):
         assert img.ndim >= mask.ndim
         perm = tuple(np.random.permutation(axis))
         transpose_axis = np.arange(mask.ndim)
-        for a, p in zip(axis, perm, strict=True):
+        for a, p in zip(axis, perm):
             transpose_axis[a] = p
         transpose_axis = tuple(transpose_axis)
         img = img.transpose(transpose_axis + tuple(range(mask.ndim, img.ndim)))

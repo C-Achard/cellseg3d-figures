@@ -376,7 +376,7 @@ def _knapsack(items, max_weight):
     table = [[0 for _ in range(max_weight + 1)] for _ in range(num_items + 1)]
 
     # Convert the dictionary items to lists for easier indexing
-    paths, weights = zip(*items.items(), strict=True)
+    paths, weights = zip(*items.items())
 
     for i in range(num_items + 1):
         for w in range(max_weight + 1):
