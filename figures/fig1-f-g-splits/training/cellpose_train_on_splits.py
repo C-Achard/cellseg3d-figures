@@ -83,7 +83,7 @@ def train_cellpose(path_images, seed, save_path):
     print(f"cell_mean_diam : {CELL_MEAN_DIAM}")
     print("*" * 20)
 
-    CellposeModel(
+    model = CellposeModel(
         gpu=True,
         pretrained_model=False,
         model_type=None,
@@ -92,19 +92,19 @@ def train_cellpose(path_images, seed, save_path):
         # nchan=1,
     )
     save_file = f"{path_images.parts[-1]}_{seed}.cellpose"
-    # model.train(
-    #     train_data=X_trn,
-    #     train_labels=Y_trn,
-    #     train_files=X_trn_paths,
-    #     # test_data=X_val,
-    #     # test_labels=Y_val,
-    #     # test_files=X_val_paths,
-    #     save_path=str(save_path),
-    #     save_every=10,
-    #     n_epochs=50,
-    #     channels=[0, 0],
-    #     model_name=save_file,
-    # )
+    model.train(
+        train_data=X_trn,
+        train_labels=Y_trn,
+        train_files=X_trn_paths,
+        # test_data=X_val,
+        # test_labels=Y_val,
+        # test_files=X_val_paths,
+        save_path=str(save_path),
+        save_every=10,
+        n_epochs=50,
+        channels=[0, 0],
+        model_name=save_file,
+    )
 
     # check if outputs exist
     if not (save_path / save_file).is_file():
