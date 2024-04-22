@@ -5,7 +5,7 @@ from tifffile import imread, imwrite
 
 sys.path.append("../../..")
 
-DATA = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
+DATA = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING")
 SPLITS = [10, 20, 40, 80]
 
 
