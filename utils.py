@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from tifffile import imread
 
 ###################
 # UTILS FUNCTIONS #
@@ -259,3 +260,206 @@ def take_napari_screenshots(viewer, save_path, bbox_layer_name="bbox"):
         # viewer.screenshot(Path(save_path, f"{layer.name}_screenshot.png"))
         # # wait 1s to avoid overlapping screenshots
         # time.sleep(1)
+
+
+def _get_images(path, pattern="*.tif"):
+    return list(path.glob(pattern))
+
+
+def _label_count(label_path):
+    """Count the number of labels in a label image."""
+    label = imread(label_path)
+    return len(np.unique(label)) - 1
+
+
+def _find_origin_volume(paths, volumes=None):
+    """Find the origin volume of a given image path."""
+    volumes = (
+        ["c1", "c2", "c3", "c4", "c5", "visual"]
+        if volumes is None
+        else volumes
+    )
+    return [volume for volume in volumes if volume in paths][0]
+
+
+def _find_unique_labels_in_volume(data_df):
+    """Find unique labels per crop of origin volume"""
+    volumes_unique_labels = {}
+    for volumes in data_df.origin_volume.unique():
+        uniques_volume = np.array([])
+        for _, row in data_df[data_df.origin_volume == volumes].iterrows():
+            label = imread(row["path_label"])
+            uniques_volume = np.concatenate((uniques_volume, np.unique(label)))
+        volumes_unique_labels[volumes] = (
+            len(np.unique(uniques_volume).flatten()) - 1
+        )
+    return volumes_unique_labels
+
+
+def create_training_dataframe(
+    data_path,
+    training_path,
+    training_labels_path,
+    test_path,
+    test_labels_path,
+    test_data_name="visual",
+):
+    """Create a dataframe with the paths to the training and test images and their corresponding labels."""
+    data_path = Path(data_path)
+    training_files = _get_images(data_path / training_path)
+    training_labels = _get_images(data_path / training_labels_path)
+    test_files = _get_images(data_path / test_path)
+    test_labels = _get_images(data_path / test_labels_path)
+
+    if not all(
+        [
+            len(training_files),
+            len(training_labels),
+            len(test_files),
+            len(test_labels),
+        ]
+    ):
+        raise ValueError(
+            f"Empty paths found: {training_files}, {training_labels}, {test_files}, {test_labels}"
+        )
+
+    data_stats = pd.DataFrame(
+        columns=[
+            "path_image",
+            "path_label",
+            "origin_volume",
+            "label_count",
+            "training_data",
+        ]
+    )
+    data_stats["path_image"] = [str(file) for file in training_files]
+    data_stats["path_label"] = [str(file) for file in training_labels]
+    data_stats["training_data"] = [True for file in training_files]
+    # append entries for test data
+    data_stats = pd.concat(
+        [
+            data_stats,
+            pd.DataFrame(
+                columns=data_stats.columns,
+                data={
+                    "path_image": [str(file) for file in test_files],
+                    "path_label": [str(file) for file in test_labels],
+                    "training_data": [False for file in test_files],
+                },
+            ),
+        ]
+    )
+    data_stats["origin_volume"] = data_stats["path_image"].apply(
+        _find_origin_volume
+    )
+    data_stats["name"] = data_stats["path_image"].apply(lambda x: Path(x).stem)
+    data_stats["label_count"] = (
+        data_stats["path_label"].apply(_label_count).astype(int)
+    )
+    labels_uniques = _find_unique_labels_in_volume(data_stats)
+    labels_uniques = pd.DataFrame.from_dict(
+        labels_uniques, orient="index", columns=["unique_labels"]
+    )
+    labels_uniques["percentage"] = (
+        labels_uniques["unique_labels"] / labels_uniques["unique_labels"].sum()
+    )
+    labels_uniques["training_data"] = [
+        i != test_data_name for i in labels_uniques.index
+    ]
+
+    return data_stats, labels_uniques
+
+
+def _knapsack(items, max_weight):
+    """Simple solver for the knapsack problem."""
+    num_items = len(items)
+    table = [[0 for _ in range(max_weight + 1)] for _ in range(num_items + 1)]
+
+    # Convert the dictionary items to lists for easier indexing
+    paths, weights = zip(*items.items(), strict=True)
+
+    for i in range(num_items + 1):
+        for w in range(max_weight + 1):
+            if i == 0 or w == 0:
+                table[i][w] = 0
+            elif weights[i - 1] <= w:
+                table[i][w] = max(
+                    weights[i - 1] + table[i - 1][w - weights[i - 1]],
+                    table[i - 1][w],
+                )
+            else:
+                table[i][w] = table[i - 1][w]
+
+    selected_paths = []
+    w = max_weight
+    for i in range(num_items, 0, -1):
+        if table[i][w] != table[i - 1][w]:
+            selected_paths.append(paths[i - 1])
+            w -= weights[i - 1]
+
+    return selected_paths
+
+
+def select_volumes(data_stats, percentage, tolerance=0.5, verbose=True):
+    """
+    Selects the volumes that sum up to the desired percentage of the total cell count within the tolerance.
+
+    Args:
+        data_stats (pd.DataFrame): DataFrame with the data statistics.
+        percentage (float): Desired percentage of the total cell count.
+        tolerance (float): Tolerance for the cell count.
+        verbose (bool): Print the selected volumes and cell count.
+
+    Returns:
+        list: Selected volumes.
+    """
+    total_cell_count = data_stats["label_count"].sum().astype(int)
+    desired_cell_count = np.floor(total_cell_count * percentage / 100).astype(
+        int
+    )
+    cell_count_tolerance = np.floor(total_cell_count * tolerance / 100).astype(
+        int
+    )
+    if verbose:
+        print(f"Total cell count: {total_cell_count}")
+        print(f"Desired cell count: {desired_cell_count}")
+        print(f"Cell count tolerance: {cell_count_tolerance}")
+
+    data_stats_sorted = data_stats.sort_values("label_count", ascending=False)
+
+    # Create a dictionary where each key is a path and each value is the corresponding label count
+    path_dict = data_stats_sorted.set_index("path_image")[
+        "label_count"
+    ].to_dict()
+
+    # Find the most optimal combination of volumes that sum up to the desired cell count within the tolerance
+    selected_volumes = _knapsack(path_dict, desired_cell_count)
+    # find selected labels directly from the dataframe using image paths
+    selected_labels = data_stats[
+        data_stats["path_image"].isin(selected_volumes)
+    ]["path_label"].tolist()
+
+    # If not found, scan within the tolerance
+    if len(selected_volumes) == 0:
+        print(
+            "No proper combination found. Trying within tolerance values. Consider increasing the tolerance value if occurs frequently."
+        )
+        tolerance_values = np.arange(
+            desired_cell_count - cell_count_tolerance,
+            desired_cell_count + cell_count_tolerance,
+        ).astype(int)
+        for cell_count_tolerance_value in tolerance_values:
+            print(f"Trying with tolerance value: {cell_count_tolerance_value}")
+            selected_volumes = _knapsack(path_dict, cell_count_tolerance_value)
+            selected_labels = data_stats[
+                data_stats["path_image"].isin(selected_volumes)
+            ]["path_label"].tolist()
+            if len(selected_volumes) > 0:
+                break
+    if verbose:
+        selected_cell_count = sum(path_dict[path] for path in selected_volumes)
+        print(
+            f"Selected {len(selected_volumes)} volumes with {selected_cell_count} cells."
+        )
+
+    return selected_volumes, selected_labels
