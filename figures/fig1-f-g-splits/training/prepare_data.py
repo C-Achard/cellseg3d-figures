@@ -19,7 +19,7 @@ def create_training_data_folders(source_folder="ALL", target_folder="SPLITS"):
         f"Creating training data folders from {data} to {DATA/target_folder}"
     )
     data_stats, labels_uniques = utils.create_training_dataframe(
-        data, ".", "labels/", "visual/", "labels/visual/"
+        data, ".", "labels/", "visual_crops/", "labels/visual_labels/"
     )
     training_data_stats = data_stats[data_stats.training_data]
     for s in SPLITS:
