@@ -10,14 +10,14 @@ from cellpose.models import CellposeModel
 from tifffile import imread
 
 CELL_MEAN_DIAM = 3.3
-DATA_PATH = (
-    pt.Path.home()
-    / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS"
+DATA_PATH = pt.Path(
+    "/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS"
 )
 
 NUM_EPOCHS = 50
 TRAINING_PERCENTAGES = [10, 20, 40, 80]
 SEEDS = [34936339, 34936397, 34936345]
+GPU_ID = 3
 
 
 def convert_2d(images_array, images_names=None, dtype=np.float32):
@@ -66,9 +66,11 @@ def train_cellpose(path_images, seed, save_path):
     # print("- validation:     %3d" % len(X_val))
 
     X_trn_paths = [X_paths_2d[i] for i in range(len(X_trn))]
+    Y_trn_paths = [Y_paths_2d[i] for i in range(len(Y_trn))]
     # X_val_paths = [X_paths_2d[i] for i in ind_val]
     print("Train :")
     [print(p) for p in X_trn_paths]
+    [print(p) for p in Y_trn_paths]
     # print("Val :")
     # [print(p) for p in X_val_paths]
     print("*" * 20)
@@ -81,27 +83,28 @@ def train_cellpose(path_images, seed, save_path):
     print(f"cell_mean_diam : {CELL_MEAN_DIAM}")
     print("*" * 20)
 
-    model = CellposeModel(
+    CellposeModel(
         gpu=True,
         pretrained_model=False,
         model_type=None,
         diam_mean=CELL_MEAN_DIAM,  # 3.3,
+        device=torch.device(f"cuda:{GPU_ID}"),
         # nchan=1,
     )
     save_file = f"{path_images.parts[-1]}_{seed}.cellpose"
-    model.train(
-        train_data=X_trn,
-        train_labels=Y_trn,
-        train_files=X_trn_paths,
-        # test_data=X_val,
-        # test_labels=Y_val,
-        # test_files=X_val_paths,
-        save_path=str(save_path),
-        save_every=10,
-        n_epochs=50,
-        channels=[0, 0],
-        model_name=save_file,
-    )
+    # model.train(
+    #     train_data=X_trn,
+    #     train_labels=Y_trn,
+    #     train_files=X_trn_paths,
+    #     # test_data=X_val,
+    #     # test_labels=Y_val,
+    #     # test_files=X_val_paths,
+    #     save_path=str(save_path),
+    #     save_every=10,
+    #     n_epochs=50,
+    #     channels=[0, 0],
+    #     model_name=save_file,
+    # )
 
     # check if outputs exist
     if not (save_path / save_file).is_file():
