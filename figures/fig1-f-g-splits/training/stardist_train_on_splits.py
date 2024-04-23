@@ -6,6 +6,7 @@ from __future__ import (
 )
 
 import pathlib as pt
+import shutil
 import sys
 from glob import glob
 from os import environ
@@ -35,7 +36,7 @@ TRAINING_PERCENTAGES = [10, 20, 40, 80]
 SEEDS = [34936339, 34936397, 34936345]
 
 
-def train_stardist(path_images, seed, path_validation="validation"):
+def train_stardist(path_images, seed, path_validation="../validation"):
     # Set seeds for numpy & tensorflow
     np.random.seed(seed)
     tf.random.set_seed(seed)
@@ -76,20 +77,21 @@ def train_stardist(path_images, seed, path_validation="validation"):
     # X_val, Y_val = [X[i] for i in ind_val]  , [Y[i] for i in ind_val]
     # X_trn, Y_trn = [X[i] for i in ind_train], [Y[i] for i in ind_train]
     X_trn, Y_trn = X, Y
-    X_val_paths = [Path(path_images / path_validation).glob("*.tif")]
-    Y_val_paths = [
-        Path(path_images / path_validation / "labels").glob("*.tif")
-    ]
-    X_val = list(map(imread, X_val_paths))
-    Y_val = list(map(imread, Y_val_paths))
+    X_val_paths = sorted(glob(str(path_images / path_validation / "*.tif")))
+    Y_val_paths = sorted(
+        glob(str(path_images / path_validation / "labels/*.tif"))
+    )
+
     print("number of images: %3d" % len(X))
     print("- training:       %3d" % len(X_trn))
-    print("- validation:     %3d" % len(X_val))
+    # print("- validation:     %3d" % len(X_val))
     print("Train files :")
     [print(X_paths[i]) for i in range(len(X_trn))]
     print("Validation files :")
-    [print(X_val_paths[i]) for i in range(len(X_val))]
+    [print(X_val_paths[i]) for i in range(len(X_val_paths))]
     print("*" * 20)
+    X_val = [imread(x) for x in X_val_paths]
+    Y_val = [imread(y) for y in Y_val_paths]
 
     print(Config3D.__doc__)
     extents = calculate_extents(Y)
@@ -187,12 +189,25 @@ def train_stardist(path_images, seed, path_validation="validation"):
     # once done, results are saved to ./models/stardist. We want to rename the folder to include the seed and split
     model_path = Path("models") / "stardist"
     new_model_path = Path(f"models/stardist_{seed}_{path_images.parts[-1]}")
+    new_model_path.mkdir(parents=True, exist_ok=True)
     try:
-        model_path.rename(new_model_path)
+        # copy the model to a new folder with the seed and split. Do not rename.
+        files = sorted(model_path.glob("*"))
+        # skip the "logs" folder as the permissions are problematic
+        files = [f for f in files if "logs" not in str(f)]
+        for file in files:
+            new_file = new_model_path / file.name
+            try:
+                shutil.copy2(file, new_file)
+            except PermissionError:
+                print(
+                    f"Could not copy {file} to {new_file}. Permission denied."
+                )
+                continue
     except Exception as e:
-        print(f"Could not rename {model_path} to {new_model_path}.")
+        print(f"Could not copy {model_path} to {new_model_path}.")
         print("Training will be stopped to avoid overwriting the model.")
-        raise SystemError("Model already exists, aborting training.") from e
+        raise SystemError("Could not copy files") from e
 
 
 if __name__ == "__main__":
@@ -201,5 +216,9 @@ if __name__ == "__main__":
             print(f"Training {split}% split with seed {seed}.")
             print("_" * 50)
             path_images = DATA_PATH / f"{split}"
+            save_path = pt.Path(f"./models/stardist_{seed}_{split}")
+            if save_path.exists():
+                print(f"Model {save_path} already exists. Skipping.")
+                continue
             train_stardist(path_images, seed)
             print(f"Training {split}% split with seed {seed} done.")

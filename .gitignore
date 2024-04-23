@@ -158,7 +158,7 @@ cython_debug/
 
 # stardist
 stardist_repro/stardist_supervised_perf/models/*
-figures/fig1-f-g-splits/training/models
+figures/fig1-f-g-splits/training/models/*
 
 # cellpose
 cellpose_repro/models/*
