@@ -11,6 +11,9 @@ from napari_cellseg3d.code_models.worker_training import (
 from napari_cellseg3d.utils import LOGGER as logger
 from napari_cellseg3d.utils import get_all_matching_files
 
+# set wandb mode globally
+WANDB_MODE = "disabled"
+
 sys.path.append("../..")
 
 DATA_PATH = (
@@ -29,7 +32,7 @@ def train_on_splits(models, training_splits, seeds):
         for training_split in training_splits:
             for seed in seeds:
                 print(
-                    f"Training {model_name} on {training_split} with seed {seed}"
+                    f"Training {model_name} on {training_split}% with seed {seed}"
                 )
                 remote_training_supervised(model_name, training_split, seed)
 
@@ -38,7 +41,7 @@ def train_wnet_on_splits(training_splits, seeds):
     """Trains WNet on different training splits."""
     for training_split in training_splits:
         for seed in seeds:
-            print(f"Training WNet on {training_split} with seed {seed}")
+            print(f"Training WNet on {training_split}% with seed {seed}")
             remote_training_unsupervised(training_split, seed)
 
 
@@ -116,7 +119,9 @@ def remote_training_supervised(model_name, training_split, seed):
             return
 
     data_path = DATA_PATH / str(training_split)
-    data_dict = prepare_data(data_path, data_path / "labels", results_path)
+    data_dict = prepare_data(
+        data_path, data_path / "labels/semantic", results_path
+    )
 
     wandb_config = cfg.WandBConfig(
         mode="online",
@@ -180,7 +185,9 @@ def remote_training_unsupervised(training_split, seed):
     )
 
     data_path = DATA_PATH / str(training_split)
-    data_dict = prepare_data(data_path, data_path / "labels", results_path)
+    data_dict = prepare_data(
+        data_path, data_path / "labels" / "semantic", results_path
+    )
 
     data_dict = [{"image": d["image"]} for d in data_dict]
 
