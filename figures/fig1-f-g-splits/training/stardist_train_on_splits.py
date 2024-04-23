@@ -35,7 +35,7 @@ TRAINING_PERCENTAGES = [10, 20, 40, 80]
 SEEDS = [34936339, 34936397, 34936345]
 
 
-def train_stardist(path_images, seed):
+def train_stardist(path_images, seed, path_validation="validation"):
     # Set seeds for numpy & tensorflow
     np.random.seed(seed)
     tf.random.set_seed(seed)
@@ -76,13 +76,19 @@ def train_stardist(path_images, seed):
     # X_val, Y_val = [X[i] for i in ind_val]  , [Y[i] for i in ind_val]
     # X_trn, Y_trn = [X[i] for i in ind_train], [Y[i] for i in ind_train]
     X_trn, Y_trn = X, Y
+    X_val_paths = [Path(path_images / path_validation).glob("*.tif")]
+    Y_val_paths = [
+        Path(path_images / path_validation / "labels").glob("*.tif")
+    ]
+    X_val = list(map(imread, X_val_paths))
+    Y_val = list(map(imread, Y_val_paths))
     print("number of images: %3d" % len(X))
     print("- training:       %3d" % len(X_trn))
-    # print('- validation:     %3d' % len(X_val))
+    print("- validation:     %3d" % len(X_val))
     print("Train files :")
-    [print(X_paths[i]) for i in len(X_trn)]
+    [print(X_paths[i]) for i in range(len(X_trn))]
     print("Validation files :")
-    # [print(X_paths[i]) for i in ind_val]
+    [print(X_val_paths[i]) for i in range(len(X_val))]
     print("*" * 20)
 
     print(Config3D.__doc__)
@@ -169,7 +175,7 @@ def train_stardist(path_images, seed):
     model.train(
         X_trn,
         Y_trn,
-        # validation_data=(X_val,Y_val),
+        validation_data=(X_val, Y_val),
         augmenter=augmenter,
         epochs=NUM_EPOCHS,
     )
@@ -191,10 +197,9 @@ def train_stardist(path_images, seed):
 
 if __name__ == "__main__":
     for split in TRAINING_PERCENTAGES:
-        print(f"Training {split} split.")
         for seed in SEEDS:
-            print(f"Training {split} split with seed {seed}.")
+            print(f"Training {split}% split with seed {seed}.")
             print("_" * 50)
             path_images = DATA_PATH / f"{split}"
             train_stardist(path_images, seed)
-            print(f"Training {split} split with seed {seed} done.")
+            print(f"Training {split}% split with seed {seed} done.")

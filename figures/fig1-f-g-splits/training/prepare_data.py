@@ -1,11 +1,13 @@
 import sys
 from pathlib import Path
 
+import numpy as np
 from tifffile import imread, imwrite
 
 sys.path.append("../../..")
 
-DATA = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING")
+# DATA = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING")
+DATA = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
 SPLITS = [10, 20, 40, 80]
 
 
@@ -34,15 +36,44 @@ def create_training_data_folders(source_folder="ALL", target_folder="SPLITS"):
         for volume_path in selected_volumes:
             vol = imread(volume_path)
             vol_name = Path(volume_path).name
+            if (target_folder_s / vol_name).is_file():
+                print(f"File {vol_name} already exists. Skipping")
+                continue
             print(f"Saving \n{vol_name} to \n{target_folder_s}")
             imwrite(target_folder_s / vol_name, vol)
         for label_path in selected_labels:
             label = imread(label_path)
             label_name = Path(label_path).name
+            if (target_folder_lab / label_name).is_file():
+                print(f"File {label_name} already exists. Skipping")
+                continue
             print(f"Saving \n{label_name} to \n{target_folder_lab}")
             imwrite(target_folder_lab / label_name, label)
         print("_" * 30)
 
 
+def create_semantic_labels(source_folder):
+    """Binarizes labels and saves them to a semantic folder in the labels folder"""
+    labels = DATA / source_folder
+    if not labels.is_dir():
+        raise FileNotFoundError(f"Labels folder {labels} not found")
+    print(f"Creating semantic labels from {labels}")
+    semantic_labels = labels / "semantic"
+    semantic_labels.mkdir(parents=True, exist_ok=False)
+    for label_path in labels.glob("*.tif"):
+        label = imread(label_path)
+        label_name = Path(label_path).name
+        if (semantic_labels / label_name).is_file():
+            print(f"File {label_name} already exists. Skipping")
+            continue
+        print(f"Saving \n{label_name} to \n{semantic_labels}")
+        imwrite(
+            semantic_labels / label_name,
+            np.where(label > 0, 1, 0).astype(np.uint16),
+        )
+
+
 if __name__ == "__main__":
     create_training_data_folders()
+    for split in SPLITS:
+        create_semantic_labels(DATA / "SPLITS" / str(split) / "labels")
