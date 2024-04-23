@@ -107,7 +107,7 @@ def train_cellpose(path_images, seed, save_path):
     )
 
     # check if outputs exist
-    if not (save_path / save_file).is_file():
+    if not (save_path / "models" / save_file).is_file():
         raise ValueError(
             f"Training weights not found in {save_path}. Aborting"
         )
