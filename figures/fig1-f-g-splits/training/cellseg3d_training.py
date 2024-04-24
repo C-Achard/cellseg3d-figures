@@ -124,7 +124,7 @@ def remote_training_supervised(model_name, training_split, seed):
     )
 
     wandb_config = cfg.WandBConfig(
-        mode="online",
+        mode=WANDB_MODE,
         save_model_artifact=True,
     )
 
