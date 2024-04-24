@@ -16,10 +16,11 @@ WANDB_MODE = "disabled"
 
 sys.path.append("../..")
 
-DATA_PATH = (
-    Path.home()
-    / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS"
-)
+# DATA_PATH = (
+#     Path.home()
+#     / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS"
+# )
+DATA_PATH = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS")
 
 TRAINING_PERCENTAGES = [10, 20, 40, 80]
 MODELS = ["SegResNet", "SwinUNetR"]
