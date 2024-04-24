@@ -12,7 +12,7 @@ from napari_cellseg3d.utils import LOGGER as logger
 from napari_cellseg3d.utils import get_all_matching_files
 
 # set wandb mode globally
-WANDB_MODE = "disabled"
+WANDB_MODE =  "online" # "disabled"
 
 sys.path.append("../..")
 
@@ -138,7 +138,7 @@ def remote_training_supervised(model_name, training_split, seed):
     val_data_dict = prepare_data(val_data, val_data / "labels", results_path)
 
     worker_config = cfg.SupervisedTrainingWorkerConfig(
-        device="cuda:4",
+        device="cuda:3",
         max_epochs=50,
         learning_rate=0.001,  # 1e-3
         validation_interval=2,
@@ -202,8 +202,8 @@ def remote_training_unsupervised(training_split, seed):
     )
 
     worker_config = cfg.WNetTrainingWorkerConfig(
-        device="cuda:4",
-        max_epochs=50,
+        device="cuda:3",
+        max_epochs= int(6000 / training_split),  # 50,
         # model params
         in_channels=1,
         out_channels=1,
@@ -251,5 +251,5 @@ def remote_training_unsupervised(training_split, seed):
 
 if __name__ == "__main__":
     # results = remote_training_supervised()
-    train_on_splits(MODELS, TRAINING_PERCENTAGES, SEEDS)
-    # train_wnet_on_splits(TRAINING_PERCENTAGES, SEEDS)
+    # train_on_splits(MODELS, TRAINING_PERCENTAGES, SEEDS)
+    train_wnet_on_splits(TRAINING_PERCENTAGES, SEEDS)
