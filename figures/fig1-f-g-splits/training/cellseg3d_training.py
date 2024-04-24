@@ -3,6 +3,7 @@
 import sys
 from pathlib import Path
 
+import torch
 from napari_cellseg3d import config as cfg
 from napari_cellseg3d.code_models.worker_training import (
     SupervisedTrainingWorker,
@@ -12,7 +13,7 @@ from napari_cellseg3d.utils import LOGGER as logger
 from napari_cellseg3d.utils import get_all_matching_files
 
 # set wandb mode globally
-WANDB_MODE =  "online" # "disabled"
+WANDB_MODE = "online"  # "disabled"
 
 sys.path.append("../..")
 
@@ -203,7 +204,7 @@ def remote_training_unsupervised(training_split, seed):
 
     worker_config = cfg.WNetTrainingWorkerConfig(
         device="cuda:3",
-        max_epochs= int(6000 / training_split),  # 50,
+        max_epochs=int(6000 / training_split),  # 50,
         # model params
         in_channels=1,
         out_channels=1,
@@ -247,6 +248,9 @@ def remote_training_unsupervised(training_split, seed):
     for result in worker.train():
         results.append(result)
     print("Training finished")
+    del results
+    del worker
+    torch.cuda.empty_cache()
 
 
 if __name__ == "__main__":
