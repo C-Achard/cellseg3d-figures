@@ -15,6 +15,7 @@ from napari_cellseg3d.utils import get_all_matching_files
 # set wandb mode globally
 WANDB_MODE = "online"  # "disabled"
 DEVICE = "cuda:2"
+EPOCHS = 300
 
 sys.path.append("../..")
 
@@ -135,7 +136,7 @@ def remote_training_supervised(model_name, training_split, seed):
 
     worker_config = cfg.SupervisedTrainingWorkerConfig(
         device=DEVICE,
-        max_epochs=50,
+        max_epochs=EPOCHS,  # 50,
         learning_rate=0.001,  # 1e-3
         validation_interval=2,
         batch_size=batch_size,  # 10 for SegResNet

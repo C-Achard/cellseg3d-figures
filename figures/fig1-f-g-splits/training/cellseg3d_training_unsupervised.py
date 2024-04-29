@@ -15,7 +15,7 @@ from napari_cellseg3d.utils import get_all_matching_files
 # set wandb mode globally
 WANDB_MODE = "online"  # "disabled"
 DEVICE = "cuda:3"
-EPOCHS = 300
+# EPOCHS = 300
 
 sys.path.append("../..")
 
