@@ -15,7 +15,7 @@ from napari_cellseg3d.utils import get_all_matching_files
 # set wandb mode globally
 WANDB_MODE = "online"  # "disabled"
 DEVICE = "cuda:3"
-# EPOCHS = 300
+EPOCHS = 450
 
 sys.path.append("../..")
 
@@ -33,8 +33,8 @@ SEEDS = [34936339, 34936397, 34936345]
 
 def train_wnet_on_splits(training_splits, seeds, skip_existing=False):
     """Trains WNet on different training splits."""
-    for training_split in training_splits:
-        for seed in seeds:
+    for seed in seeds:
+        for training_split in training_splits:
             print(f"Training WNet on {training_split}% with seed {seed}")
             remote_training_unsupervised(training_split, seed, skip_existing)
 
@@ -130,7 +130,8 @@ def remote_training_unsupervised(training_split, seed, skip_existing=False):
 
     worker_config = cfg.WNetTrainingWorkerConfig(
         device=DEVICE,
-        max_epochs=int(6000 / training_split),  # 50,
+        # max_epochs=int(6000 / training_split),  # 50,
+        max_epochs=EPOCHS,
         # model params
         in_channels=1,
         out_channels=1,

@@ -34,9 +34,9 @@ SEEDS = [34936339, 34936397, 34936345]
 
 def train_on_splits(models, training_splits, seeds):
     """Trains models on different training splits."""
-    for model_name in models:
-        for training_split in training_splits:
-            for seed in seeds:
+    for seed in seeds:
+        for model_name in models:
+            for training_split in training_splits:
                 print(
                     f"Training {model_name} on {training_split}% with seed {seed}"
                 )
@@ -97,7 +97,9 @@ def prepare_data(images_path, labels_path, results_path):
     ]
 
 
-def remote_training_supervised(model_name, training_split, seed):
+def remote_training_supervised(
+    model_name, training_split, seed, skip_existing=False
+):
     """Function to train a model without napari."""
     # print(f"Results path: {RESULTS_PATH.resolve()}")
     batch_size = 10 if model_name == "SegResNet" else 5
@@ -106,7 +108,7 @@ def remote_training_supervised(model_name, training_split, seed):
         / "CELLSEG_BENCHMARK/cellseg3d_train"
         / f"{model_name}_{training_split}_{seed}"
     )
-    if results_path.exists():
+    if results_path.exists() and skip_existing:
         # ask user if they want to continue training
         print(
             f"Results path {results_path} already exists. Continue training? (y/n)"
@@ -131,7 +133,7 @@ def remote_training_supervised(model_name, training_split, seed):
     )
 
     # create validation data dict
-    val_data = DATA_PATH / "validation"
+    val_data = DATA_PATH / "../validation"
     val_data_dict = prepare_data(val_data, val_data / "labels", results_path)
 
     worker_config = cfg.SupervisedTrainingWorkerConfig(
@@ -142,7 +144,7 @@ def remote_training_supervised(model_name, training_split, seed):
         batch_size=batch_size,  # 10 for SegResNet
         deterministic_config=deterministic_config,
         scheduler_factor=0.5,
-        scheduler_patience=10,  # use default scheduler
+        scheduler_patience=100000000,  # use default scheduler
         weights_info=cfg.WeightsInfo(),  # no pretrained weights
         results_path_folder=str(results_path),
         sampling=False,
@@ -173,4 +175,4 @@ def remote_training_supervised(model_name, training_split, seed):
 
 
 if __name__ == "__main__":
-    train_on_splits(MODELS, TRAINING_PERCENTAGES, SEEDS)
+    train_on_splits(MODELS, TRAINING_PERCENTAGES, SEEDS, skip_existing=True)
