@@ -32,7 +32,7 @@ MODELS = ["SegResNet", "SwinUNetR"]
 SEEDS = [34936339, 34936397, 34936345]
 
 
-def train_on_splits(models, training_splits, seeds):
+def train_on_splits(models, training_splits, seeds, skip_existing=False):
     """Trains models on different training splits."""
     for seed in seeds:
         for model_name in models:
@@ -40,7 +40,9 @@ def train_on_splits(models, training_splits, seeds):
                 print(
                     f"Training {model_name} on {training_split}% with seed {seed}"
                 )
-                remote_training_supervised(model_name, training_split, seed)
+                remote_training_supervised(
+                    model_name, training_split, seed, skip_existing
+                )
 
 
 class LogFixture:
@@ -144,7 +146,7 @@ def remote_training_supervised(
         batch_size=batch_size,  # 10 for SegResNet
         deterministic_config=deterministic_config,
         scheduler_factor=0.5,
-        scheduler_patience=100000000,  # use default scheduler
+        scheduler_patience=100000,  # disable default scheduler
         weights_info=cfg.WeightsInfo(),  # no pretrained weights
         results_path_folder=str(results_path),
         sampling=False,
