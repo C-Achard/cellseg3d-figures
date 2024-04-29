@@ -18,7 +18,7 @@ select = [
 # and 'A003' (Shadowing python builtins)
 # and 'F401' (imported but unused)
 # and 'NPY002' (Replace legacy np.random.seed with the newer numpy.random.Generator)
-ignore = ["E501", "E741", "G004", "A003", "F401", "NPY002"]
+ignore = ["E501", "E741", "G004", "A003", "F401", "NPY002", "E402"]
 exclude = [
     ".bzr",
     ".direnv",

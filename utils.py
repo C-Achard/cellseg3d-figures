@@ -400,7 +400,9 @@ def _knapsack(items, max_weight):
     return selected_paths
 
 
-def select_volumes(data_stats, percentage, tolerance=0.5, verbose=True):
+def select_volumes_by_cell_percentage(
+    data_stats, percentage, tolerance=0.5, verbose=True
+):
     """
     Selects the volumes that sum up to the desired percentage of the total cell count within the tolerance.
 
@@ -462,4 +464,29 @@ def select_volumes(data_stats, percentage, tolerance=0.5, verbose=True):
             f"Selected {len(selected_volumes)} volumes with {selected_cell_count} cells."
         )
 
+    return selected_volumes, selected_labels
+
+
+def sample_volumes_by_files_percentage(data_stats, percentage, verbose=True):
+    """
+    Selects the volumes that sum up to the desired percentage of training data files.
+
+    Args:
+        data_stats (pd.DataFrame): DataFrame with the data statistics.
+        percentage (float): Desired percentage of the total cell count.
+        verbose (bool): Print the selected volumes and cell count.
+
+    Returns:
+        list: Selected volumes.
+    """
+    sample = data_stats.sample(frac=percentage, random_state=42)
+    selected_volumes = sample["path_image"].tolist()
+    selected_labels = sample["path_label"].tolist()
+    cell_count = sample["label_count"].sum().astype(int)
+    print(f"Selected {len(selected_volumes)} volumes with {cell_count} cells.")
+    if verbose:
+        print("Training data files:")
+        [print(f"- {volume}") for volume in selected_volumes]
+        print("Labels data files:")
+        [print(f"- {label}") for label in selected_labels]
     return selected_volumes, selected_labels

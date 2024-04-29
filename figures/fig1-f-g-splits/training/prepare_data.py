@@ -6,14 +6,18 @@ from tifffile import imread, imwrite
 
 sys.path.append("../../..")
 
+import utils
+
 # DATA = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING")
 DATA = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
 SPLITS = [10, 20, 40, 80]
 
 
-def create_training_data_folders(source_folder="ALL", target_folder="SPLITS"):
-    import utils
-
+def create_training_data_folders(
+    source_folder="ALL",
+    target_folder="SPLITS/file_percentage",
+    method=utils.select_volumes_by_cell_percentage,
+):
     data = DATA / source_folder
     if not data.is_dir():
         raise FileNotFoundError(f"Data folder {data} not found")
@@ -25,7 +29,10 @@ def create_training_data_folders(source_folder="ALL", target_folder="SPLITS"):
     )
     training_data_stats = data_stats[data_stats.training_data]
     for s in SPLITS:
-        selected_volumes, selected_labels = utils.select_volumes(
+        (
+            selected_volumes,
+            selected_labels,
+        ) = method(
             training_data_stats,
             s,
         )
@@ -74,6 +81,8 @@ def create_semantic_labels(source_folder):
 
 
 if __name__ == "__main__":
-    create_training_data_folders()
+    create_training_data_folders(
+        method=utils.sample_volumes_by_files_percentage
+    )
     for split in SPLITS:
         create_semantic_labels(DATA / "SPLITS" / str(split) / "labels")
