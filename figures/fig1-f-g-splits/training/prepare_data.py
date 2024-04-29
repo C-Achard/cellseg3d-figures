@@ -8,8 +8,8 @@ sys.path.append("../../..")
 
 import utils
 
-# DATA = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING")
-DATA = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
+DATA = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING")
+# DATA = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
 SPLITS = [10, 20, 40, 80]
 
 
@@ -34,7 +34,7 @@ def create_training_data_folders(
             selected_labels,
         ) = method(
             training_data_stats,
-            s,
+            s / 100,
         )
         target_folder_s = DATA / target_folder / str(s)
         target_folder_s.mkdir(parents=True, exist_ok=False)
