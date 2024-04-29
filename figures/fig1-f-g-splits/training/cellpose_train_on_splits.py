@@ -11,7 +11,7 @@ from tifffile import imread
 
 CELL_MEAN_DIAM = 3.3
 DATA_PATH = pt.Path(
-    "/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS"
+    "/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS/file_percentage"
 )
 
 NUM_EPOCHS = 50
