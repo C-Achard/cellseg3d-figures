@@ -179,7 +179,7 @@ def remote_training_supervised(model_name, training_split, seed):
 def remote_training_unsupervised(training_split, seed, skip_existing=False):
     """Function to train a model without napari."""
     # print(f"Results path: {RESULTS_PATH.resolve()}")
-    batch_size = 5
+    batch_size = 4
     results_path = (
         Path("/data/cyril")
         / "CELLSEG_BENCHMARK/cellseg3d_train"
