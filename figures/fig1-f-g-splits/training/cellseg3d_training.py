@@ -265,4 +265,4 @@ def remote_training_unsupervised(training_split, seed, skip_existing=False):
 if __name__ == "__main__":
     # results = remote_training_supervised()
     # train_on_splits(MODELS, TRAINING_PERCENTAGES, SEEDS)
-    train_wnet_on_splits(TRAINING_PERCENTAGES, SEEDS)
+    train_wnet_on_splits(TRAINING_PERCENTAGES, SEEDS, skip_existing=True)
