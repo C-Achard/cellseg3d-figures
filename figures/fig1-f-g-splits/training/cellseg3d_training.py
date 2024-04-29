@@ -176,7 +176,7 @@ def remote_training_supervised(model_name, training_split, seed):
     print("Training finished")
 
 
-def remote_training_unsupervised(training_split, seed):
+def remote_training_unsupervised(training_split, seed, skip_existing=False):
     """Function to train a model without napari."""
     # print(f"Results path: {RESULTS_PATH.resolve()}")
     batch_size = 5
@@ -185,6 +185,15 @@ def remote_training_unsupervised(training_split, seed):
         / "CELLSEG_BENCHMARK/cellseg3d_train"
         / f"WNet_{training_split}_{seed}"
     )
+    if skip_existing and results_path.exists():
+        # ask user if they want to continue training
+        print(
+            f"Results path {results_path} already exists. Continue training? (y/n)"
+        )
+        answer = input()
+        if answer.lower() != "y":
+            print("Training aborted.")
+            return
 
     data_path = DATA_PATH / str(training_split)
     data_dict = prepare_data(
