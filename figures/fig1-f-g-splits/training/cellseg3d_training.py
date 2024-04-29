@@ -39,12 +39,12 @@ def train_on_splits(models, training_splits, seeds):
                 remote_training_supervised(model_name, training_split, seed)
 
 
-def train_wnet_on_splits(training_splits, seeds):
+def train_wnet_on_splits(training_splits, seeds, skip_existing=False):
     """Trains WNet on different training splits."""
     for training_split in training_splits:
         for seed in seeds:
             print(f"Training WNet on {training_split}% with seed {seed}")
-            remote_training_unsupervised(training_split, seed)
+            remote_training_unsupervised(training_split, seed, skip_existing)
 
 
 class LogFixture:
