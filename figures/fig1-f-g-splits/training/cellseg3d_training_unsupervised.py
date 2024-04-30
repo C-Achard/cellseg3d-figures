@@ -67,35 +67,22 @@ class LogFixture:
         raise (e)
 
 
-def prepare_data(images_path, labels_path, results_path):
+def prepare_data(images_path, results_path):
     """Prepares data for training."""
     assert images_path.exists(), f"Images path does not exist: {images_path}"
-    assert labels_path.exists(), f"Labels path does not exist: {labels_path}"
     if not results_path.exists():
         results_path.mkdir(parents=True)
 
     images = get_all_matching_files(images_path)
-    labels = get_all_matching_files(labels_path)
 
     print(f"Images paths: {images}")
-    print(f"Labels paths: {labels}")
 
     logger.info("Images :\n")
     for file in images:
         logger.info(Path(file).name)
     logger.info("*" * 10)
-    logger.info("Labels :\n")
-    for file in images:
-        logger.info(Path(file).name)
 
-    assert len(images) == len(
-        labels
-    ), "Number of images and labels must be the same"
-
-    return [
-        {"image": str(image_path), "label": str(label_path)}
-        for image_path, label_path in zip(images, labels)
-    ]
+    return [{"image": str(image_path)} for image_path in images]
 
 
 def remote_training_unsupervised(training_split, seed, skip_existing=False):
@@ -118,9 +105,7 @@ def remote_training_unsupervised(training_split, seed, skip_existing=False):
             return
 
     data_path = DATA_PATH / str(training_split)
-    data_dict = prepare_data(
-        data_path, data_path / "labels" / "semantic", results_path
-    )
+    data_dict = prepare_data(data_path, results_path)
 
     data_dict = [{"image": d["image"]} for d in data_dict]
 
