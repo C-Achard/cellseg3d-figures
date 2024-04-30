@@ -15,7 +15,6 @@ from napari_cellseg3d.utils import get_all_matching_files
 # set wandb mode globally
 WANDB_MODE = "online"  # "disabled"
 DEVICE = "cuda:3"
-EPOCHS = 450
 
 sys.path.append("../..")
 
@@ -27,7 +26,13 @@ DATA_PATH = Path(
     "/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS/file_percentage"
 )
 
-TRAINING_PERCENTAGES = [10, 20, 40, 80]
+TRAINING_PERCENTAGES = [
+    # 10,
+    # 20,
+    # 40,
+    60,
+    # 80
+]
 SEEDS = [34936339, 34936397, 34936345]
 
 
@@ -130,8 +135,7 @@ def remote_training_unsupervised(training_split, seed, skip_existing=False):
 
     worker_config = cfg.WNetTrainingWorkerConfig(
         device=DEVICE,
-        # max_epochs=int(6000 / training_split),  # 50,
-        max_epochs=EPOCHS,
+        max_epochs=int(6000 / training_split),  # 50,
         # model params
         in_channels=1,
         out_channels=1,
