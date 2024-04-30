@@ -28,7 +28,7 @@ COLORMAP_LIGHT = [
     "#7209B7",  # purple - SegRes
     "#F72585",  # pink - Swin
     # "#3A0CA3",  # dark blue - WNet3D
-    "#FF4D00",  # dark orange - WNet3D
+    "#FF4D00",  # orange - WNet3D
     ########### extra, not used
     # "#FF0000", # red
     # "#FF4D00", # dark orange
@@ -43,17 +43,6 @@ COLORMAP = COLORMAP_DARK if DARK_MODE else COLORMAP_LIGHT
 SEQUENTIAL_COLORMAP = LinearSegmentedColormap.from_list(
     "sequential_colormap", [COLORMAP[0], COLORMAP[1], COLORMAP[3]]
 )
-# expanded colormap has darker and lighter shades for each original color (see get_shades in utils.py)
-# See intensity parameter in get_shades to adjust the intensity of the shades
-EXPANDED_COLORMAP = []
-# for color in COLORMAP[:4]:
-#     darker, lighter = get_shades(color)
-#     EXPANDED_COLORMAP.extend([darker, color, lighter])
-# EXPANDED_COLORMAP.extend(COLORMAP[4:])
-for color in COLORMAP[:4]:
-    colors = get_n_shades(color, 4)
-    EXPANDED_COLORMAP.extend(colors)
-EXPANDED_COLORMAP.extend(COLORMAP[4:])
 ################ Plot settings
 DPI = 200
 FONT_SIZE = 20
