@@ -96,10 +96,11 @@ def get_n_shades(
     """Generate n shades of a color in hexadecimal format.
 
     Color is obtained as hsv, then n evenly spaced values are generated for the value channel.
+    Starts with an intensity above 0.25 to avoid very dark shades.
     """
     hsv_color = colorsys.rgb_to_hsv(*hex_to_rgb(hex_color))
     shades = []
-    values = np.linspace(0, 1, n_shades)
+    values = np.linspace(0.25, 1, n_shades)
     for value in values:
         rgb_color = colorsys.hsv_to_rgb(hsv_color[0], hsv_color[1], value)
         shades.append(rgb_to_hex(tuple(int(c * 255) for c in rgb_color)))
