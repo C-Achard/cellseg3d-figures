@@ -10,7 +10,13 @@ import utils
 
 DATA = Path("/data/cyril/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING")
 # DATA = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING"
-SPLITS = [10, 20, 40, 80]
+SPLITS = [
+    # 10,
+    # 20,
+    # 40,
+    60,
+    # 80
+]
 
 
 def create_training_data_folders(
