@@ -91,4 +91,6 @@ if __name__ == "__main__":
         method=utils.sample_volumes_by_files_percentage
     )
     for split in SPLITS:
-        create_semantic_labels(DATA / "SPLITS" / str(split) / "labels")
+        create_semantic_labels(
+            DATA / "SPLITS/file_percentage" / str(split) / "labels"
+        )
