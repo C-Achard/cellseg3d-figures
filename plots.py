@@ -253,12 +253,18 @@ def plot_performance(
 
 
 def plot_stat_comparison(
-    taus, stats_list, model_names, stat="f1", metric="IoU", colormap=COLORMAP
+    taus,
+    stats_list,
+    model_names,
+    stat="f1",
+    metric="IoU",
+    colormap=COLORMAP,
+    plt_size=(12, 6),
 ):
     """Compare one stat for several models on a single plot."""
     with get_style_context():
         sns.set_palette(colormap)
-        fig, ax = plt.subplots(1, 1, figsize=(12, 6), dpi=DPI)
+        fig, ax = plt.subplots(1, 1, figsize=plt_size, dpi=DPI)
         stat_title = (stat[0].upper() + stat[1:]).replace("_", " ")
         fig.suptitle(f"{stat_title} comparison", fontsize=TITLE_FONT_SIZE)
         stats_list = [
