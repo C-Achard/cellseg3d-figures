@@ -26,17 +26,15 @@ from stardist.models import Config3D, StarDist3D, StarDistData3D
 from tifffile import imread
 from tqdm import tqdm
 
-DATA_PATH = (
-    Path.home()
-    / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/TRAINING/SPLITS"
-)
+DATA_PATH = Path.home() / "Desktop/Code/CELLSEG_BENCHMARK/TPH2_mesospim/SPLITS"
 
 NUM_EPOCHS = 50
-TRAINING_PERCENTAGES = [10, 20, 40, 80]
-SEEDS = [34936339, 34936397, 34936345]
+TRAINING_PERCENTAGES = [10, 20, 60, 80]
+SPLITS = ["1_c15", "2_c1_c4_visual", "3_c1245_visual"]
+SEED = 34936339
 
 
-def train_stardist(path_images, seed, path_validation="../validation"):
+def train_stardist(path_images, train_percentage, seed=SEED):
     # Set seeds for numpy & tensorflow
     np.random.seed(seed)
     tf.random.set_seed(seed)
@@ -67,31 +65,24 @@ def train_stardist(path_images, seed, path_validation="../validation"):
 
     X = [normalize(x, 1, 99.8, axis=axis_norm) for x in tqdm(X)]
     Y = [fill_label_holes(y) for y in tqdm(Y)]
-    # rng = np.random.RandomState(42)
-    # ind = rng.permutation(len(X))
-    # print(ind)
-    # ind = range(len(X))
-    # print(ind)
-    # n_val = max(1, int(round(VAL_FRACTION * len(ind))))
-    # ind_train, ind_val = ind[:-n_val], ind[-n_val:]
-    # X_val, Y_val = [X[i] for i in ind_val]  , [Y[i] for i in ind_val]
-    # X_trn, Y_trn = [X[i] for i in ind_train], [Y[i] for i in ind_train]
-    X_trn, Y_trn = X, Y
-    X_val_paths = sorted(glob(str(path_images / path_validation / "*.tif")))
-    Y_val_paths = sorted(
-        glob(str(path_images / path_validation / "labels/*.tif"))
-    )
-
+    rng = np.random.RandomState(seed)
+    ind = rng.permutation(len(X))
+    print(ind)
+    ind = range(len(X))
+    print(ind)
+    val_percent = 1 - train_percentage / 100
+    n_val = max(1, int(round(val_percent * len(ind))))
+    ind_train, ind_val = ind[:-n_val], ind[-n_val:]
+    X_val, Y_val = [X[i] for i in ind_val], [Y[i] for i in ind_val]
+    X_trn, Y_trn = [X[i] for i in ind_train], [Y[i] for i in ind_train]
     print("number of images: %3d" % len(X))
     print("- training:       %3d" % len(X_trn))
-    # print("- validation:     %3d" % len(X_val))
+    print("- validation:     %3d" % len(X_val))
     print("Train files :")
-    [print(X_paths[i]) for i in range(len(X_trn))]
+    [print(X_paths[i]) for i in ind_train]
     print("Validation files :")
-    [print(X_val_paths[i]) for i in range(len(X_val_paths))]
+    [print(X_paths[i]) for i in ind_val]
     print("*" * 20)
-    X_val = [imread(x) for x in X_val_paths]
-    Y_val = [imread(y) for y in Y_val_paths]
 
     print(Config3D.__doc__)
     extents = calculate_extents(Y)
@@ -105,7 +96,8 @@ def train_stardist(path_images, seed, path_validation="../validation"):
     use_gpu = True
 
     # Predict on subsampled grid for increased efficiency and larger field of view
-    grid = tuple(1 if a > 1.5 else 2 for a in anisotropy)
+    # grid = tuple(1 if a > 1.5 else 2 for a in anisotropy)
+    grid = (1, 1, 1)
 
     # Use rays on a Fibonacci lattice adjusted for measured anisotropy of the training data
     rays = Rays_GoldenSpiral(n_rays, anisotropy=anisotropy)
@@ -117,8 +109,8 @@ def train_stardist(path_images, seed, path_validation="../validation"):
         use_gpu=use_gpu,
         n_channel_in=n_channel,
         # adjust for your data below (make patch size as large as possible)
-        train_patch_size=(8, 64, 64),
-        train_batch_size=2,
+        train_patch_size=(64, 64, 64),
+        # train_batch_size=2,
     )
     print(conf)
     vars(conf)
@@ -212,13 +204,13 @@ def train_stardist(path_images, seed, path_validation="../validation"):
 
 if __name__ == "__main__":
     for split in TRAINING_PERCENTAGES:
-        for seed in SEEDS:
-            print(f"Training {split}% split with seed {seed}.")
+        for data in SPLITS:
+            print(f"Training {split}% split with data {data}")
             print("_" * 50)
-            path_images = DATA_PATH / f"{split}"
-            save_path = pt.Path(f"./models/stardist_{seed}_{split}")
+            path_images = DATA_PATH / f"{data}"
+            save_path = pt.Path(f"./models/stardist_{data}_{split}")
             if save_path.exists():
                 print(f"Model {save_path} already exists. Skipping.")
                 continue
-            train_stardist(path_images, seed)
-            print(f"Training {split}% split with seed {seed} done.")
+            train_stardist(path_images, split, seed=SEED)
+            print(f"Training {split}% split with data {data} done.")
