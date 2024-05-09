@@ -178,9 +178,20 @@ def train_stardist(path_images, train_percentage, seed=SEED):
     # model.optimize_thresholds(X_val, Y_val)
     model.optimize_thresholds(X_trn, Y_trn)
 
+    conf = None
+    model = None
+    # free up memory
+    tf.keras.backend.clear_session()
+    del conf
+    del model
+    from numba import cuda
+
+    cuda.select_device(0)
+    cuda.close()
+
     # once done, results are saved to ./models/stardist. We want to rename the folder to include the seed and split
     model_path = Path("models") / "stardist"
-    new_model_path = Path(f"models/stardist_{seed}_{path_images.parts[-1]}")
+    new_model_path = Path(f"models/stardist_{data}_{train_percentage}")
     new_model_path.mkdir(parents=True, exist_ok=True)
     try:
         # copy the model to a new folder with the seed and split. Do not rename.
