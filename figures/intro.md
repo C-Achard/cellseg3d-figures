@@ -6,7 +6,11 @@ This book contains the code to generate the figures used in the publication of C
 
 ## Data
 
+### Annotated dataset
+
 Please find the dataset online at [Zenodo](https://zenodo.org/records/11095111)
+
+### Figures data
 
 The data for the figures is hosted on the following Drive : #TODO#
 
