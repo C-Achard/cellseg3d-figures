@@ -12,12 +12,12 @@ The data for the figures is hosted on the following Drive : #TODO#
 
 TODO : Upload data to Drive and add link here
 
-Fig1b : SUPERVISED_PERF_FIG, upload from desktop
-Fig1-f-g : SPLITS folder, upload from desktop
-Fig1h : mix of SUPERVISED_PERF_FIG and WNET_RETRAIN, upload from desktop
+- Fig1b : SUPERVISED_PERF_FIG, upload from desktop
+- Fig1-f-g : SPLITS folder, upload from desktop
+- Fig1h : mix of SUPERVISED_PERF_FIG and WNET_RETRAIN, upload from desktop
 __
-Fig2b : Stored locally in ``others`` as .csv
-Fig2c : WNET_OTHERS, upload from laptop
+- Fig2b : Stored locally in ``others`` as .csv
+- ~~Fig2c : WNET_OTHERS, upload from laptop~~
 
 The data should then be placed on your desktop, in a folder called `CELLSEG_BENCHMARK`.
 
