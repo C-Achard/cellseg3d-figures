@@ -1,0 +1,891 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Figure 2.b - Examples of WNet3D losses, and output during training &#8212; CellSeg3D - Figures</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'fig2-b-wnet-losses/wnet_losses';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Figure 2.c : Showing WNet3D performance on additional datasets" href="../fig2-c-extra-datasets/self-supervised-extra.html" />
+    <link rel="prev" title="Figure 1.h - Retraining of a supervised 3D model with unsupervised labels" href="../fig1-h-self-supervised-retrain/self-supervised_retrain.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CellSeg3D - Figures - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CellSeg3D - Figures - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Home - CellSeg3D figures
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../fig1-b-supervised/supervised_benchmark.html">Figure 1.b - Supervised model performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fig1-f-g-splits/splits_benchmark.html">Figure 1.f/g : Training efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fig1-h-self-supervised-retrain/self-supervised_retrain.html">Figure 1.h - Retraining of a supervised 3D model with unsupervised labels</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Figure 2.b - Examples of WNet3D losses, and output during training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fig2-c-extra-datasets/self-supervised-extra.html">Figure 2.c : Showing WNet3D performance on additional datasets</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/C-Achard/cellseg3d-figures" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/fig2-b-wnet-losses/wnet_losses.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Figure 2.b - Examples of WNet3D losses, and output during training</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-values">Loss values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="figure-2-b-examples-of-wnet3d-losses-and-output-during-training">
+<h1>Figure 2.b - Examples of WNet3D losses, and output during training<a class="headerlink" href="#figure-2-b-examples-of-wnet3d-losses-and-output-during-training" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Goal : show the output of the WNet3D during training, and the corresponding losses</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">take_output_screenshots</span></code> notebook was used to generate the screenshots during training</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../..&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">plots</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="n">show_params</span><span class="p">()</span>
+<span class="c1">#################</span>
+<span class="n">SAVE_PLOTS_AS_PNG</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">SAVE_PLOTS_AS_SVG</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Saturation in 0.9508196721311476 is too low or too high in hex color 7209B7
+Plot parameters (set in plots.py) : 
+- COLORMAP : ███<span class=" -Color -Color-White">█</span>████
+- DPI : 200
+- Data path : C:\Users\Cyril\Desktop\Code\CELLSEG_BENCHMARK
+- Font size : 20
+- Title font size : 25.0
+- Label font size : 20.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="loss-values">
+<h2>Loss values<a class="headerlink" href="#loss-values" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">csv_path</span> <span class="o">=</span> <span class="s2">&quot;../../other/fig3-x-losses.csv&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">csv_path</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+    <span class="n">log_path</span> <span class="o">=</span> <span class="s2">&quot;../../other/log.txt&quot;</span>
+    <span class="n">losses</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">=</span> <span class="n">extract_losses_from_log</span><span class="p">(</span><span class="n">log_path</span><span class="p">)</span>
+    <span class="n">losses_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">losses</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+
+    <span class="c1"># save as csv in other</span>
+    <span class="n">losses_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;../../other/fig3-x-losses.csv&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">losses_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_path</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">losses_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Epoch&#39;</span>
+<span class="n">losses_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SoftNCuts loss&quot;</span><span class="p">,</span> <span class="s2">&quot;Reconstruction loss&quot;</span><span class="p">,</span> <span class="s2">&quot;Weighted sum of losses&quot;</span><span class="p">]</span>
+<span class="n">losses_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SoftNCuts loss</th>
+      <th>Reconstruction loss</th>
+      <th>Weighted sum of losses</th>
+    </tr>
+    <tr>
+      <th>Epoch</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.99227</td>
+      <td>57.08382</td>
+      <td>29.03805</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.99046</td>
+      <td>45.87604</td>
+      <td>23.43325</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.92455</td>
+      <td>42.65216</td>
+      <td>21.78835</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.75902</td>
+      <td>40.94435</td>
+      <td>20.85169</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.66575</td>
+      <td>39.98960</td>
+      <td>20.32768</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.60914</td>
+      <td>39.26025</td>
+      <td>19.93469</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.58295</td>
+      <td>38.63013</td>
+      <td>19.60654</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0.58262</td>
+      <td>38.05232</td>
+      <td>19.31747</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>0.56323</td>
+      <td>37.59191</td>
+      <td>19.07757</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0.54814</td>
+      <td>37.17325</td>
+      <td>18.86069</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>0.52946</td>
+      <td>36.81464</td>
+      <td>18.67205</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0.52598</td>
+      <td>36.46110</td>
+      <td>18.49354</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0.51152</td>
+      <td>36.14809</td>
+      <td>18.32981</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0.49954</td>
+      <td>35.84817</td>
+      <td>18.17385</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>0.48920</td>
+      <td>35.58164</td>
+      <td>18.03542</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0.47675</td>
+      <td>35.31505</td>
+      <td>17.89590</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0.46733</td>
+      <td>35.06290</td>
+      <td>17.76511</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.45689</td>
+      <td>34.82457</td>
+      <td>17.64073</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0.44603</td>
+      <td>34.59145</td>
+      <td>17.51874</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0.43645</td>
+      <td>34.34674</td>
+      <td>17.39160</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>0.42316</td>
+      <td>34.11471</td>
+      <td>17.26893</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>0.41604</td>
+      <td>33.90068</td>
+      <td>17.15836</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>0.40337</td>
+      <td>33.66850</td>
+      <td>17.03593</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0.39882</td>
+      <td>33.46028</td>
+      <td>16.92955</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0.38790</td>
+      <td>33.24519</td>
+      <td>16.81654</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0.37429</td>
+      <td>33.03520</td>
+      <td>16.70475</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0.37117</td>
+      <td>32.82695</td>
+      <td>16.59906</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>0.36206</td>
+      <td>32.62820</td>
+      <td>16.49513</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0.35596</td>
+      <td>32.40600</td>
+      <td>16.38098</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>0.34413</td>
+      <td>32.19054</td>
+      <td>16.26733</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>0.33634</td>
+      <td>32.00090</td>
+      <td>16.16862</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>0.33110</td>
+      <td>31.80333</td>
+      <td>16.06721</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0.32767</td>
+      <td>31.58601</td>
+      <td>15.95684</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>0.32160</td>
+      <td>31.38450</td>
+      <td>15.85305</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>0.31506</td>
+      <td>31.19447</td>
+      <td>15.75477</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>0.30943</td>
+      <td>30.99892</td>
+      <td>15.65417</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>0.30781</td>
+      <td>30.79648</td>
+      <td>15.55215</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>0.29929</td>
+      <td>30.62829</td>
+      <td>15.46379</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>0.29920</td>
+      <td>30.42325</td>
+      <td>15.36122</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>0.28847</td>
+      <td>30.21615</td>
+      <td>15.25231</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>0.28418</td>
+      <td>30.03862</td>
+      <td>15.16140</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>0.27881</td>
+      <td>29.85732</td>
+      <td>15.06807</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>0.27991</td>
+      <td>29.66614</td>
+      <td>14.97303</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>0.27281</td>
+      <td>29.46947</td>
+      <td>14.87114</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>0.26895</td>
+      <td>29.29379</td>
+      <td>14.78137</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>0.27796</td>
+      <td>29.12376</td>
+      <td>14.70086</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>0.26320</td>
+      <td>28.94697</td>
+      <td>14.60509</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>0.25966</td>
+      <td>28.74820</td>
+      <td>14.50393</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>0.25830</td>
+      <td>28.56196</td>
+      <td>14.41013</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>0.24921</td>
+      <td>28.38370</td>
+      <td>14.31645</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_losses</span><span class="p">(</span><span class="n">losses_df</span><span class="p">,</span> <span class="n">losses_df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="p">[</span><span class="n">COLORMAP</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig3-x-losses.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig3-x-losses.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f9301d5edd91e6c8a057cbf12c22ccbaef790420d89d45fb36daa1ca5e1cea88.png" src="../_images/f9301d5edd91e6c8a057cbf12c22ccbaef790420d89d45fb36daa1ca5e1cea88.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./fig2-b-wnet-losses"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../fig1-h-self-supervised-retrain/self-supervised_retrain.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Figure 1.h - Retraining of a supervised 3D model with unsupervised labels</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../fig2-c-extra-datasets/self-supervised-extra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Figure 2.c : Showing WNet3D performance on additional datasets</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-values">Loss values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cyril Achard | Mathis Laboratory of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
