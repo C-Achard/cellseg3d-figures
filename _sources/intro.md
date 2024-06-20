@@ -13,6 +13,7 @@ Please find the dataset online at [Zenodo](https://zenodo.org/records/11095111)
 ### Figures data
 
 The data for the figures is hosted on the following Drive : [LINK TO DATA](https://drive.google.com/drive/folders/1wpRusMJGTzSz1ZBVFe8wlUnQma9J_cya?usp=sharing)
+
 The data (`RESULTS` folder) should then be placed on your desktop, in a folder called `CELLSEG_BENCHMARK`.
 
 This repository also contains various scripts for training and finding model hyperparameters.
