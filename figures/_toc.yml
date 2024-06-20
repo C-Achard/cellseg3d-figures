@@ -9,5 +9,5 @@ parts:
   - file: fig1-b-supervised/supervised_benchmark
   - file: fig1-f-g-splits/splits_benchmark
   - file: fig1-h-self-supervised-retrain/self-supervised_retrain
-  - file: fig2-b-wnet-losses/wnet_losses
   - file: fig2-c-extra-datasets/self-supervised-extra
+  - file: fig2-b-wnet-losses/wnet_losses
