@@ -2,7 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: CellSeg3D - Figures
-author: Cyril Achard | Mathis Laboratory of Adaptive Intelligence
+author: Cyril Achard, Mackenzie W. Mathis | Mathis Laboratory of Adaptive Intelligence
+copyright: "2024"
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
