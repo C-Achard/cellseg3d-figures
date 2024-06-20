@@ -12,18 +12,8 @@ Please find the dataset online at [Zenodo](https://zenodo.org/records/11095111)
 
 ### Figures data
 
-The data for the figures is hosted on the following Drive : #TODO#
-
-TODO : Upload data to Drive and add link here
-
-- Fig1b : SUPERVISED_PERF_FIG, upload from desktop
-- Fig1-f-g : SPLITS folder, upload from desktop
-- Fig1h : mix of SUPERVISED_PERF_FIG and WNET_RETRAIN, upload from desktop
-__
-- Fig2b : Stored locally in ``others`` as .csv
-- ~~Fig2c : WNET_OTHERS, upload from laptop~~
-
-The data should then be placed on your desktop, in a folder called `CELLSEG_BENCHMARK`.
+The data for the figures is hosted on the following Drive : [LINK TO DATA](https://drive.google.com/drive/folders/1wpRusMJGTzSz1ZBVFe8wlUnQma9J_cya?usp=sharing)
+The data (`RESULTS` folder) should then be placed on your desktop, in a folder called `CELLSEG_BENCHMARK`.
 
 This repository also contains various scripts for training and finding model hyperparameters.
 Please contact us if you need more details regarding the data or the scripts.
