@@ -2,7 +2,21 @@
 
 ## Welcome to the CellSeg3D figures book
 
-This book contains the code to generate the figures used in the publication of CellSeg3D.
+This book contains the code to generate the figures used in the publication of [CellSeg3D](https://github.com/AdaptiveMotorControlLab/CellSeg3D).
+
+```
+@article {Achard2024,
+  author = {Achard, Cyril and Kousi, Timokleia and Frey, Markus and Vidal, Maxime and Paychere, Yves and Hofmann, Colin and Iqbal, Asim and Hausmann, Sebastien B. and Pages, Stephane and Mathis, Mackenzie W.},
+  title = {CellSeg3D: self-supervised 3D cell segmentation for microscopy},
+  elocation-id = {2024.05.17.594691},
+  year = {2024},
+  doi = {10.1101/2024.05.17.594691},
+  publisher = {Cold Spring Harbor Laboratory},
+  URL = {https://www.biorxiv.org/content/early/2024/05/17/2024.05.17.594691},
+  eprint = {https://www.biorxiv.org/content/early/2024/05/17/2024.05.17.594691.full.pdf},
+  journal = {bioRxiv}
+}
+```
 
 ## Data
 
