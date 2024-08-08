@@ -4,6 +4,8 @@
 
 This book contains the code to generate the figures used in the publication of [CellSeg3D](https://github.com/AdaptiveMotorControlLab/CellSeg3D).
 
+**Should you encounter any issues with the code, data, etc, please open an issue on this repository or the main repository.**
+
 ```
 @article {Achard2024,
   author = {Achard, Cyril and Kousi, Timokleia and Frey, Markus and Vidal, Maxime and Paychere, Yves and Hofmann, Colin and Iqbal, Asim and Hausmann, Sebastien B. and Pages, Stephane and Mathis, Mackenzie W.},

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Figure 2.c : Showing WNet3D performance on additional datasets &#8212; CellSeg3D - Figures</title>
+    <title>Figure 2.c : Showing qualitative WNet3D performance on additional datasets &#8212; CellSeg3D - Figures</title>
   
   
   
@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../fig1-b-supervised/supervised_benchmark.html">Figure 1.b - Supervised model performance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fig1-f-g-splits/splits_benchmark.html">Figure 1.f/g : Training efficiency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fig1-h-self-supervised-retrain/self-supervised_retrain.html">Figure 1.h - Retraining of a supervised 3D model with unsupervised labels</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Figure 2.c : Showing WNet3D performance on additional datasets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Figure 2.c : Showing qualitative WNet3D performance on additional datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fig2-b-wnet-losses/wnet_losses.html">Supp. Figure 2.b - Examples of WNet3D losses, and output during training</a></li>
 </ul>
 
@@ -328,7 +328,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Figure 2.c : Showing WNet3D performance on additional datasets</h1>
+    <h1>Figure 2.c : Showing qualitative WNet3D performance on additional datasets</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -357,11 +357,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="figure-2-c-showing-wnet3d-performance-on-additional-datasets">
-<h1>Figure 2.c : Showing WNet3D performance on additional datasets<a class="headerlink" href="#figure-2-c-showing-wnet3d-performance-on-additional-datasets" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="figure-2-c-showing-qualitative-wnet3d-performance-on-additional-datasets">
+<h1>Figure 2.c : Showing qualitative WNet3D performance on additional datasets<a class="headerlink" href="#figure-2-c-showing-qualitative-wnet3d-performance-on-additional-datasets" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Show that self-supervised model can perform well on additional datasets, without requiring any additional training.</p></li>
 </ul>
+<p><strong>Notes for revisions:</strong></p>
+<p>While this was intended to provide a qualitative look at how the WNet might be helpful for other data than mesoSPIM without taking too much time and effort (using the pre-trained WNet and basic image processing methods), it seems the lack of comparison with other models, in addition to a mistake in which data was used for threshold estimation, resulted in skepticism from reviewers.</p>
+<p>The revisions will have to address this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -464,6 +467,9 @@ Plot parameters (set in plots.py) :
 <h2>Computations<a class="headerlink" href="#computations" title="Permalink to this heading">#</a></h2>
 <section id="threshold-predictions">
 <h3>Threshold predictions<a class="headerlink" href="#threshold-predictions" title="Permalink to this heading">#</a></h3>
+<p><strong>The following is not a final version, as the treshold was estimated on the same data used for inference. This will be adressed in the revision.</strong></p>
+<p>However, the treshold for a given model is usually fairly consistent across image-labels pairs, but of course we understand both the conceptual issues with this and the resulting concerns.</p>
+<p>An updated version will be provided in the revision when possible, using other images for threshold estimation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot dice metric for several thresholds for swin-wnet and GT using a dataframe that records which threshold and fold the dice was calculated for</span>
