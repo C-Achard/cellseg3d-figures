@@ -124,13 +124,12 @@ def dice_coeff(
         y_pred: Prediction label
     Returns: dice coefficient.
     """
-    sum_tensor = np.sum
     smooth = 1.0
     y_true_f = y_true.flatten()
     y_pred_f = y_pred.flatten()
-    intersection = sum_tensor(y_true_f * y_pred_f)
+    intersection = np.sum(y_true_f * y_pred_f)
     return (2.0 * intersection + smooth) / (
-        sum_tensor(y_true_f) + sum_tensor(y_pred_f) + smooth
+        np.sum(y_true_f) + np.sum(y_pred_f) + smooth
     )
 
 
