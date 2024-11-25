@@ -307,7 +307,9 @@ def plot_stat_comparison(
             offset={"bottom": 40, "left": 15},
         )
         # legend to right (outside) of plot
-        legend = ax.legend(fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC)
+        legend = ax.legend(
+            fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
+        )
         legend.get_frame().set_alpha(0)
         fig.patch.set_alpha(0)
         ax.patch.set_alpha(0)
