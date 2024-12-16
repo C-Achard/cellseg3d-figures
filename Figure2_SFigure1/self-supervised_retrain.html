@@ -1,0 +1,1215 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Retraining of a supervised 3D model with unsupervised labels &#8212; CellSeg3D - Figures</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Figure2_SFigure1/self-supervised_retrain';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CellSeg3D - Figures - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CellSeg3D - Figures - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Home - CellSeg3D figures
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/C-Achard/cellseg3d-figures" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Figure2_SFigure1/self-supervised_retrain.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Retraining of a supervised 3D model with unsupervised labels</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-choice">Threshold choice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-assessment">Performance assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1 score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#panoptic-quality">Panoptic quality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">Statistical tests</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="retraining-of-a-supervised-3d-model-with-unsupervised-labels">
+<h1>Retraining of a supervised 3D model with unsupervised labels<a class="headerlink" href="#retraining-of-a-supervised-3d-model-with-unsupervised-labels" title="Link to this heading">#</a></h1>
+<p>Goals :</p>
+<ul class="simple">
+<li><p>Show that a 3D model retrained using the output of an unsupervised model can perform similarly than a model trained on ground truth labels.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tifffile</span> <span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
+<span class="kn">from</span> <span class="nn">stardist.matching</span> <span class="kn">import</span> <span class="n">matching_dataset</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../..&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">plots</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Used GPU: &quot;</span><span class="p">,</span> <span class="n">cle</span><span class="o">.</span><span class="n">get_device</span><span class="p">())</span>
+<span class="n">show_params</span><span class="p">()</span>
+<span class="c1">#################</span>
+<span class="n">SAVE_PLOTS_AS_PNG</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">SAVE_PLOTS_AS_SVG</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Used GPU:  &lt;NVIDIA GeForce RTX 4070 Ti on Platform: NVIDIA CUDA (1 refs)&gt;
+Plot parameters (set in plots.py) : 
+- COLORMAP : ███<span class=" -Color -Color-White">█</span>████
+- DPI : 200
+- Data path : C:\Users\Cyril\Desktop\Code\CELLSEG_BENCHMARK
+- Font size : 20
+- Title font size : 25.0
+- Label font size : 20.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s2">&quot;RESULTS/SUPERVISED_PERF_FIG/INFERENCE&quot;</span>
+<span class="n">fold1_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="s2">&quot;fold1&quot;</span>
+<span class="n">fold2_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="s2">&quot;fold2&quot;</span>
+<span class="n">fold3_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="s2">&quot;fold3&quot;</span>
+
+<span class="k">def</span> <span class="nf">get_fold_data</span><span class="p">(</span><span class="n">fold_path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fold_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;label&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fold_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;label&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+<span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">GT_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">fold</span> <span class="ow">in</span> <span class="p">[</span><span class="n">fold1_path</span><span class="p">,</span> <span class="n">fold2_path</span><span class="p">,</span> <span class="n">fold3_path</span><span class="p">]:</span>
+    <span class="n">im</span><span class="p">,</span> <span class="n">GT_lab</span> <span class="o">=</span> <span class="n">get_fold_data</span><span class="p">(</span><span class="n">fold</span><span class="p">)</span>
+    <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">im</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">GT_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GT_lab</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fold_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">fold1_path</span><span class="p">,</span> <span class="n">fold2_path</span><span class="p">,</span> <span class="n">fold3_path</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">get_predictions</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)]</span>
+<span class="c1">#################</span>
+<span class="n">swin_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="o">/</span> <span class="s2">&quot;Swin&quot;</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fold_paths</span><span class="p">]</span>
+<span class="n">segresnet_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="o">/</span> <span class="s2">&quot;SegResNet&quot;</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fold_paths</span><span class="p">]</span>
+
+<span class="n">swin_predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_predictions</span><span class="p">(</span><span class="n">p</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">swin_paths</span><span class="p">]</span>
+<span class="n">segresnet_predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">get_predictions</span><span class="p">(</span><span class="n">p</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">segresnet_paths</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swin_wnet_path</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s2">&quot;RESULTS/WNET_RETRAIN/inference&quot;</span>
+<span class="n">swin_wnet_predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">swin_wnet_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)]</span>
+<span class="n">swin_wnet_predictions</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wnet_path</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s2">&quot;RESULTS/WNET_RETRAIN/inference/WNet&quot;</span>
+<span class="n">wnet_predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">wnet_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)]</span>
+<span class="n">wnet_predictions</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="threshold-choice">
+<h2>Threshold choice<a class="headerlink" href="#threshold-choice" title="Link to this heading">#</a></h2>
+<p>Since the goal here is to compare the performance of a model trained on ground truth labels and a model trained on unsupervised labels, we use a threshold estimated from the test set directly.</p>
+<p>While this is not what one would do when no GT labels are available, it should still allow for a proper comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot dice metric for several thresholds for swin-wnet and GT using a dataframe that records which threshold and fold the dice was calculated for</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thresh</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">gt</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">GT_labels</span><span class="p">,</span> <span class="n">swin_wnet_predictions</span><span class="p">)):</span>
+        <span class="n">dices_row</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Threshold&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;Fold&quot;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Dice&quot;</span><span class="p">:</span> <span class="n">dice_coeff</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">gt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pred</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">)}</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dices_row</span><span class="p">)</span>
+        
+<span class="n">dices_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dices_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Threshold&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Dice&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Fold&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Dice metric for different thresholds for Swin-wnet and GT&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f91ee89ee41b88b1dc625e0196d63b74c6d5afd2338d3e706724247195b217c5.png" src="../_images/f91ee89ee41b88b1dc625e0196d63b74c6d5afd2338d3e706724247195b217c5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dices_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Dice&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fold</th>
+      <th>Dice</th>
+    </tr>
+    <tr>
+      <th>Threshold</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.20</th>
+      <td>1.0</td>
+      <td>0.777428</td>
+    </tr>
+    <tr>
+      <th>0.15</th>
+      <td>1.0</td>
+      <td>0.772413</td>
+    </tr>
+    <tr>
+      <th>0.25</th>
+      <td>1.0</td>
+      <td>0.756872</td>
+    </tr>
+    <tr>
+      <th>0.10</th>
+      <td>1.0</td>
+      <td>0.738819</td>
+    </tr>
+    <tr>
+      <th>0.30</th>
+      <td>1.0</td>
+      <td>0.715765</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swin_thresholded</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">swin</span> <span class="o">&gt;</span> <span class="mf">0.4</span><span class="p">,</span> <span class="n">swin</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">swin</span> <span class="ow">in</span> <span class="n">swin_predictions</span><span class="p">]</span>
+<span class="c1"># I am allowing myself to do it this way, since evaluating the threshold on the train set is not possible here (no GT available), </span>
+<span class="c1"># and usually evaluating the threshold on test data gives the same result as on train data</span>
+<span class="n">swin_wnet_thresholded</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">wnet</span> <span class="o">&gt;</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">wnet</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">wnet</span> <span class="ow">in</span> <span class="n">swin_wnet_predictions</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">swin_instance</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">segresnet_instance</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">swin_wnet_instance</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1">###</span>
+<span class="n">wnet_instance</span> <span class="o">=</span> <span class="n">wnet_predictions</span> <span class="c1"># these are already instance labels</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">fold_paths</span><span class="p">)):</span>
+    <span class="n">swin_instance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">swin_thresholded</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.65</span><span class="p">))</span>
+                         <span class="p">)</span>
+    <span class="n">swin_wnet_instance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">swin_wnet_thresholded</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.65</span><span class="p">))</span>
+                             <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from tifffile import imwrite</span>
+<span class="c1"># for i in range(len(fold_paths)):</span>
+<span class="c1">#     save_folder = data_path / &quot;processed&quot; / f&quot;fold{i+1}&quot;</span>
+<span class="c1">#     save_folder.mkdir(exist_ok=True, parents=False)</span>
+<span class="c1">#     imwrite(save_folder / &quot;swin_instance.tif&quot;, swin_instance[i])</span>
+<span class="c1">#     imwrite(save_folder / &quot;segresnet_instance.tif&quot;, segresnet_instance[i])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="performance-assessment">
+<h2>Performance assessment<a class="headerlink" href="#performance-assessment" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span>
+<span class="c1">#    segresnet_instance,</span>
+   <span class="n">swin_instance</span><span class="p">,</span>
+   <span class="n">swin_wnet_instance</span><span class="p">,</span>
+   <span class="n">wnet_instance</span><span class="p">,</span>
+<span class="c1">#    cellpose_predictions,</span>
+<span class="c1">#    stardist_predictions,</span>
+   <span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;SwinUNetR&quot;</span><span class="p">,</span>
+    <span class="c1"># &quot;SegResNet&quot;,</span>
+    <span class="s2">&quot;Swin (WNet3D labels)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WNet3D (pre-trained)&quot;</span><span class="p">,</span>
+    <span class="c1">#  &quot;Cellpose&quot;,</span>
+    <span class="c1">#  &quot;Stardist&quot;,</span>
+    <span class="p">]</span>
+<span class="n">swin_darker</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">get_shades</span><span class="p">(</span><span class="n">COLORMAP</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">CUSTOM_CMAP</span> <span class="o">=</span> <span class="p">[</span><span class="n">COLORMAP</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">swin_darker</span><span class="p">,</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">4</span><span class="p">]]</span>
+
+<span class="n">model_stats</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">model_ref_name</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">fold_ref</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">fold</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">fold_paths</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fold &quot;</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Validating on </span><span class="si">{</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">matching_dataset</span><span class="p">(</span>
+            <span class="n">GT_labels</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">p</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">thresh</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">]</span>
+        <span class="n">model_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">:</span>
+            <span class="n">model_ref_name</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">fold_ref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># uncomment for ALL plots : </span>
+        <span class="c1"># plot_performance(taus, stats, name=names[i])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fold  1
+Validating on SwinUNetR
+********************
+Validating on Swin (WNet3D labels)
+********************
+Validating on WNet3D (pre-trained)
+********************
+Fold  2
+Validating on SwinUNetR
+********************
+Validating on Swin (WNet3D labels)
+********************
+Validating on WNet3D (pre-trained)
+********************
+Fold  3
+Validating on SwinUNetR
+********************
+Validating on Swin (WNet3D labels)
+********************
+Validating on WNet3D (pre-trained)
+********************
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_matching_stats_to_df</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model_stats</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_ref_name</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fold_ref</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;thresh&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold&quot;</span><span class="p">,</span> <span class="s2">&quot;thresh&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>criterion</th>
+      <th>fp</th>
+      <th>tp</th>
+      <th>fn</th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>accuracy</th>
+      <th>f1</th>
+      <th>n_true</th>
+      <th>n_pred</th>
+      <th>mean_true_score</th>
+      <th>mean_matched_score</th>
+      <th>panoptic_quality</th>
+      <th>by_image</th>
+    </tr>
+    <tr>
+      <th>Model</th>
+      <th>Fold</th>
+      <th>thresh</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">SwinUNetR</th>
+      <th rowspan="5" valign="top">1</th>
+      <th>0.1</th>
+      <td>iou</td>
+      <td>724</td>
+      <td>3017</td>
+      <td>368</td>
+      <td>0.806469</td>
+      <td>0.891285</td>
+      <td>0.734242</td>
+      <td>0.846758</td>
+      <td>3385</td>
+      <td>3741</td>
+      <td>0.705704</td>
+      <td>0.791782</td>
+      <td>0.670448</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>iou</td>
+      <td>740</td>
+      <td>3001</td>
+      <td>384</td>
+      <td>0.802192</td>
+      <td>0.886558</td>
+      <td>0.727515</td>
+      <td>0.842268</td>
+      <td>3385</td>
+      <td>3741</td>
+      <td>0.705090</td>
+      <td>0.795311</td>
+      <td>0.669865</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>iou</td>
+      <td>781</td>
+      <td>2960</td>
+      <td>425</td>
+      <td>0.791232</td>
+      <td>0.874446</td>
+      <td>0.710514</td>
+      <td>0.830761</td>
+      <td>3385</td>
+      <td>3741</td>
+      <td>0.702058</td>
+      <td>0.802860</td>
+      <td>0.666984</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>iou</td>
+      <td>810</td>
+      <td>2931</td>
+      <td>454</td>
+      <td>0.783480</td>
+      <td>0.865879</td>
+      <td>0.698689</td>
+      <td>0.822621</td>
+      <td>3385</td>
+      <td>3741</td>
+      <td>0.699128</td>
+      <td>0.807420</td>
+      <td>0.664201</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>892</td>
+      <td>2849</td>
+      <td>536</td>
+      <td>0.761561</td>
+      <td>0.841654</td>
+      <td>0.666121</td>
+      <td>0.799607</td>
+      <td>3385</td>
+      <td>3741</td>
+      <td>0.688671</td>
+      <td>0.818235</td>
+      <td>0.654266</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">WNet3D (pre-trained)</th>
+      <th rowspan="5" valign="top">3</th>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>974</td>
+      <td>4656</td>
+      <td>2253</td>
+      <td>0.826998</td>
+      <td>0.673904</td>
+      <td>0.590638</td>
+      <td>0.742643</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.518749</td>
+      <td>0.769767</td>
+      <td>0.571662</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>iou</td>
+      <td>1640</td>
+      <td>3990</td>
+      <td>2919</td>
+      <td>0.708703</td>
+      <td>0.577508</td>
+      <td>0.466721</td>
+      <td>0.636414</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.467688</td>
+      <td>0.809838</td>
+      <td>0.515393</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>iou</td>
+      <td>2400</td>
+      <td>3230</td>
+      <td>3679</td>
+      <td>0.573712</td>
+      <td>0.467506</td>
+      <td>0.346976</td>
+      <td>0.515193</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.396466</td>
+      <td>0.848045</td>
+      <td>0.436907</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>iou</td>
+      <td>3397</td>
+      <td>2233</td>
+      <td>4676</td>
+      <td>0.396625</td>
+      <td>0.323202</td>
+      <td>0.216670</td>
+      <td>0.356169</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.288912</td>
+      <td>0.893907</td>
+      <td>0.318382</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>iou</td>
+      <td>4704</td>
+      <td>926</td>
+      <td>5983</td>
+      <td>0.164476</td>
+      <td>0.134028</td>
+      <td>0.079738</td>
+      <td>0.147699</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.129802</td>
+      <td>0.968467</td>
+      <td>0.143042</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>81 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Link to this heading">#</a></h2>
+<section id="precision">
+<h3>Precision<a class="headerlink" href="#precision" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison_fold</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;precision&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">CUSTOM_CMAP</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s2">&quot;precision_comparison.png&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s2">&quot;precision_comparison.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3e0d13e1688169cc74efd970869ac02648ed03118cc71c178d73fe13878290d1.png" src="../_images/3e0d13e1688169cc74efd970869ac02648ed03118cc71c178d73fe13878290d1.png" />
+</div>
+</div>
+</section>
+<section id="recall">
+<h3>Recall<a class="headerlink" href="#recall" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison_fold</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;recall&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">CUSTOM_CMAP</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s2">&quot;recall_comparison.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s2">&quot;recall_comparison.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b2ce5a345324c92d2c71155c736154159aeb3a4c944c79a2b663368d1836d111.png" src="../_images/b2ce5a345324c92d2c71155c736154159aeb3a4c944c79a2b663368d1836d111.png" />
+</div>
+</div>
+</section>
+<section id="f1-score">
+<h3>F1 score<a class="headerlink" href="#f1-score" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison_fold</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">CUSTOM_CMAP</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s2">&quot;f1_comparison.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s2">&quot;f1_comparison.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6a5da5ed1b78cdf398759d92469ffec80e0ea529ab0cceab5cc72f46dedf2404.png" src="../_images/6a5da5ed1b78cdf398759d92469ffec80e0ea529ab0cceab5cc72f46dedf2404.png" />
+</div>
+</div>
+</section>
+<section id="panoptic-quality">
+<h3>Panoptic quality<a class="headerlink" href="#panoptic-quality" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison_fold</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;panoptic_quality&quot;</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="n">CUSTOM_CMAP</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;panoptic_quality_comparison.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span> <span class="s2">&quot;panoptic_quality_comparison.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2c5335ef48a594152d8e85ae373c604b2dd8edf224a5d72064592be9268bc85d.png" src="../_images/2c5335ef48a594152d8e85ae373c604b2dd8edf224a5d72064592be9268bc85d.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="statistical-tests">
+<h2>Statistical tests<a class="headerlink" href="#statistical-tests" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">CUSTOM_CMAP</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1539978751.py (1): 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+</pre></div>
+</div>
+<img alt="../_images/0491e0d1d64e810c6e4102d8055fc74df2d5b26390834bb50c34449eda55e872.png" src="../_images/0491e0d1d64e810c6e4102d8055fc74df2d5b26390834bb50c34449eda55e872.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kruskal</span>
+
+<span class="n">models_f1s</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">f1</span>
+
+<span class="n">f1_swin</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;SwinUNetR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">f1</span>
+<span class="n">f1_wnet</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;WNet3D (pre-trained)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">f1</span>
+<span class="n">f1_swin_wnet</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Swin (WNet3D labels)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">f1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kruskal_test</span> <span class="o">=</span> <span class="n">kruskal</span><span class="p">(</span>
+    <span class="n">f1_swin</span><span class="p">,</span>
+    <span class="n">f1_wnet</span><span class="p">,</span>
+    <span class="n">f1_swin_wnet</span>
+    <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Comparisons of F1 scores between models : &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">-SwinUNetR</span><span class="se">\n</span><span class="s2">- WNet3D (pre-trained)</span><span class="se">\n</span><span class="s2">- Swin (WNet3D labels)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kruskal-Wallis test: &quot;</span><span class="p">,</span> <span class="n">kruskal_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Comparisons of F1 scores between models : 
+
+-SwinUNetR
+- WNet3D (pre-trained)
+- Swin (WNet3D labels)
+Kruskal-Wallis test:  KruskalResult(statistic=4.911907390678863, pvalue=0.08578134714721779)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scikit_posthocs</span> <span class="kn">import</span> <span class="n">posthoc_conover</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="n">DPI</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">posthoc_conover</span><span class="p">(</span><span class="n">test_df</span><span class="p">,</span> <span class="n">val_col</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="n">group_col</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">p_adjust</span><span class="o">=</span><span class="s2">&quot;holm&quot;</span><span class="p">)</span>
+
+<span class="n">low_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">mid_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">high_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">equals_1_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">colors_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">low_color</span><span class="p">,</span> <span class="n">mid_color</span><span class="p">,</span> <span class="n">high_color</span><span class="p">,</span> <span class="n">high_color</span><span class="p">,</span> <span class="n">equals_1_color</span><span class="p">]</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">colors_list</span><span class="p">)))</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag_indices</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">diag</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">patches</span> <span class="o">=</span> <span class="p">[</span><span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">low_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Above 0 (significant)&#39;</span><span class="p">),</span>
+           <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">mid_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Below 0.05 (significant)&#39;</span><span class="p">),</span>
+           <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">high_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Above 0.05 (not significant)&#39;</span><span class="p">),</span>
+           <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">equals_1_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Equals 1 (not significant)&#39;</span><span class="p">)]</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">patches</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
+<span class="c1"># transparent background</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;WNet_retrain_posthoc_conover.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">DPI</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;WNet_retrain_efficiency_posthoc_conover.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5e27b80d227f0f3321f0f67c75d1e032ece9d8469c4739bf7cf6c1ced95b1f01.png" src="../_images/5e27b80d227f0f3321f0f67c75d1e032ece9d8469c4739bf7cf6c1ced95b1f01.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Figure2_SFigure1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-choice">Threshold choice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performance-assessment">Performance assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision">Precision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recall">Recall</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1 score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#panoptic-quality">Panoptic quality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests">Statistical tests</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cyril Achard, Mackenzie W. Mathis | Mathis Laboratory of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

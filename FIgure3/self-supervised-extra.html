@@ -1,0 +1,2591 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Showing quantitative benchmarking performance on additional datasets &#8212; CellSeg3D - Figures</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'FIgure3/self-supervised-extra';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CellSeg3D - Figures - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CellSeg3D - Figures - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Home - CellSeg3D figures
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/C-Achard/cellseg3d-figures" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/FIgure3/self-supervised-extra.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Showing quantitative benchmarking performance on additional datasets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">Computations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-predictions">Threshold predictions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-mouse-skull-postprocessing">Additional mouse skull postprocessing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons-on-additional-datasets">Comparisons on additional datasets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-images-only-no-wnet">Sanity check : Images only (no WNet)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-plots">Combined plots</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="showing-quantitative-benchmarking-performance-on-additional-datasets">
+<h1>Showing quantitative benchmarking performance on additional datasets<a class="headerlink" href="#showing-quantitative-benchmarking-performance-on-additional-datasets" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Show that self-supervised model can perform well on additional datasets, without requiring any additional training.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">tifffile</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imwrite</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
+<span class="kn">from</span> <span class="nn">stardist.matching</span> <span class="kn">import</span> <span class="n">matching_dataset</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../..&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">plots</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Used GPU: &quot;</span><span class="p">,</span> <span class="n">cle</span><span class="o">.</span><span class="n">get_device</span><span class="p">())</span>
+<span class="n">show_params</span><span class="p">()</span>
+<span class="c1">#################</span>
+<span class="n">SAVE_PLOTS_AS_PNG</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">SAVE_PLOTS_AS_SVG</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Used GPU:  &lt;NVIDIA GeForce RTX 4070 Ti on Platform: NVIDIA CUDA (1 refs)&gt;
+Plot parameters (set in plots.py) : 
+- COLORMAP : ███<span class=" -Color -Color-White">█</span>████
+- DPI : 200
+- Data path : C:\Users\Cyril\Desktop\Code\CELLSEG_BENCHMARK
+- Font size : 20
+- Title font size : 25.0
+- Label font size : 20.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s2">&quot;RESULTS/WNET OTHERS/&quot;</span>
+
+<span class="c1"># list all folders in the data path</span>
+<span class="n">folders</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data_path</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()]</span>
+<span class="n">folders</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[WindowsPath(&#39;C:/Users/Cyril/Desktop/Code/CELLSEG_BENCHMARK/RESULTS/WNET OTHERS/Mouse-Skull-Nuclei-CBG&#39;),
+ WindowsPath(&#39;C:/Users/Cyril/Desktop/Code/CELLSEG_BENCHMARK/RESULTS/WNET OTHERS/Platynereis-ISH-Nuclei-CBG&#39;),
+ WindowsPath(&#39;C:/Users/Cyril/Desktop/Code/CELLSEG_BENCHMARK/RESULTS/WNET OTHERS/Platynereis-Nuclei-CBG&#39;),
+ WindowsPath(&#39;C:/Users/Cyril/Desktop/Code/CELLSEG_BENCHMARK/RESULTS/WNET OTHERS/processed_instance_labels&#39;),
+ WindowsPath(&#39;C:/Users/Cyril/Desktop/Code/CELLSEG_BENCHMARK/RESULTS/WNET OTHERS/processed_threshold_only_instance_labels&#39;),
+ WindowsPath(&#39;C:/Users/Cyril/Desktop/Code/CELLSEG_BENCHMARK/RESULTS/WNET OTHERS/Seb cFOS&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_predictions</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)]</span>
+<span class="c1">#################</span>
+<span class="n">gt_folder</span> <span class="o">=</span> <span class="s2">&quot;labels&quot;</span>
+<span class="n">mouse_skull_gt</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">gt_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">platynereis_ISH_gt</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">gt_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">platynereis_gt</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">gt_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prediction_folder</span> <span class="o">=</span> <span class="s2">&quot;pred&quot;</span>
+<span class="n">mouse_skull_pred</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">prediction_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">platynereis_ISH_pred</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">prediction_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">platynereis_pred</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">prediction_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get second channel of predictions</span>
+<span class="n">mouse_skull_pred</span> <span class="o">=</span> <span class="n">mouse_skull_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">platynereis_ISH_pred</span> <span class="o">=</span> <span class="n">platynereis_ISH_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">platynereis_pred</span> <span class="o">=</span> <span class="n">platynereis_pred</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_files</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)</span>
+    <span class="n">pretrained</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;pretrained&quot;</span><span class="p">):</span>
+            <span class="n">pretrained</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pretrained</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cellpose_folder</span> <span class="o">=</span> <span class="s2">&quot;cellpose&quot;</span>
+<span class="n">cp_pretrained_mouse_skull</span> <span class="o">=</span> <span class="n">find_files</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">cellpose_folder</span><span class="p">)</span>
+<span class="n">cp_pretrained_platynereis_ISH</span> <span class="o">=</span> <span class="n">find_files</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">cellpose_folder</span><span class="p">)</span>
+<span class="n">cp_pretrained_platynereis</span> <span class="o">=</span> <span class="n">find_files</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">cellpose_folder</span><span class="p">)</span>
+
+<span class="n">cp_pretrained_mouse_skull</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">cp_pretrained_mouse_skull</span><span class="p">)</span>
+<span class="n">cp_pretrained_platynereis_ISH</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">cp_pretrained_platynereis_ISH</span><span class="p">)</span>
+<span class="n">cp_pretrained_platynereis</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">cp_pretrained_platynereis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stardist_folder</span> <span class="o">=</span> <span class="s2">&quot;stardist&quot;</span>
+<span class="n">sd_retrained_mouse_skull</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">stardist_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sd_retrained_platynereis_ISH</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">stardist_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">sd_retrained_platynereis</span> <span class="o">=</span> <span class="n">get_predictions</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">stardist_folder</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get validation set to estimate thresholds</span>
+<span class="n">mouse_skull_val</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;TEST/X2_left_WNet3D_pred_1.tif&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># take channel 1 of WNet prediction (0 is background)</span>
+<span class="n">mouse_skull_val_gt</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;TEST/Y2_left.tif&quot;</span><span class="p">)</span>
+<span class="c1">###</span>
+<span class="n">platynereis_ISH_val</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;TEST/downsampled_cropped_X02_train_WNet3D_pred.tif&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">platynereis_ISH_val_gt</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;TEST/downsampled_cropped_Y02_train.tif&quot;</span><span class="p">)</span>
+<span class="c1">###</span>
+<span class="n">platynereis_val</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;TEST/downsampled_cropped_dataset_hdf5_150_0_WNet3D_pred_1.tif&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">platynereis_val_gt</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;TEST/downsampled_cropped_mask_dataset_hdf5_150_0.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="computations">
+<h2>Computations<a class="headerlink" href="#computations" title="Link to this heading">#</a></h2>
+<section id="threshold-predictions">
+<h3>Threshold predictions<a class="headerlink" href="#threshold-predictions" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GT_labels_val</span> <span class="o">=</span> <span class="p">[</span><span class="n">mouse_skull_val_gt</span><span class="p">,</span> <span class="n">platynereis_ISH_val_gt</span><span class="p">,</span> <span class="n">platynereis_val_gt</span><span class="p">]</span>
+<span class="n">predictions_val</span> <span class="o">=</span> <span class="p">[</span><span class="n">mouse_skull_val</span><span class="p">,</span> <span class="n">platynereis_ISH_val</span><span class="p">,</span> <span class="n">platynereis_val</span><span class="p">]</span>
+
+<span class="n">thresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thresh</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">gt</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">GT_labels_val</span><span class="p">,</span> <span class="n">predictions_val</span><span class="p">)):</span>
+        <span class="n">dices_row</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Threshold&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span> <span class="s2">&quot;Fold&quot;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;Dice&quot;</span><span class="p">:</span> <span class="n">dice_coeff</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">gt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pred</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="p">)}</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dices_row</span><span class="p">)</span>
+        
+<span class="n">dices_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dices_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Threshold&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Dice&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Fold&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;tab10&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Dice metric for different thresholds for WNet3D and GT&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">([</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8f20d849b0b895a6f3460a11cc85c01011ac985ee9746ce2921ecb424de5443f.png" src="../_images/8f20d849b0b895a6f3460a11cc85c01011ac985ee9746ce2921ecb424de5443f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dices_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Threshold&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;Dice&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Fold</th>
+      <th>Dice</th>
+    </tr>
+    <tr>
+      <th>Threshold</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.50</th>
+      <td>1.0</td>
+      <td>0.717895</td>
+    </tr>
+    <tr>
+      <th>0.55</th>
+      <td>1.0</td>
+      <td>0.708049</td>
+    </tr>
+    <tr>
+      <th>0.45</th>
+      <td>1.0</td>
+      <td>0.631312</td>
+    </tr>
+    <tr>
+      <th>0.60</th>
+      <td>1.0</td>
+      <td>0.603701</td>
+    </tr>
+    <tr>
+      <th>0.65</th>
+      <td>1.0</td>
+      <td>0.455269</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">mouse_skull_pred</span><span class="p">,</span> <span class="n">platynereis_ISH_pred</span><span class="p">,</span> <span class="n">platynereis_pred</span><span class="p">]</span>
+<span class="n">GT_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">mouse_skull_gt</span><span class="p">,</span> <span class="n">platynereis_ISH_gt</span><span class="p">,</span> <span class="n">platynereis_gt</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions_thresholded</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pred</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions</span><span class="p">):</span>
+    <span class="n">predictions_thresholded</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pred</span> <span class="o">&gt;</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_skull_instance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">predictions_thresholded</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">platynereis_ISH_instance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">predictions_thresholded</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">platynereis_instance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">predictions_thresholded</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mf">2.75</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="additional-mouse-skull-postprocessing">
+<h3>Additional mouse skull postprocessing<a class="headerlink" href="#additional-mouse-skull-postprocessing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remap_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">new_min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">new_max</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">min_val</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">image</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">new_max</span> <span class="o">-</span> <span class="n">new_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">new_min</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mouse_skull_postproc</span><span class="p">(</span><span class="n">instance_labels</span><span class="p">,</span> <span class="n">pred</span><span class="p">):</span>
+    <span class="n">instance_labels</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">closing_labels</span><span class="p">(</span><span class="n">instance_labels</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">remap_pred</span> <span class="o">=</span> <span class="n">remap_image</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+    <span class="n">instance_labels</span> <span class="o">=</span> <span class="n">cle</span><span class="o">.</span><span class="n">merge_labels_with_border_intensity_within_range</span><span class="p">(</span>
+        <span class="n">image</span><span class="o">=</span><span class="n">remap_pred</span><span class="p">,</span>
+        <span class="n">labels</span><span class="o">=</span><span class="n">instance_labels</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> 
+        <span class="n">minimum_intensity</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> 
+        <span class="n">maximum_intensity</span><span class="o">=</span><span class="mi">100</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">instance_labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_skull_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;c:/Users/Cyril/Desktop/Code/CELLSEG_BENCHMARK/RESULTS/WNET OTHERS/Mouse-Skull-Nuclei-CBG/X1.tif&quot;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_skull_instance_postproc</span> <span class="o">=</span> <span class="n">mouse_skull_postproc</span><span class="p">(</span>
+    <span class="n">mouse_skull_instance</span><span class="p">,</span> 
+    <span class="n">mouse_skull_pred</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_generate_touch_mean_intensity_matrix.py (30): generate_touch_mean_intensity_matrix is supposed to work with images of integer type only.
+Loss of information is possible when passing non-integer images.
+_opencl_execute.py (281): overflow encountered in cast
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># apply post-processing to cellpose and stardist predictions (keep w/o post-processing for comparison)</span>
+
+<span class="n">cp_pretrained_mouse_skull_postproc</span> <span class="o">=</span> <span class="n">mouse_skull_postproc</span><span class="p">(</span><span class="n">cp_pretrained_mouse_skull</span><span class="p">,</span> <span class="n">mouse_skull_pred</span><span class="p">)</span>
+<span class="n">sd_retrained_mouse_skull_postproc</span> <span class="o">=</span> <span class="n">mouse_skull_postproc</span><span class="p">(</span><span class="n">sd_retrained_mouse_skull</span><span class="p">,</span> <span class="n">mouse_skull_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import napari</span>
+<span class="c1"># viewer = napari.Viewer()</span>
+<span class="c1"># viewer.add_image(predictions_thresholded[0], colormap=&quot;turbo&quot;)</span>
+<span class="c1"># viewer.add_labels(mouse_skull_instance)</span>
+<span class="c1"># viewer.add_labels(mouse_skull_instance, name=&quot;mouse_skull_instance_closed&quot;)</span>
+<span class="c1"># viewer.add_image(mouse_skull_remap, name=&quot;mouse_skull_pred_remap&quot;, colormap=&quot;turbo&quot;)</span>
+<span class="c1"># viewer.add_labels(mouse_skull_instance, name=&quot;mouse_skull_instance_closed_merged&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the predictions and the instance segmentation</span>
+<span class="c1"># import napari</span>
+<span class="c1"># viewer = napari.Viewer()</span>
+
+<span class="c1"># viewer.add_image(predictions_thresholded[0], name=&quot;mouse_skull_pred&quot;, colormap=&quot;turbo&quot;)</span>
+<span class="c1"># viewer.add_labels(mouse_skull_instance, name=&quot;mouse_skull_instance&quot;)</span>
+<span class="c1"># viewer.add_image(predictions_thresholded[1], name=&quot;platynereis_ISH_pred&quot;, colormap=&quot;turbo&quot;)</span>
+<span class="c1"># viewer.add_labels(platynereis_ISH_instance, name=&quot;platynereis_ISH_instance&quot;)</span>
+<span class="c1"># viewer.add_image(predictions_thresholded[2], name=&quot;platynereis_pred&quot;, colormap=&quot;turbo&quot;)</span>
+<span class="c1"># viewer.add_labels(platynereis_instance, name=&quot;platynereis_instance&quot;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plots">
+<h2>Plots<a class="headerlink" href="#plots" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">mouse_skull_instance_postproc</span><span class="p">,</span>
+    <span class="n">mouse_skull_instance</span><span class="p">,</span>
+    <span class="n">platynereis_ISH_instance</span><span class="p">,</span>
+    <span class="n">platynereis_instance</span><span class="p">,</span>
+   <span class="p">]</span>
+<span class="n">GT_labels</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">platynereis_ISH_gt</span><span class="p">,</span>
+    <span class="n">platynereis_gt</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Mouse skull w/ post-processing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Mouse skull w/o post-processing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Platynereis ISH&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Platynereis&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save instance labels</span>
+<span class="k">for</span> <span class="n">pred</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+    <span class="n">save_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="s2">&quot;processed_instance_labels&quot;</span>
+    <span class="n">save_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">imwrite</span><span class="p">(</span><span class="n">save_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.tif&quot;</span><span class="p">,</span> <span class="n">pred</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+
+
+<span class="n">model_stats</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">names_stats</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Validating on </span><span class="si">{</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">matching_dataset</span><span class="p">(</span>
+        <span class="n">GT_labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> 
+        <span class="n">p</span><span class="p">,</span>
+        <span class="n">thresh</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> 
+        <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">]</span>
+    <span class="n">model_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">:</span>
+        <span class="n">names_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1"># uncomment for ALL plots : </span>
+    <span class="n">plot_performance</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validating on Mouse skull w/ post-processing
+********************
+Validating on Mouse skull w/o post-processing
+********************
+Validating on Platynereis ISH
+********************
+Validating on Platynereis
+********************
+</pre></div>
+</div>
+<img alt="../_images/0e7a1c9e446873b362b6cfa75e858640acc9d6a108acc2d3db4cce98a514e0c3.png" src="../_images/0e7a1c9e446873b362b6cfa75e858640acc9d6a108acc2d3db4cce98a514e0c3.png" />
+<img alt="../_images/41391a2fb32872ea249ee61ece7c0cbdeb1cb13b58c35439aaff13864034b616.png" src="../_images/41391a2fb32872ea249ee61ece7c0cbdeb1cb13b58c35439aaff13864034b616.png" />
+<img alt="../_images/9648fdf802dd6bd204dc43116a2fda19b1d93955fe9653875e28db47783e60cb.png" src="../_images/9648fdf802dd6bd204dc43116a2fda19b1d93955fe9653875e28db47783e60cb.png" />
+<img alt="../_images/0953092dcd0374af0d25723e3487122e712ce6f36f684d561e87723f4a3be7ce.png" src="../_images/0953092dcd0374af0d25723e3487122e712ce6f36f684d561e87723f4a3be7ce.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_matching_stats_to_df</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model_stats</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names_stats</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>criterion</th>
+      <th>fp</th>
+      <th>tp</th>
+      <th>fn</th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>accuracy</th>
+      <th>f1</th>
+      <th>n_true</th>
+      <th>n_pred</th>
+      <th>mean_true_score</th>
+      <th>mean_matched_score</th>
+      <th>panoptic_quality</th>
+      <th>by_image</th>
+      <th>Dataset</th>
+    </tr>
+    <tr>
+      <th>thresh</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.1</th>
+      <td>iou</td>
+      <td>1096</td>
+      <td>4061</td>
+      <td>845</td>
+      <td>0.787473</td>
+      <td>0.827762</td>
+      <td>0.676608</td>
+      <td>0.807115</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.558399</td>
+      <td>0.674588</td>
+      <td>0.544470</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>iou</td>
+      <td>1219</td>
+      <td>3938</td>
+      <td>968</td>
+      <td>0.763622</td>
+      <td>0.802691</td>
+      <td>0.642939</td>
+      <td>0.782669</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.555335</td>
+      <td>0.691842</td>
+      <td>0.541483</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>iou</td>
+      <td>1319</td>
+      <td>3838</td>
+      <td>1068</td>
+      <td>0.744231</td>
+      <td>0.782307</td>
+      <td>0.616546</td>
+      <td>0.762794</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.550126</td>
+      <td>0.703209</td>
+      <td>0.536404</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>iou</td>
+      <td>1507</td>
+      <td>3650</td>
+      <td>1256</td>
+      <td>0.707776</td>
+      <td>0.743987</td>
+      <td>0.569156</td>
+      <td>0.725430</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.536541</td>
+      <td>0.721169</td>
+      <td>0.523158</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>1952</td>
+      <td>3205</td>
+      <td>1701</td>
+      <td>0.621485</td>
+      <td>0.653282</td>
+      <td>0.467337</td>
+      <td>0.636987</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.495302</td>
+      <td>0.758175</td>
+      <td>0.482948</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>iou</td>
+      <td>2468</td>
+      <td>2689</td>
+      <td>2217</td>
+      <td>0.521427</td>
+      <td>0.548104</td>
+      <td>0.364660</td>
+      <td>0.534433</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.437325</td>
+      <td>0.797887</td>
+      <td>0.426417</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>iou</td>
+      <td>3006</td>
+      <td>2151</td>
+      <td>2755</td>
+      <td>0.417103</td>
+      <td>0.438443</td>
+      <td>0.271866</td>
+      <td>0.427507</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.365661</td>
+      <td>0.834001</td>
+      <td>0.356541</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>iou</td>
+      <td>3670</td>
+      <td>1487</td>
+      <td>3419</td>
+      <td>0.288346</td>
+      <td>0.303098</td>
+      <td>0.173391</td>
+      <td>0.295538</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.263805</td>
+      <td>0.870361</td>
+      <td>0.257225</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>iou</td>
+      <td>4789</td>
+      <td>368</td>
+      <td>4538</td>
+      <td>0.071359</td>
+      <td>0.075010</td>
+      <td>0.037958</td>
+      <td>0.073139</td>
+      <td>4906</td>
+      <td>5157</td>
+      <td>0.069084</td>
+      <td>0.920993</td>
+      <td>0.067361</td>
+      <td>False</td>
+      <td>Mouse skull w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.1</th>
+      <td>iou</td>
+      <td>1718</td>
+      <td>4116</td>
+      <td>790</td>
+      <td>0.705519</td>
+      <td>0.838973</td>
+      <td>0.621377</td>
+      <td>0.766480</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.479463</td>
+      <td>0.571488</td>
+      <td>0.438034</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>iou</td>
+      <td>1903</td>
+      <td>3931</td>
+      <td>975</td>
+      <td>0.673809</td>
+      <td>0.801264</td>
+      <td>0.577324</td>
+      <td>0.732030</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.474820</td>
+      <td>0.592590</td>
+      <td>0.433793</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>iou</td>
+      <td>2244</td>
+      <td>3590</td>
+      <td>1316</td>
+      <td>0.615358</td>
+      <td>0.731757</td>
+      <td>0.502098</td>
+      <td>0.668529</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.457198</td>
+      <td>0.624794</td>
+      <td>0.417693</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>iou</td>
+      <td>2761</td>
+      <td>3073</td>
+      <td>1833</td>
+      <td>0.526740</td>
+      <td>0.626376</td>
+      <td>0.400809</td>
+      <td>0.572253</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.419895</td>
+      <td>0.670357</td>
+      <td>0.383614</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>3389</td>
+      <td>2445</td>
+      <td>2461</td>
+      <td>0.419095</td>
+      <td>0.498369</td>
+      <td>0.294756</td>
+      <td>0.455307</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.362430</td>
+      <td>0.727233</td>
+      <td>0.331114</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>iou</td>
+      <td>3925</td>
+      <td>1909</td>
+      <td>2997</td>
+      <td>0.327220</td>
+      <td>0.389115</td>
+      <td>0.216170</td>
+      <td>0.355493</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.302478</td>
+      <td>0.777348</td>
+      <td>0.276342</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>iou</td>
+      <td>4471</td>
+      <td>1363</td>
+      <td>3543</td>
+      <td>0.233630</td>
+      <td>0.277823</td>
+      <td>0.145356</td>
+      <td>0.253818</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.230154</td>
+      <td>0.828420</td>
+      <td>0.210268</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>iou</td>
+      <td>4895</td>
+      <td>939</td>
+      <td>3967</td>
+      <td>0.160953</td>
+      <td>0.191398</td>
+      <td>0.095807</td>
+      <td>0.174860</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.165426</td>
+      <td>0.864303</td>
+      <td>0.151132</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>iou</td>
+      <td>5657</td>
+      <td>177</td>
+      <td>4729</td>
+      <td>0.030339</td>
+      <td>0.036078</td>
+      <td>0.016757</td>
+      <td>0.032961</td>
+      <td>4906</td>
+      <td>5834</td>
+      <td>0.033077</td>
+      <td>0.916812</td>
+      <td>0.030219</td>
+      <td>False</td>
+      <td>Mouse skull w/o post-processing</td>
+    </tr>
+    <tr>
+      <th>0.1</th>
+      <td>iou</td>
+      <td>532</td>
+      <td>2484</td>
+      <td>168</td>
+      <td>0.823607</td>
+      <td>0.936652</td>
+      <td>0.780151</td>
+      <td>0.876500</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.630515</td>
+      <td>0.673159</td>
+      <td>0.590023</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>iou</td>
+      <td>590</td>
+      <td>2426</td>
+      <td>226</td>
+      <td>0.804377</td>
+      <td>0.914781</td>
+      <td>0.748304</td>
+      <td>0.856034</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.627286</td>
+      <td>0.685722</td>
+      <td>0.587002</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>iou</td>
+      <td>652</td>
+      <td>2364</td>
+      <td>288</td>
+      <td>0.783820</td>
+      <td>0.891403</td>
+      <td>0.715496</td>
+      <td>0.834157</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.621627</td>
+      <td>0.697358</td>
+      <td>0.581706</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>iou</td>
+      <td>776</td>
+      <td>2240</td>
+      <td>412</td>
+      <td>0.742706</td>
+      <td>0.844646</td>
+      <td>0.653442</td>
+      <td>0.790402</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.605176</td>
+      <td>0.716485</td>
+      <td>0.566312</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>949</td>
+      <td>2067</td>
+      <td>585</td>
+      <td>0.685345</td>
+      <td>0.779412</td>
+      <td>0.574007</td>
+      <td>0.729358</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.575968</td>
+      <td>0.738978</td>
+      <td>0.538980</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>iou</td>
+      <td>1226</td>
+      <td>1790</td>
+      <td>862</td>
+      <td>0.593501</td>
+      <td>0.674962</td>
+      <td>0.461578</td>
+      <td>0.631616</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.518761</td>
+      <td>0.768578</td>
+      <td>0.485446</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>iou</td>
+      <td>1622</td>
+      <td>1394</td>
+      <td>1258</td>
+      <td>0.462202</td>
+      <td>0.525641</td>
+      <td>0.326158</td>
+      <td>0.491884</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.421467</td>
+      <td>0.801816</td>
+      <td>0.394401</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>iou</td>
+      <td>2311</td>
+      <td>705</td>
+      <td>1947</td>
+      <td>0.233753</td>
+      <td>0.265837</td>
+      <td>0.142051</td>
+      <td>0.248765</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.226469</td>
+      <td>0.851910</td>
+      <td>0.211925</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>iou</td>
+      <td>2920</td>
+      <td>96</td>
+      <td>2556</td>
+      <td>0.031830</td>
+      <td>0.036199</td>
+      <td>0.017229</td>
+      <td>0.033874</td>
+      <td>2652</td>
+      <td>3016</td>
+      <td>0.033264</td>
+      <td>0.918915</td>
+      <td>0.031128</td>
+      <td>False</td>
+      <td>Platynereis ISH</td>
+    </tr>
+    <tr>
+      <th>0.1</th>
+      <td>iou</td>
+      <td>58</td>
+      <td>800</td>
+      <td>252</td>
+      <td>0.932401</td>
+      <td>0.760456</td>
+      <td>0.720721</td>
+      <td>0.837696</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.525770</td>
+      <td>0.691387</td>
+      <td>0.579173</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>iou</td>
+      <td>86</td>
+      <td>772</td>
+      <td>280</td>
+      <td>0.899767</td>
+      <td>0.733840</td>
+      <td>0.678383</td>
+      <td>0.808377</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.521990</td>
+      <td>0.711313</td>
+      <td>0.575009</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>iou</td>
+      <td>115</td>
+      <td>743</td>
+      <td>309</td>
+      <td>0.865967</td>
+      <td>0.706274</td>
+      <td>0.636675</td>
+      <td>0.778010</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.514955</td>
+      <td>0.729115</td>
+      <td>0.567259</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>iou</td>
+      <td>152</td>
+      <td>706</td>
+      <td>346</td>
+      <td>0.822844</td>
+      <td>0.671103</td>
+      <td>0.586379</td>
+      <td>0.739267</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.502527</td>
+      <td>0.748808</td>
+      <td>0.553569</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>194</td>
+      <td>664</td>
+      <td>388</td>
+      <td>0.773893</td>
+      <td>0.631179</td>
+      <td>0.532905</td>
+      <td>0.695288</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.484465</td>
+      <td>0.767556</td>
+      <td>0.533672</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>iou</td>
+      <td>269</td>
+      <td>589</td>
+      <td>463</td>
+      <td>0.686480</td>
+      <td>0.559886</td>
+      <td>0.445874</td>
+      <td>0.616754</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.445128</td>
+      <td>0.795033</td>
+      <td>0.490340</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>iou</td>
+      <td>369</td>
+      <td>489</td>
+      <td>563</td>
+      <td>0.569930</td>
+      <td>0.464829</td>
+      <td>0.344124</td>
+      <td>0.512042</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.383217</td>
+      <td>0.824425</td>
+      <td>0.422140</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>iou</td>
+      <td>535</td>
+      <td>323</td>
+      <td>729</td>
+      <td>0.376457</td>
+      <td>0.307034</td>
+      <td>0.203529</td>
+      <td>0.338220</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.264275</td>
+      <td>0.860736</td>
+      <td>0.291118</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>iou</td>
+      <td>802</td>
+      <td>56</td>
+      <td>996</td>
+      <td>0.065268</td>
+      <td>0.053232</td>
+      <td>0.030205</td>
+      <td>0.058639</td>
+      <td>1052</td>
+      <td>858</td>
+      <td>0.048994</td>
+      <td>0.920388</td>
+      <td>0.053970</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="n">model_stats</span><span class="p">,</span> <span class="n">model_names</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/64e5f1e60e4e28beb0477d5c652461d2a821e0f67e87c6c4afbb2c13d47773a0.png" src="../_images/64e5f1e60e4e28beb0477d5c652461d2a821e0f67e87c6c4afbb2c13d47773a0.png" />
+</div>
+</div>
+<section id="comparisons-on-additional-datasets">
+<h3>Comparisons on additional datasets<a class="headerlink" href="#comparisons-on-additional-datasets" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check performance for cellpose and stardist</span>
+<span class="n">model_stats_others</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">names_stats_others</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">predictions_others</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">cp_pretrained_mouse_skull_postproc</span><span class="p">,</span>
+    <span class="n">cp_pretrained_mouse_skull</span><span class="p">,</span>
+    <span class="n">sd_retrained_mouse_skull_postproc</span><span class="p">,</span>
+    <span class="n">sd_retrained_mouse_skull</span><span class="p">,</span>
+    <span class="n">cp_pretrained_platynereis_ISH</span><span class="p">,</span>
+    <span class="n">sd_retrained_platynereis_ISH</span><span class="p">,</span>
+    <span class="n">cp_pretrained_platynereis</span><span class="p">,</span>
+    <span class="n">sd_retrained_platynereis</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">GT_labels_others</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">platynereis_ISH_gt</span><span class="p">,</span>
+    <span class="n">platynereis_ISH_gt</span><span class="p">,</span>
+    <span class="n">platynereis_gt</span><span class="p">,</span>
+    <span class="n">platynereis_gt</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">names_others</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;CellPose - pretrained w/ post-processing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CellPose - pretrained&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StarDist - retrained w/ post-processing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StarDist - retrained&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CellPose - pretrained&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StarDist - retrained&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;CellPose - pretrained&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;StarDist - retrained&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions_others</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Validating on </span><span class="si">{</span><span class="n">names_others</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">matching_dataset</span><span class="p">(</span>
+        <span class="n">GT_labels_others</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">p</span><span class="p">,</span>
+        <span class="n">thresh</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> 
+        <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">]</span>
+    <span class="n">model_stats_others</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">:</span>
+        <span class="n">names_stats_others</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">names_others</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  
+    <span class="c1"># uncomment for ALL plots : </span>
+    <span class="n">plot_performance</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">names_others</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validating on CellPose - pretrained w/ post-processing
+********************
+Validating on CellPose - pretrained
+********************
+Validating on StarDist - retrained w/ post-processing
+********************
+Validating on StarDist - retrained
+********************
+Validating on CellPose - pretrained
+********************
+Validating on StarDist - retrained
+********************
+Validating on CellPose - pretrained
+********************
+Validating on StarDist - retrained
+********************
+</pre></div>
+</div>
+<img alt="../_images/e6a82393c7d39be628c8f75587653eba9854a0fd03dbef9c6bd8e40d6bb58393.png" src="../_images/e6a82393c7d39be628c8f75587653eba9854a0fd03dbef9c6bd8e40d6bb58393.png" />
+<img alt="../_images/f80a24cc2757e14fa792e6c0ec2d31e80273a5be2fbc014e21a88d5e10b6c8a9.png" src="../_images/f80a24cc2757e14fa792e6c0ec2d31e80273a5be2fbc014e21a88d5e10b6c8a9.png" />
+<img alt="../_images/6183cb4cac24f9d15a5b75d381018fff6834687b991e6aa030831541c104d8d9.png" src="../_images/6183cb4cac24f9d15a5b75d381018fff6834687b991e6aa030831541c104d8d9.png" />
+<img alt="../_images/88a1de66bf08d76877ef980c398cadccdd2329a74c97f543146ddd77883e8225.png" src="../_images/88a1de66bf08d76877ef980c398cadccdd2329a74c97f543146ddd77883e8225.png" />
+<img alt="../_images/3d3a4c45ec840b8453f68467d2d6b5c72fb0eeeb4a0edd07aea62a303a86a67f.png" src="../_images/3d3a4c45ec840b8453f68467d2d6b5c72fb0eeeb4a0edd07aea62a303a86a67f.png" />
+<img alt="../_images/c255ee99c1e09e42d8cfcf96d8cb45958fca185c0858f6fce9e35eb7383208cc.png" src="../_images/c255ee99c1e09e42d8cfcf96d8cb45958fca185c0858f6fce9e35eb7383208cc.png" />
+<img alt="../_images/d3cf2faca046eff2c0e33361ef2732fe1253f4f3dedde61d29b9d5543dfcd8b5.png" src="../_images/d3cf2faca046eff2c0e33361ef2732fe1253f4f3dedde61d29b9d5543dfcd8b5.png" />
+<img alt="../_images/655c5c4f1ea0d1d1a753453d58d0980f302d8e5edf43c5a1e36ee23a45bde712.png" src="../_images/655c5c4f1ea0d1d1a753453d58d0980f302d8e5edf43c5a1e36ee23a45bde712.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot full comparison of stats</span>
+<span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_matching_stats_to_df</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model_stats_others</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names_stats_others</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>criterion</th>
+      <th>fp</th>
+      <th>tp</th>
+      <th>fn</th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>accuracy</th>
+      <th>f1</th>
+      <th>n_true</th>
+      <th>n_pred</th>
+      <th>mean_true_score</th>
+      <th>mean_matched_score</th>
+      <th>panoptic_quality</th>
+      <th>by_image</th>
+      <th>Dataset</th>
+    </tr>
+    <tr>
+      <th>thresh</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.1</th>
+      <td>iou</td>
+      <td>13028</td>
+      <td>4283</td>
+      <td>623</td>
+      <td>0.247415</td>
+      <td>0.873013</td>
+      <td>0.238820</td>
+      <td>0.385561</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.547819</td>
+      <td>0.627504</td>
+      <td>0.241941</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>iou</td>
+      <td>13295</td>
+      <td>4016</td>
+      <td>890</td>
+      <td>0.231991</td>
+      <td>0.818589</td>
+      <td>0.220647</td>
+      <td>0.361525</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.539571</td>
+      <td>0.659147</td>
+      <td>0.238298</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>iou</td>
+      <td>13549</td>
+      <td>3762</td>
+      <td>1144</td>
+      <td>0.217318</td>
+      <td>0.766816</td>
+      <td>0.203847</td>
+      <td>0.338660</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.526620</td>
+      <td>0.686762</td>
+      <td>0.232578</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>iou</td>
+      <td>13850</td>
+      <td>3461</td>
+      <td>1445</td>
+      <td>0.199931</td>
+      <td>0.705463</td>
+      <td>0.184528</td>
+      <td>0.311563</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.504832</td>
+      <td>0.715604</td>
+      <td>0.222956</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>14352</td>
+      <td>2959</td>
+      <td>1947</td>
+      <td>0.170932</td>
+      <td>0.603139</td>
+      <td>0.153650</td>
+      <td>0.266373</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.458649</td>
+      <td>0.760436</td>
+      <td>0.202559</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>186</td>
+      <td>667</td>
+      <td>385</td>
+      <td>0.781946</td>
+      <td>0.634030</td>
+      <td>0.538772</td>
+      <td>0.700262</td>
+      <td>1052</td>
+      <td>853</td>
+      <td>0.474416</td>
+      <td>0.748255</td>
+      <td>0.523975</td>
+      <td>False</td>
+      <td>StarDist - retrained</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>iou</td>
+      <td>271</td>
+      <td>582</td>
+      <td>470</td>
+      <td>0.682298</td>
+      <td>0.553232</td>
+      <td>0.439909</td>
+      <td>0.611024</td>
+      <td>1052</td>
+      <td>853</td>
+      <td>0.429873</td>
+      <td>0.777021</td>
+      <td>0.474778</td>
+      <td>False</td>
+      <td>StarDist - retrained</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>iou</td>
+      <td>384</td>
+      <td>469</td>
+      <td>583</td>
+      <td>0.549824</td>
+      <td>0.445817</td>
+      <td>0.326602</td>
+      <td>0.492388</td>
+      <td>1052</td>
+      <td>853</td>
+      <td>0.359040</td>
+      <td>0.805351</td>
+      <td>0.396546</td>
+      <td>False</td>
+      <td>StarDist - retrained</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>iou</td>
+      <td>594</td>
+      <td>259</td>
+      <td>793</td>
+      <td>0.303634</td>
+      <td>0.246198</td>
+      <td>0.157351</td>
+      <td>0.271916</td>
+      <td>1052</td>
+      <td>853</td>
+      <td>0.208831</td>
+      <td>0.848225</td>
+      <td>0.230646</td>
+      <td>False</td>
+      <td>StarDist - retrained</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>iou</td>
+      <td>835</td>
+      <td>18</td>
+      <td>1034</td>
+      <td>0.021102</td>
+      <td>0.017110</td>
+      <td>0.009539</td>
+      <td>0.018898</td>
+      <td>1052</td>
+      <td>853</td>
+      <td>0.015703</td>
+      <td>0.917728</td>
+      <td>0.017343</td>
+      <td>False</td>
+      <td>StarDist - retrained</td>
+    </tr>
+  </tbody>
+</table>
+<p>72 rows × 15 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wnet_color</span> <span class="o">=</span> <span class="n">COLORS_DICT</span><span class="p">[</span><span class="s2">&quot;WNet3D&quot;</span><span class="p">]</span>
+<span class="n">cellpose_color</span> <span class="o">=</span> <span class="n">COLORS_DICT</span><span class="p">[</span><span class="s2">&quot;Cellpose&quot;</span><span class="p">]</span>
+<span class="n">stardist_color</span> <span class="o">=</span> <span class="n">COLORS_DICT</span><span class="p">[</span><span class="s2">&quot;Stardist&quot;</span><span class="p">]</span>
+
+<span class="n">wnet_shades</span> <span class="o">=</span> <span class="n">get_shades</span><span class="p">(</span><span class="n">wnet_color</span><span class="p">)</span>
+<span class="n">cellpose_shades</span> <span class="o">=</span> <span class="n">get_shades</span><span class="p">(</span><span class="n">cellpose_color</span><span class="p">)</span>
+<span class="n">stardist_shades</span> <span class="o">=</span> <span class="n">get_shades</span><span class="p">(</span><span class="n">stardist_color</span><span class="p">)</span>
+
+<span class="n">SIMPLE_COLORMAP</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">wnet_color</span><span class="p">,</span> 
+    <span class="n">cellpose_color</span><span class="p">,</span>
+    <span class="n">stardist_color</span><span class="p">,</span>
+    <span class="s2">&quot;black&quot;</span>
+<span class="p">]</span>
+<span class="n">EXPANDED_COLORMAP</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">wnet_color</span><span class="p">,</span> <span class="n">wnet_shades</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">cellpose_color</span><span class="p">,</span> <span class="n">cellpose_shades</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">stardist_color</span><span class="p">,</span> <span class="n">stardist_shades</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: Saturation in 1.0 is too low or too high in hex color FF4D00
+Warning: Value in 1.0 is too low or too high in hex color FF4D00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="n">model_stats</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">model_stats_others</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;WNet3D w/ postprocessing&quot;</span><span class="p">,</span> <span class="s2">&quot;WNet3D w/o postprocessing&quot;</span><span class="p">]</span><span class="o">+</span><span class="n">names_others</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">EXPANDED_COLORMAP</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mouse-Skull-Nuclei-CBG&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_mouse_skull_full.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_mouse_skull_full.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6379fd2d92dd41aa326f019e76e070e90e9d16d9be4db43c34f08fea3ba7cb44.png" src="../_images/6379fd2d92dd41aa326f019e76e070e90e9d16d9be4db43c34f08fea3ba7cb44.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="p">[</span><span class="n">model_stats</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">+</span><span class="n">model_stats_others</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">],</span> 
+                     <span class="n">model_names</span><span class="o">=</span>
+                    <span class="p">[</span>
+                        <span class="s2">&quot;WNet3D&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;CellPose - pretrained&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;StarDist - retrained&quot;</span>
+                    <span class="p">],</span> 
+                     <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">SIMPLE_COLORMAP</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mouse-Skull-Nuclei-CBG&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_mouse_skull.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_mouse_skull.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8493f7da357ca66b5803c5f32efd55a91e759e9c9e83867e19016e2d561c3f21.png" src="../_images/8493f7da357ca66b5803c5f32efd55a91e759e9c9e83867e19016e2d561c3f21.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="p">[</span><span class="n">model_stats</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span><span class="o">+</span><span class="n">model_stats_others</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">],</span> <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;WNet3D&quot;</span><span class="p">]</span><span class="o">+</span><span class="n">names_others</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">],</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">SIMPLE_COLORMAP</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Platynereis ISH&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_platynereis_ISH.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_platynereis_ISH.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7346611ae32ac72b8732bf85672969f2f3a6bc280c2d93a68c10ad76ebada4c2.png" src="../_images/7346611ae32ac72b8732bf85672969f2f3a6bc280c2d93a68c10ad76ebada4c2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="p">[</span><span class="n">model_stats</span><span class="p">[</span><span class="mi">3</span><span class="p">]]</span><span class="o">+</span><span class="n">model_stats_others</span><span class="p">[</span><span class="mi">6</span><span class="p">:],</span> <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="n">names</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot; - WNet3D&quot;</span><span class="p">]</span><span class="o">+</span><span class="n">names_others</span><span class="p">[</span><span class="mi">6</span><span class="p">:],</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">SIMPLE_COLORMAP</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Platynereis Nuclei&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_platynereis.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;f1_comparison_platynereis.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0fd26d592f32281ddf5537ba62639a34afe1097a29368feb6b4e2605d9ffaa4f.png" src="../_images/0fd26d592f32281ddf5537ba62639a34afe1097a29368feb6b4e2605d9ffaa4f.png" />
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="sanity-check-images-only-no-wnet">
+<h2>Sanity check : Images only (no WNet)<a class="headerlink" href="#sanity-check-images-only-no-wnet" title="Link to this heading">#</a></h2>
+<p>The aim here is to check that using the WNet does provide a benefit over using Otsu thresholding and Voronoi-based instance segmentation directly on the images.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_skull_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;X1.tif&quot;</span><span class="p">)</span>
+<span class="n">platynereis_ISH_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;X01_cropped_downsampled.tif&quot;</span><span class="p">)</span> 
+<span class="n">platynereis_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">folders</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="s2">&quot;downsmapled_cropped_dataset_hdf5_100_0.tif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_skull_instance_tresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">cle</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">mouse_skull_image</span><span class="p">),</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">platynereis_ISH_instance_tresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">cle</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">platynereis_ISH_image</span><span class="p">),</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">platynereis_instance_tresh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">cle</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">platynereis_image</span><span class="p">),</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mf">2.75</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mouse_skull_instance_tresh_postproc</span> <span class="o">=</span> <span class="n">mouse_skull_postproc</span><span class="p">(</span>
+    <span class="n">mouse_skull_instance_tresh</span><span class="p">,</span>
+    <span class="n">mouse_skull_pred</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_generate_touch_mean_intensity_matrix.py (30): generate_touch_mean_intensity_matrix is supposed to work with images of integer type only.
+Loss of information is possible when passing non-integer images.
+_opencl_execute.py (281): overflow encountered in cast
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions_tresh</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">mouse_skull_instance_tresh_postproc</span><span class="p">,</span>
+    <span class="n">mouse_skull_instance_tresh</span><span class="p">,</span>
+    <span class="n">platynereis_ISH_instance_tresh</span><span class="p">,</span>
+    <span class="n">platynereis_instance_tresh</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">names_tresh</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Otsu Threshold &amp; post-processing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Otsu Threshold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Otsu Threshold&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Otsu Threshold&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">gt_tresh</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">mouse_skull_gt</span><span class="p">,</span>
+    <span class="n">platynereis_ISH_gt</span><span class="p">,</span>
+    <span class="n">platynereis_gt</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+
+
+<span class="n">model_stats_tresh</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">names_stats_tresh</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">predictions_tresh</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Validating on </span><span class="si">{</span><span class="n">names_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">matching_dataset</span><span class="p">(</span>
+        <span class="n">gt_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+        <span class="n">p</span><span class="p">,</span>
+        <span class="n">thresh</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> 
+        <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">]</span>
+    <span class="n">model_stats_tresh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">:</span>
+        <span class="n">names_stats_tresh</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">names_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1"># uncomment for ALL plots : </span>
+    <span class="n">plot_performance</span><span class="p">(</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">names_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Validating on Otsu Threshold &amp; post-processing
+********************
+Validating on Otsu Threshold
+********************
+Validating on Otsu Threshold
+********************
+Validating on Otsu Threshold
+********************
+</pre></div>
+</div>
+<img alt="../_images/8fe75b8ea0692c24ad6a6a945f1479db0908a6eaaa0112377ce09068de7b850c.png" src="../_images/8fe75b8ea0692c24ad6a6a945f1479db0908a6eaaa0112377ce09068de7b850c.png" />
+<img alt="../_images/bfc207ac2de3f1cfc3aeb2ae45fcd7a9f18ca1a8f3fa4c744a04b23c7b7fc56a.png" src="../_images/bfc207ac2de3f1cfc3aeb2ae45fcd7a9f18ca1a8f3fa4c744a04b23c7b7fc56a.png" />
+<img alt="../_images/9bdee9928c4eff217956d4f34ce3fa0b152761f961f706be4fd5a8ad9220e70a.png" src="../_images/9bdee9928c4eff217956d4f34ce3fa0b152761f961f706be4fd5a8ad9220e70a.png" />
+<img alt="../_images/3f36d7439d611a5124a83ae77052f9da05087adfa8b316010f39b5bea320bf6c.png" src="../_images/3f36d7439d611a5124a83ae77052f9da05087adfa8b316010f39b5bea320bf6c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save threshold-based instance labels</span>
+<span class="k">for</span> <span class="n">pred</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">predictions_tresh</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
+    <span class="n">save_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="s2">&quot;processed_threshold_only_instance_labels&quot;</span>
+    <span class="n">save_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">imwrite</span><span class="p">(</span><span class="n">save_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">_otsu.tif&quot;</span><span class="p">,</span> <span class="n">pred</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfs</span> <span class="o">=</span> <span class="p">[</span><span class="n">dataset_matching_stats_to_df</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model_stats_tresh</span><span class="p">]</span>
+<span class="n">df_im_only</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+<span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names_stats</span>
+<span class="n">df_all</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_im_only</span><span class="p">])</span>
+<span class="n">df_all</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>criterion</th>
+      <th>fp</th>
+      <th>tp</th>
+      <th>fn</th>
+      <th>precision</th>
+      <th>recall</th>
+      <th>accuracy</th>
+      <th>f1</th>
+      <th>n_true</th>
+      <th>n_pred</th>
+      <th>mean_true_score</th>
+      <th>mean_matched_score</th>
+      <th>panoptic_quality</th>
+      <th>by_image</th>
+      <th>Dataset</th>
+    </tr>
+    <tr>
+      <th>thresh</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.1</th>
+      <td>iou</td>
+      <td>13028</td>
+      <td>4283</td>
+      <td>623</td>
+      <td>0.247415</td>
+      <td>0.873013</td>
+      <td>0.238820</td>
+      <td>0.385561</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.547819</td>
+      <td>0.627504</td>
+      <td>0.241941</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.2</th>
+      <td>iou</td>
+      <td>13295</td>
+      <td>4016</td>
+      <td>890</td>
+      <td>0.231991</td>
+      <td>0.818589</td>
+      <td>0.220647</td>
+      <td>0.361525</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.539571</td>
+      <td>0.659147</td>
+      <td>0.238298</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.3</th>
+      <td>iou</td>
+      <td>13549</td>
+      <td>3762</td>
+      <td>1144</td>
+      <td>0.217318</td>
+      <td>0.766816</td>
+      <td>0.203847</td>
+      <td>0.338660</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.526620</td>
+      <td>0.686762</td>
+      <td>0.232578</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.4</th>
+      <td>iou</td>
+      <td>13850</td>
+      <td>3461</td>
+      <td>1445</td>
+      <td>0.199931</td>
+      <td>0.705463</td>
+      <td>0.184528</td>
+      <td>0.311563</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.504832</td>
+      <td>0.715604</td>
+      <td>0.222956</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>14352</td>
+      <td>2959</td>
+      <td>1947</td>
+      <td>0.170932</td>
+      <td>0.603139</td>
+      <td>0.153650</td>
+      <td>0.266373</td>
+      <td>4906</td>
+      <td>17311</td>
+      <td>0.458649</td>
+      <td>0.760436</td>
+      <td>0.202559</td>
+      <td>False</td>
+      <td>CellPose - pretrained w/ post-processing</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>0.5</th>
+      <td>iou</td>
+      <td>193</td>
+      <td>618</td>
+      <td>434</td>
+      <td>0.762022</td>
+      <td>0.587452</td>
+      <td>0.496386</td>
+      <td>0.663446</td>
+      <td>1052</td>
+      <td>811</td>
+      <td>0.455120</td>
+      <td>0.774736</td>
+      <td>0.513995</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.6</th>
+      <td>iou</td>
+      <td>261</td>
+      <td>550</td>
+      <td>502</td>
+      <td>0.678175</td>
+      <td>0.522814</td>
+      <td>0.418888</td>
+      <td>0.590446</td>
+      <td>1052</td>
+      <td>811</td>
+      <td>0.419812</td>
+      <td>0.802986</td>
+      <td>0.474119</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.7</th>
+      <td>iou</td>
+      <td>339</td>
+      <td>472</td>
+      <td>580</td>
+      <td>0.581998</td>
+      <td>0.448669</td>
+      <td>0.339324</td>
+      <td>0.506710</td>
+      <td>1052</td>
+      <td>811</td>
+      <td>0.371810</td>
+      <td>0.828695</td>
+      <td>0.419908</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.8</th>
+      <td>iou</td>
+      <td>498</td>
+      <td>313</td>
+      <td>739</td>
+      <td>0.385943</td>
+      <td>0.297529</td>
+      <td>0.201935</td>
+      <td>0.336017</td>
+      <td>1052</td>
+      <td>811</td>
+      <td>0.257857</td>
+      <td>0.866661</td>
+      <td>0.291213</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+    <tr>
+      <th>0.9</th>
+      <td>iou</td>
+      <td>739</td>
+      <td>72</td>
+      <td>980</td>
+      <td>0.088779</td>
+      <td>0.068441</td>
+      <td>0.040201</td>
+      <td>0.077295</td>
+      <td>1052</td>
+      <td>811</td>
+      <td>0.062995</td>
+      <td>0.920429</td>
+      <td>0.071144</td>
+      <td>False</td>
+      <td>Platynereis</td>
+    </tr>
+  </tbody>
+</table>
+<p>108 rows × 15 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot each model vs threshold only pair separately</span>
+<span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Mouse skull&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Mouse skull&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Platynereis ISH&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Platynereis&quot;</span>
+<span class="p">]</span>
+<span class="n">wnet_names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;WNet3D &amp; post-processing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WNet3D&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WNet3D&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;WNet3D&quot;</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">stats_model</span><span class="p">,</span> <span class="n">stats_image_only</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">model_stats</span><span class="p">)),</span> <span class="n">model_stats</span><span class="p">,</span> <span class="n">model_stats_tresh</span><span class="p">):</span>
+    <span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="p">[</span><span class="n">stats_model</span><span class="p">,</span> <span class="n">stats_image_only</span><span class="p">],</span> <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="n">wnet_names</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">names_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datasets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">wnet_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2"> vs </span><span class="si">{</span><span class="n">names_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">names_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">datasets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_f1_comparison.png&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">names_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">datasets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_f1_comparison.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="c1"># plot_stat_comparison(taus=taus, stats_list=model_stats+model_stats_images_only, model_names=df_all.Dataset.unique(), metric=&quot;IoU&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f7a0efb21ad384fe14db8f956ffadd140affc57c01d32d65751941fe1bea3101.png" src="../_images/f7a0efb21ad384fe14db8f956ffadd140affc57c01d32d65751941fe1bea3101.png" />
+<img alt="../_images/ba872b293a2253aeca288464c3c0b0456b4e5d98b6f90e048d00777eece7a16c.png" src="../_images/ba872b293a2253aeca288464c3c0b0456b4e5d98b6f90e048d00777eece7a16c.png" />
+<img alt="../_images/d4eff47d8913ed4a5d81bd4465d8c7a7018dc010ae7f99d037559dca7bd39c68.png" src="../_images/d4eff47d8913ed4a5d81bd4465d8c7a7018dc010ae7f99d037559dca7bd39c68.png" />
+<img alt="../_images/de14942064e063def3732e2cba45fd710b7de9f7a089d113275fa1ff853808b5.png" src="../_images/de14942064e063def3732e2cba45fd710b7de9f7a089d113275fa1ff853808b5.png" />
+</div>
+</div>
+<section id="combined-plots">
+<h3>Combined plots<a class="headerlink" href="#combined-plots" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make plots with all models and thresholds : Cellpose, StarDist, WNet3D, Otsu</span>
+
+<span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="n">model_stats</span><span class="o">+</span><span class="n">model_stats_others</span><span class="o">+</span><span class="n">model_stats_tresh</span><span class="p">,</span> <span class="n">model_names</span><span class="o">=</span><span class="n">names</span><span class="o">+</span><span class="n">names_others</span><span class="o">+</span><span class="n">names_tresh</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;All models and thresholds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/80abdb54c3636aa2f9d4f7e9176c2b1674748df0537ba53c062f72d487fc698e.png" src="../_images/80abdb54c3636aa2f9d4f7e9176c2b1674748df0537ba53c062f72d487fc698e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make plots with all models and thresholds : Cellpose, StarDist, WNet3D, Otsu</span>
+<span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Mouse Skull with post-processing&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Mouse Skull&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Platynereis ISH&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Platynereis&quot;</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="mi">2</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">skip</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">plot_stat_comparison</span><span class="p">(</span><span class="n">taus</span><span class="o">=</span><span class="n">taus</span><span class="p">,</span> <span class="n">stats_list</span><span class="o">=</span><span class="p">[</span><span class="n">model_stats</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">+</span><span class="n">model_stats_others</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">offset</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">offset</span><span class="o">+</span><span class="n">skip</span><span class="p">:</span><span class="n">skip</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">model_stats_tresh</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="n">model_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;WNet3D&quot;</span><span class="p">,</span> <span class="s2">&quot;Cellpose - pretrained&quot;</span><span class="p">,</span> <span class="s2">&quot;StarDist - retrained&quot;</span><span class="p">,</span> <span class="s2">&quot;Otsu threshold&quot;</span><span class="p">],</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;IoU&quot;</span><span class="p">,</span> <span class="n">plt_size</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">colormap</span><span class="o">=</span><span class="n">SIMPLE_COLORMAP</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">datasets</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">SAVE_PLOTS_AS_PNG</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;extra_</span><span class="si">{</span><span class="n">datasets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_all_f1_comparison.png&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">SAVE_PLOTS_AS_SVG</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;extra_</span><span class="si">{</span><span class="n">datasets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">_all_f1_comparison.svg&quot;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e39201bcba3d2f72d7df23d4ef38184f62d6dd4effc23ced8ce1dd5fe621780f.png" src="../_images/e39201bcba3d2f72d7df23d4ef38184f62d6dd4effc23ced8ce1dd5fe621780f.png" />
+<img alt="../_images/2b58b422601615a30694703fdd18e3a207e0f10e8f216ba3a1ea1f902012e0bc.png" src="../_images/2b58b422601615a30694703fdd18e3a207e0f10e8f216ba3a1ea1f902012e0bc.png" />
+<img alt="../_images/9156696ec640ad36c51e19e50c65dd241263c1b720b42996c4eb0e0e88d6eadc.png" src="../_images/9156696ec640ad36c51e19e50c65dd241263c1b720b42996c4eb0e0e88d6eadc.png" />
+<img alt="../_images/2efbf426f500c00f160f857d6535750b27c6d6efcb957b264d88fc3ad2aabece.png" src="../_images/2efbf426f500c00f160f857d6535750b27c6d6efcb957b264d88fc3ad2aabece.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./FIgure3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computations">Computations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#threshold-predictions">Threshold predictions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-mouse-skull-postprocessing">Additional mouse skull postprocessing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons-on-additional-datasets">Comparisons on additional datasets</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-images-only-no-wnet">Sanity check : Images only (no WNet)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-plots">Combined plots</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cyril Achard, Mackenzie W. Mathis | Mathis Laboratory of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
