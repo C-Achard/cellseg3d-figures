@@ -43,6 +43,13 @@ COLORMAP = COLORMAP_DARK if DARK_MODE else COLORMAP_LIGHT
 SEQUENTIAL_COLORMAP = LinearSegmentedColormap.from_list(
     "sequential_colormap", [COLORMAP[0], COLORMAP[1], COLORMAP[3]]
 )
+COLORS_DICT = {
+    "Stardist": COLORMAP[0],
+    "Cellpose": COLORMAP[1],
+    "SegRes": COLORMAP[2],
+    "Swin": COLORMAP[3],
+    "WNet3D": COLORMAP[4],
+}
 ################ Plot settings
 DPI = 200
 FONT_SIZE = 20
@@ -260,13 +267,15 @@ def plot_stat_comparison(
     metric="IoU",
     colormap=COLORMAP,
     plt_size=(12, 6),
+    title=None,
 ):
     """Compare one stat for several models on a single plot."""
     with get_style_context():
         sns.set_palette(colormap)
         fig, ax = plt.subplots(1, 1, figsize=plt_size, dpi=DPI)
         stat_title = (stat[0].upper() + stat[1:]).replace("_", " ")
-        fig.suptitle(f"{stat_title} comparison", fontsize=TITLE_FONT_SIZE)
+        suptitle = title if title is not None else f"{stat_title} comparison"
+        fig.suptitle(suptitle, fontsize=TITLE_FONT_SIZE)
         stats_list = [
             dataset_matching_stats_to_df(stats) for stats in stats_list
         ]
@@ -298,7 +307,12 @@ def plot_stat_comparison(
             offset={"bottom": 40, "left": 15},
         )
         # legend to right (outside) of plot
-        ax.legend(fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC)
+        legend = ax.legend(
+            fontsize=FONT_SIZE, bbox_to_anchor=BBOX_TO_ANCHOR, loc=LOC
+        )
+        legend.get_frame().set_alpha(0)
+        fig.patch.set_alpha(0)
+        ax.patch.set_alpha(0)
         # return fig
 
 

@@ -173,3 +173,4 @@ figures/_build/
 # others
 other/wnet_train_screens/
 !figures/logo.png
+*.cellpose
