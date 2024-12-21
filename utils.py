@@ -1,11 +1,10 @@
 import colorsys
+import shutil
 import time
 from pathlib import Path
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
 from tifffile import imread
 
 ###################
@@ -490,3 +489,48 @@ def sample_volumes_by_files_percentage(data_stats, percentage, verbose=True):
         print("Labels data files:")
         [print(f"- {label}") for label in selected_labels]
     return selected_volumes, selected_labels
+
+
+def filter_volumes_by_labels(volumes_path: str, labels_path: str):
+    """
+    Filter volumes based on whether the labels are empty or not.
+
+    Args:
+        volumes_path (str): Path to the volumes.
+        labels_path (str): Path to the labels.
+
+    Returns:
+        list: Filtered volumes.
+    """
+    volumes_path = Path(volumes_path)
+    labels_path = Path(labels_path)
+    volumes = sorted(list(volumes_path.glob("*.tif")))
+    labels = sorted(list(labels_path.glob("*.tif")))
+    volumes_filtered = []
+    for volume_p, label_p in zip(volumes, labels):
+        label = imread(label_p)
+        if label.sum() > 0:
+            volumes_filtered.append(volume_p)
+        else:
+            print(
+                f"Excluding {volume_p.name} due to empty label {label_p.name}"
+            )
+    return volumes_filtered
+
+
+def copy_listed_volumes(volumes, destination_path):
+    """
+    Copy the selected volumes to the destination path.
+
+    Args:
+        volumes (list): List of volumes to be copied.
+        destination_path (str): Path to the destination folder.
+    """
+    destination_path = Path(destination_path).resolve()
+    if not destination_path.exists():
+        destination_path.mkdir(parents=True)
+    for volume in volumes:
+        volume = Path(volume)
+        volume_name = volume.name
+        volume_destination = destination_path / volume_name
+        shutil.copy(volume, volume_destination)
