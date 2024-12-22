@@ -6,8 +6,8 @@ root: intro
 parts:
 - caption: Figures
   chapters:
-  - file: Figure1/supervised/supervised_benchmark
+  - file: Figure1/supervised_benchmark
   - file: Figure2_SFigure1/splits_benchmark
   - file: Figure2_SFigure1/self-supervised_retrain
-  - file: Figure3/self-supervised-extra
+  - file: FIgure3/self-supervised_benchmark
   - file: SFigure2/wnet_losses
