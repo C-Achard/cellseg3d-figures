@@ -11,3 +11,4 @@ parts:
   - file: Figure2_SFigure1/self-supervised_retrain
   - file: Figure3/self-supervised-extra
   - file: SFigure2/wnet_losses
+  - file: Figure4/cell_stats
