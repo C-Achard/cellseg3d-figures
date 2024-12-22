@@ -1,0 +1,997 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Demo Mouse brain alignment and c-Fos analysis &#8212; CellSeg3D - Figures</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Figure4/ExtractBrainRegions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="CellSeg3D - Figures - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CellSeg3D - Figures - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Home - CellSeg3D figures
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Figures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Figure1/supervised_benchmark.html">Supervised &amp; self-supervised model performance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Figure2_SFigure1/splits_benchmark.html">Training efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Figure2_SFigure1/self-supervised_retrain.html">Retraining of a supervised 3D model with unsupervised labels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Figure3/self-supervised-extra.html">Showing quantitative benchmarking performance on additional datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../SFigure2/wnet_losses.html">Examples of WNet3D losses, and output during training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cell_stats.html">Plotting stats for cFOS whole-brain data sample</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/C-Achard/cellseg3d-figures" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Figure4/ExtractBrainRegions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Demo Mouse brain alignment and c-Fos analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Demo Mouse brain alignment and c-Fos analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">0. Imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resize-atlas">1. Resize atlas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#match-cfos-brains-with-their-registered-homolog-and-cut-out-regions-of-interest">2. Match cfos brains with their registered homolog and cut out regions of interest</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-autofluorescence">3. Remove autofluorescence</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-inference-using-cellseg3d-plugin">3.5 Run inference using CellSeg3D plugin</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-borders-after-inference">4. Remove borders after inference</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-and-remove-artifacts-and-segmentation">Thresholding and Remove artifacts and segmentation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-part-threshold-all-images-in-folder-and-count-cells">Final part: Threshold all images in folder and count cells</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="demo-mouse-brain-alignment-and-c-fos-analysis">
+<h1>Demo Mouse brain alignment and c-Fos analysis<a class="headerlink" href="#demo-mouse-brain-alignment-and-c-fos-analysis" title="Link to this heading">#</a></h1>
+<p>Assumes:</p>
+<ul class="simple">
+<li><p>You have whole brain data from mesoSPIM (two channels, imaged with c-FOS and autofluorescence)</p></li>
+<li><p>You already ran BrainReg on them and have their registered atlas (See our config_brainreg parameters)</p>
+<ul>
+<li><p>If not,launch CellSeg3D’s napari GUI, import your autofluorescence image, Click on Plugins/Atlas Registration (brainreg), enter the parameters from the config (note that voxel size is specific to your experiment and specified in the metadata of your mesoSPIM experiment). Orientation as well. Can be checked using check orientation button. See brainreg doc: <a class="reference external" href="https://brainglobe.info/tutorials/tutorial-whole-brain-registration.html#">https://brainglobe.info/tutorials/tutorial-whole-brain-registration.html#</a> for help.</p></li>
+</ul>
+</li>
+<li><p>You should update the hardcoded paths yourself based on where the different files are located</p></li>
+</ul>
+<p>Does:</p>
+<ol class="arabic simple">
+<li><p>Resizes the atlas based on the brain of the mouse</p></li>
+<li><p>Match cfos brains with their registered homolog and cut out regions of interest</p></li>
+<li><p>Remove autofluorescence</p></li>
+<li><p>Remove borders after inference</p></li>
+</ol>
+<p>Then:</p>
+<ul class="simple">
+<li><p>Thresholding and Remove artifacts and segmentation</p></li>
+<li><p>Count cells</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config_bg</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;additional_images&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="s2">&quot;voxel_sizes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.26</span><span class="p">,</span> <span class="mf">5.26</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">],</span>
+  <span class="s2">&quot;output_directory&quot;</span><span class="p">:</span> <span class="n">output_directory_path</span><span class="p">,</span>
+  <span class="s2">&quot;atlas&quot;</span><span class="p">:</span> <span class="s2">&quot;allen_mouse_25um&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;n_free_cpus&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="s2">&quot;hemisphere_selection&quot;</span><span class="p">:</span> <span class="s2">&quot;full&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;default_voxel_size_x&quot;</span><span class="p">:</span> <span class="mf">5.26</span><span class="p">,</span>
+  <span class="s2">&quot;default_voxel_size_y&quot;</span><span class="p">:</span> <span class="mf">5.26</span><span class="p">,</span>
+  <span class="s2">&quot;default_voxel_size_z&quot;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+  <span class="s2">&quot;orientation&quot;</span><span class="p">:</span> <span class="s2">&quot;sar&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;preprocessing&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;sort_input_file&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="s2">&quot;save_orientation&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="s2">&quot;debug&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="s2">&quot;affine_n_steps&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+  <span class="s2">&quot;affine_use_n_steps&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">&quot;freeform_n_steps&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+  <span class="s2">&quot;freeform_use_n_steps&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">&quot;bending_energy_weight&quot;</span><span class="p">:</span> <span class="mf">0.85</span><span class="p">,</span>
+  <span class="s2">&quot;grid_spacing&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span>
+  <span class="s2">&quot;smoothing_sigma_reference&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+  <span class="s2">&quot;smoothing_sigma_floating&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span>
+  <span class="s2">&quot;histogram_n_bins_floating&quot;</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+  <span class="s2">&quot;histogram_n_bins_reference&quot;</span><span class="p">:</span> <span class="mi">128</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="imports">
+<h1>0. Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tifffile</span>
+<span class="kn">import</span> <span class="nn">skimage</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">napari_cellseg3d</span>
+<span class="kn">from</span> <span class="nn">napari_cellseg3d.dev_scripts</span> <span class="kn">import</span> <span class="n">whole_brain_utils</span> <span class="k">as</span> <span class="n">wh</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="resize-atlas">
+<h1>1. Resize atlas<a class="headerlink" href="#resize-atlas" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_exp_path</span> <span class="o">=</span> <span class="s1">&#39;/data/seb/CFOS_exp/TestBatch/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2023-10-30</span>
+<span class="c1">#Sebastien B. Hausmann</span>
+<span class="c1">#script order: 1</span>
+
+<span class="c1"># Script to resize atlas based on related brain</span>
+<span class="kn">from</span> <span class="nn">tifffile</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imwrite</span>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">resize</span>
+<span class="kn">from</span> <span class="nn">bg_space</span> <span class="kn">import</span> <span class="n">map_stack_to</span>
+
+<span class="c1"># Prompt user for mouse name</span>
+<span class="n">mouse_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Please enter the name of the mouse: &quot;</span><span class="p">)</span>
+
+<span class="c1"># Validate mouse name</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">mouse_name</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Mouse name cannot be empty.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Paths</span>
+<span class="n">brain_image_path_template</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">main_exp_path</span><span class="si">}{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s1">*Mag1.25x*Ch488*.tiff&#39;</span>
+<span class="n">brain_image_path</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">brain_image_path_template</span><span class="p">)</span>
+
+<span class="c1"># Validate brain image path</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">brain_image_path</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Brain image for mouse </span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s2"> not found at path: </span><span class="si">{</span><span class="n">brain_image_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">corresponding_brain_atlas_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">main_exp_path</span><span class="si">}</span><span class="s1">reg_results_</span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s1">/&#39;</span>
+
+<span class="c1"># Validate atlas path</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">corresponding_brain_atlas_path</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding brain atlas directory for mouse </span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s2"> not found at path: </span><span class="si">{</span><span class="n">corresponding_brain_atlas_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get actual shape of main image</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">brain_image_shape</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">brain_image_path</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error reading brain image at </span><span class="si">{</span><span class="n">brain_image_path</span><span class="si">}</span><span class="s2">. Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get atlas</span>
+<span class="n">atlas_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">corresponding_brain_atlas_path</span><span class="p">,</span> <span class="s1">&#39;registered_atlas.tiff&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">atlas_path</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Atlas image not found at path: </span><span class="si">{</span><span class="n">atlas_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">atlas</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">atlas_path</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error reading atlas image at </span><span class="si">{</span><span class="n">atlas_path</span><span class="si">}</span><span class="s2">. Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">target_space</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">]</span>
+<span class="n">source_space</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">]</span>
+
+<span class="c1"># Map atlas and resize it</span>
+<span class="n">atlas</span> <span class="o">=</span> <span class="n">map_stack_to</span><span class="p">(</span><span class="n">source_space</span><span class="p">,</span> <span class="n">target_space</span><span class="p">,</span> <span class="n">atlas</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">atlas</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">atlas</span><span class="p">,</span> <span class="n">brain_image_shape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">preserve_range</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">anti_aliasing</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Save image</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">corresponding_brain_atlas_path</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;registered_atlas_resize_</span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s1">.tiff&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">imwrite</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">atlas</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resized atlas saved successfully at: </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error writing resized atlas to </span><span class="si">{</span><span class="n">output_path</span><span class="si">}</span><span class="s2">. Error: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please enter the name of the mouse: ALUSKY
+Resized atlas saved successfully at: /data/seb/CFOS_exp/TestBatch/reg_results_ALUSKY/registered_atlas_resize_ALUSKY.tiff
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="match-cfos-brains-with-their-registered-homolog-and-cut-out-regions-of-interest">
+<h1>2. Match cfos brains with their registered homolog and cut out regions of interest<a class="headerlink" href="#match-cfos-brains-with-their-registered-homolog-and-cut-out-regions-of-interest" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2023-10-30</span>
+<span class="c1">#Sebastien B. Hausmann</span>
+<span class="c1">#script order: 2</span>
+
+<span class="c1"># Script to match the cfos brains with their registered homolog brain and cut out regions of interest</span>
+<span class="c1"># Saves it to a smaller file usable for cell segmentation</span>
+<span class="c1">## IMPORTANT: Run this script twice, one time for autofluo and one time for cFOS only. You will be prompted when running it</span>
+
+<span class="c1"># Add a variable to specify a specific mouse name (leave empty to process all files)</span>
+<span class="n">specific_mouse_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter mouse name, can be left blank to do all: &#39;</span><span class="p">)</span> <span class="c1">#can be leaved blank for all mice</span>
+<span class="n">cfos</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;cfos channel? (y/n): &#39;</span><span class="p">)</span>
+
+<span class="n">cfos_images_path</span> <span class="o">=</span> <span class="n">main_exp_path</span>
+<span class="n">registered_brains_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">main_exp_path</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="n">atlas_ID_dict</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;/</span><span class="si">{</span><span class="n">main_exp_path</span><span class="si">}</span><span class="s1">allen_mouse_25um_csv_ref.csv&#39;</span>
+<span class="n">cropped_regions_output_folder</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;/</span><span class="si">{</span><span class="n">main_exp_path</span><span class="si">}</span><span class="s1">&#39;</span>
+
+<span class="c1"># Either enter Labels or keywords</span>
+<span class="n">regions_of_interest</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter ONE allen brain atlas region of interest name (e.g., visual, retrosplenial, primary motor): &#39;</span><span class="p">)</span> <span class="c1">#&#39;retrosplenial&#39; # &#39;visual&#39; #&#39;primary motor&#39;</span>
+
+<span class="c1"># Filter out your regions of interest to get the coresponding labels</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">atlas_ID_dict</span><span class="p">)</span>
+<span class="n">filtered_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">regions_of_interest</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+<span class="n">area_ids</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+
+<span class="c1"># Find all tiff files in cfos_images_path containing a mouse name followed by Mag1.25x and containing Ch561.</span>
+<span class="k">if</span> <span class="n">cfos</span><span class="o">==</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cfos_images_path</span><span class="p">,</span> <span class="s1">&#39;*Mag1.25x*Ch561*.tiff&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">cfos</span><span class="o">==</span><span class="s1">&#39;n&#39;</span><span class="p">:</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cfos_images_path</span><span class="p">,</span> <span class="s1">&#39;*Mag1.25x*Ch488*.tiff&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+    
+<span class="n">cfos_tiff_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+<span class="c1"># Do the same for registered brains</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">registered_brains_path</span><span class="p">,</span> <span class="s1">&#39;registered*.tiff&#39;</span><span class="p">)</span>
+<span class="n">registered_brains_tiff_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+   
+<span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">cfos_tiff_files</span><span class="p">:</span>
+
+    <span class="c1"># Extract the mouse name from the file path</span>
+    <span class="n">mouse_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_Mag1.25x&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># Check if the specific_mouse_name is set and if the current file matches the mouse name</span>
+    <span class="k">if</span> <span class="n">specific_mouse_name</span> <span class="ow">and</span> <span class="n">specific_mouse_name</span> <span class="o">!=</span> <span class="n">mouse_name</span><span class="p">:</span>
+        <span class="k">continue</span>  <span class="c1"># Skip this file as it doesn&#39;t match the specified mouse name</span>
+
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;brain:&#39;</span><span class="p">,</span> <span class="n">file_path</span><span class="p">)</span>
+    <span class="c1"># Load the tiff file</span>
+    <span class="n">brain_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+
+    <span class="c1"># Find the corresponding atlas_image based on the mouse_name</span>
+    <span class="n">matched_atlas_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">registered_brains_tiff_files</span> <span class="k">if</span> <span class="n">mouse_name</span> <span class="ow">in</span> <span class="n">path</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">matched_atlas_path</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">matched_atlas_path</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">atlas_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">matched_atlas_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No registered brain found for mouse: </span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+    <span class="c1"># Create a mask with regions of interest</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Create mask&#39;</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">atlas_image</span><span class="p">,</span><span class="n">area_ids</span><span class="p">)</span> <span class="c1">#</span>
+
+    <span class="c1"># Corresponding indices</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Get indices&#39;</span><span class="p">)</span>
+    <span class="n">inds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+
+    <span class="c1"># 0 all the rest</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zero brain image&#39;</span><span class="p">)</span>
+    <span class="n">brain_image</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Finds mins and maxs to get the cropping coordinates</span>
+    <span class="n">mins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">maxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">inds</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Get the cropped region</span>
+    <span class="n">cropped_region</span> <span class="o">=</span> <span class="n">brain_image</span><span class="p">[</span><span class="n">mins</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">maxs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">mins</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="n">maxs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mins</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span><span class="n">maxs</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+    
+    <span class="c1"># Save the result to a desired location</span>
+    <span class="k">if</span> <span class="n">cfos</span><span class="o">!=</span><span class="s1">&#39;y&#39;</span><span class="p">:</span>
+        <span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s2">_ROI_</span><span class="si">{</span><span class="n">regions_of_interest</span><span class="si">}</span><span class="s2">_autofluo.tiff&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">output_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s2">_ROI_</span><span class="si">{</span><span class="n">regions_of_interest</span><span class="si">}</span><span class="s2">.tiff&quot;</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cropped_regions_output_folder</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving now&#39;</span><span class="p">)</span>
+    <span class="n">imwrite</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">cropped_region</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Next Brain...&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter mouse name, can be left blank to do all: ALUSKY
+cfos channel? (y/n): n
+Enter ONE allen brain atlas region of interest name (e.g., visual, retrosplenial, primary motor): primary motor
+brain: /data/seb/CFOS_exp/TestBatch/ALUSKY_Mag1.25x_Tile0_Ch488_Sh0_Rot0.tiff
+Create mask
+Get indices
+Zero brain image
+Saving now
+Done
+--- 243.15659046173096 seconds ---
+Next Brain...
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="remove-autofluorescence">
+<h1>3. Remove autofluorescence<a class="headerlink" href="#remove-autofluorescence" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2023-10-30</span>
+<span class="c1">#Sebastien B. Hausmann</span>
+<span class="c1">#script order: 3</span>
+
+<span class="n">cropped_images_folder</span> <span class="o">=</span> <span class="n">main_exp_path</span>
+
+<span class="n">specific_mouse_name</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter specific mouse name, or leave blank for all mice: &#39;</span><span class="p">)</span>
+<span class="n">brain_region</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter specific brain region: &#39;</span><span class="p">)</span>
+
+<span class="c1"># Find files in folder that contain autofluo in their name</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cropped_images_folder</span><span class="p">,</span> <span class="s1">&#39;*</span><span class="si">{}</span><span class="s1">_autofluo.tiff&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">brain_region</span><span class="p">))</span>
+<span class="n">autofluo_tiff_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">autofluo_file</span> <span class="ow">in</span> <span class="n">autofluo_tiff_files</span><span class="p">:</span>
+    <span class="c1"># Extract the mouse name from the file path</span>
+    <span class="n">mouse_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">autofluo_file</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1">#print(mouse_name)</span>
+    <span class="c1"># Check if the specific_mouse_name is set and if the current file matches the mouse name</span>
+    <span class="k">if</span> <span class="n">specific_mouse_name</span> <span class="ow">and</span> <span class="n">specific_mouse_name</span> <span class="o">!=</span> <span class="n">mouse_name</span><span class="p">:</span>
+        <span class="k">continue</span>  <span class="c1"># Skip this file as it doesn&#39;t match the specified mouse name</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Remove background for:&#39;</span><span class="p">,</span><span class="n">autofluo_file</span><span class="p">)</span>
+    <span class="c1"># Load images</span>
+    <span class="c1">## Load background image (autofluo)</span>
+    <span class="n">background_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">autofluo_file</span><span class="p">)</span>
+    <span class="c1">## Load cfos image</span>
+    <span class="n">cfos_file</span> <span class="o">=</span> <span class="n">autofluo_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_autofluo&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">cfos_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">cfos_file</span><span class="p">)</span>
+
+    <span class="c1"># Convert both into int32 to allow correct sutraction</span>
+    <span class="n">background_image</span> <span class="o">=</span> <span class="n">background_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">cfos_image</span> <span class="o">=</span> <span class="n">cfos_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="c1"># Background corrected image:</span>
+    <span class="n">corrected</span> <span class="o">=</span> <span class="n">cfos_image</span><span class="o">-</span><span class="n">background_image</span>
+
+    <span class="c1"># Zero all the values lower than 0</span>
+    <span class="n">corrected</span><span class="p">[</span><span class="n">corrected</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">corrected</span> <span class="o">=</span> <span class="n">corrected</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+
+    <span class="c1"># Save the result to a desired location</span>
+    <span class="n">output_filename</span> <span class="o">=</span> <span class="n">autofluo_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_autofluo&#39;</span><span class="p">,</span> <span class="s1">&#39;_backgroundCorrected&#39;</span><span class="p">)</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cropped_images_folder</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">)</span>
+    <span class="n">imwrite</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">corrected</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Enter specific mouse name, or leave blank for all mice: ALUSKY
+Enter specific brain region: primary motor
+Remove background for: /data/seb/CFOS_exp/TestBatch/ALUSKY_ROI_primary motor_autofluo.tiff
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="run-inference-using-cellseg3d-plugin">
+<h1>3.5 Run inference using CellSeg3D plugin<a class="headerlink" href="#run-inference-using-cellseg3d-plugin" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Open napari</p></li>
+<li><p>Run inference on file(s) cropped</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="remove-borders-after-inference">
+<h1>4. Remove borders after inference<a class="headerlink" href="#remove-borders-after-inference" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2023-10-30</span>
+<span class="c1">#Sebastien B. Hausmann</span>
+<span class="c1">#script order: 4 (after inference)</span>
+
+<span class="n">cropped_images_folder</span> <span class="o">=</span> <span class="n">main_exp_path</span>
+<span class="n">pred_image_folder</span> <span class="o">=</span> <span class="n">main_exp_path</span>
+
+<span class="c1"># Find files</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cropped_images_folder</span><span class="p">,</span> <span class="s1">&#39;*.tiff&#39;</span><span class="p">)</span>
+
+<span class="n">tiff_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+<span class="n">filtered_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">tiff_files</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_autofluo.tiff&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;_backgroundCorrected.tiff&quot;</span><span class="p">)]</span>
+
+<span class="n">thickness_to_remove</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">for</span> <span class="n">_file</span> <span class="ow">in</span> <span class="n">filtered_files</span><span class="p">:</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;remove borders for:&#39;</span><span class="p">,</span><span class="n">_file</span><span class="p">)</span>
+
+    <span class="c1"># Check if the file starts with &quot;registered_atlas_resize_&quot;</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">_file</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;registered_atlas_resize_&#39;</span><span class="p">):</span>
+        <span class="c1"># Extract the mouse name (the part before the first underscore after &quot;registered_atlas_resize_&quot;)</span>
+        <span class="n">mouse_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">_file</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mouse name extracted:&#39;</span><span class="p">,</span> <span class="n">mouse_name</span><span class="p">)</span>
+        <span class="c1"># Load images</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">_file</span><span class="p">)</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Handle other cases if needed</span>
+        <span class="k">continue</span>
+    <span class="c1"># Extract the mouse name from the file path</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pred_image_folder</span><span class="p">,</span> <span class="s1">&#39;*_pred*.tif&#39;</span><span class="p">)</span>
+    <span class="n">pred_tiff_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+    <span class="c1"># Find the corresponding pred image based on the mouse_name</span>
+    <span class="n">pred_path</span> <span class="o">=</span> <span class="p">[</span><span class="n">path</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">pred_tiff_files</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">_file</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">path</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">pred_path</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">pred_path</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;related pred file:&#39;</span><span class="p">,</span><span class="n">pred_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">pred_image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">pred_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No registered brain found for mouse: </span><span class="si">{</span><span class="n">mouse_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+
+    <span class="n">image</span> <span class="o">=</span> <span class="n">wh</span><span class="o">.</span><span class="n">extract_continuous_region</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">wh</span><span class="o">.</span><span class="n">remove_boundaries_from_segmentation</span><span class="p">(</span><span class="n">pred_image</span><span class="p">,</span> <span class="n">image_labels</span><span class="o">=</span><span class="n">image</span><span class="p">,</span> <span class="n">thickness_num_iters</span><span class="o">=</span><span class="n">thickness_to_remove</span><span class="p">)</span>
+
+    <span class="c1"># Save the result to a desired location</span>
+    <span class="n">output_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">pred_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;_rmBorders.tif&#39;</span><span class="p">)</span><span class="c1">#pred_path.replace(&#39;.tif&#39;, &#39;rmBorders.tif&#39;)</span>
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pred_image_folder</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">)</span>
+    <span class="n">imwrite</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>remove borders for: /data/seb/CFOS_exp/TestBatch/registered_atlas.tiff
+remove borders for: /data/seb/CFOS_exp/TestBatch/registered_atlas_resize_ALUSKY.tiff
+Mouse name extracted: ALUSKY
+related pred file: /data/seb/CFOS_exp/TestBatch/ALUSKY_ROI_primary motor_SwinUNetR_pred_1_2023_11_22_18_04_17.tif
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="thresholding-and-remove-artifacts-and-segmentation">
+<h1>Thresholding and Remove artifacts and segmentation<a class="headerlink" href="#thresholding-and-remove-artifacts-and-segmentation" title="Link to this heading">#</a></h1>
+<section id="final-part-threshold-all-images-in-folder-and-count-cells">
+<h2>Final part: Threshold all images in folder and count cells<a class="headerlink" href="#final-part-threshold-all-images-in-folder-and-count-cells" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">napari_cellseg3d.code_models.instance_segmentation</span> <span class="kn">import</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">voronoi_otsu</span><span class="p">,</span> <span class="n">binary_watershed</span><span class="p">,</span> <span class="n">clear_small_objects</span><span class="p">,</span> <span class="n">volume_stats</span><span class="p">,</span> <span class="n">InstanceMethod</span>
+<span class="kn">from</span> <span class="nn">napari_cellseg3d.utils</span> <span class="kn">import</span> <span class="n">get_all_matching_files</span><span class="p">,</span> <span class="n">resize</span>
+<span class="kn">from</span> <span class="nn">tifffile</span> <span class="kn">import</span> <span class="n">imread</span><span class="p">,</span> <span class="n">imwrite</span>
+<span class="kn">import</span> <span class="nn">napari</span>
+<span class="kn">from</span> <span class="nn">napari.settings</span> <span class="kn">import</span> <span class="n">get_settings</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># if ipy_interactive is false, each viewer will wait before continuing</span>
+<span class="c1"># otherwise you&#39;ll immediately get 4 viewers.</span>
+
+<span class="n">settings</span> <span class="o">=</span> <span class="n">get_settings</span><span class="p">()</span>
+<span class="n">settings</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">ipy_interactive</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_border_paths</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">/</span><span class="s1">&#39;border_removed/&#39;</span>
+<span class="n">result_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">/</span><span class="s1">&#39;border_removed/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">show_napari_viewer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">viewer</span> <span class="o">=</span> <span class="n">napari</span><span class="o">.</span><span class="n">view_image</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">labels</span><span class="p">:</span>
+        <span class="n">viewer</span><span class="o">.</span><span class="n">add_labels</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">viewer</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">viewer</span><span class="o">.</span><span class="n">dims</span><span class="o">.</span><span class="n">ndisplay</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">napari</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thresholded_images</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">image_paths</span> <span class="o">=</span> <span class="n">get_all_matching_files</span><span class="p">(</span><span class="n">removed_border_paths</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">image_paths</span><span class="p">:</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">threshold</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">)</span>
+    <span class="c1">#show_napari_viewer(image,result)    </span>
+    <span class="n">thresholded_images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">th_im</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">thresholded_images</span><span class="p">):</span>
+    <span class="n">binaryzed_im</span> <span class="o">=</span> <span class="n">binary_watershed</span><span class="p">(</span><span class="n">th_im</span><span class="p">,</span> <span class="n">thres_objects</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">thres_seeding</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">thres_small</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">rem_seed_thres</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">binaryzed_im</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="n">th_im</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">resized_result</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">zoom_factors</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="c1">#show_napari_viewer(result,resized_result)</span>
+    <span class="n">segmented_image</span> <span class="o">=</span> <span class="n">voronoi_otsu</span><span class="p">(</span><span class="n">resized_result</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="c1">#show_napari_viewer(segmented_image, resized_result, labels=True)</span>
+
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">volume_stats</span><span class="p">(</span><span class="n">segmented_image</span><span class="p">)</span>
+    
+    <span class="n">image_name</span> <span class="o">=</span> <span class="n">image_paths</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">stem</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">get_dict</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;mouse_name: &#39;</span><span class="p">,</span> <span class="n">image_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;region :&#39;</span> <span class="p">,</span><span class="n">image_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Number objects&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;saving here :&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">result_path</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">image_name</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">result_path</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;/&#39;</span><span class="o">+</span><span class="n">image_name</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Save the segmented image as a TIFF file</span>
+    <span class="n">tiff_output_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">result_path</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">image_name</span> <span class="o">+</span> <span class="s1">&#39;_segmented.tiff&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving segmented image to:&#39;</span><span class="p">,</span> <span class="n">tiff_output_path</span><span class="p">)</span>
+    <span class="n">imwrite</span><span class="p">(</span><span class="n">tiff_output_path</span><span class="p">,</span> <span class="n">segmented_image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">))</span>  <span class="c1"># Ensure correct data type</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>size: 209
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 invalid sphericities were set to NaN. This occurs for objects with a volume of 1 pixel.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mouse_name:  ZOKOR
+region : primary motor
+14210
+saving here : /home/sebastien/Downloads/border_removed/ZOKOR_ROI_primary motor_SwinUNetR_pred_9_2023_11_22_18_40_15_rmBorders.csv
+Saving segmented image to: /home/sebastien/Downloads/border_removed/ZOKOR_ROI_primary motor_SwinUNetR_pred_9_2023_11_22_18_40_15_rmBorders_segmented.tiff
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "mesospimpipeline"
+        },
+        kernelOptions: {
+            name: "mesospimpipeline",
+            path: "./Figure4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'mesospimpipeline'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Demo Mouse brain alignment and c-Fos analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">0. Imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resize-atlas">1. Resize atlas</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#match-cfos-brains-with-their-registered-homolog-and-cut-out-regions-of-interest">2. Match cfos brains with their registered homolog and cut out regions of interest</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-autofluorescence">3. Remove autofluorescence</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#run-inference-using-cellseg3d-plugin">3.5 Run inference using CellSeg3D plugin</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-borders-after-inference">4. Remove borders after inference</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#thresholding-and-remove-artifacts-and-segmentation">Thresholding and Remove artifacts and segmentation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-part-threshold-all-images-in-folder-and-count-cells">Final part: Threshold all images in folder and count cells</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cyril Achard, Mackenzie W. Mathis | Mathis Laboratory of Adaptive Intelligence
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
