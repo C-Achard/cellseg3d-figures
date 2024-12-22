@@ -175,6 +175,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Figure2_SFigure1/self-supervised_retrain.html">Retraining of a supervised 3D model with unsupervised labels</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Showing quantitative benchmarking performance on additional datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../SFigure2/wnet_losses.html">Examples of WNet3D losses, and output during training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Figure4/cell_stats.html">Plotting stats for cFOS whole-brain data sample</a></li>
 </ul>
 
     </div>
@@ -343,13 +344,15 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons-on-additional-datasets">Comparisons on additional datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplot-and-statistics">Boxplot and statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-tables">Statistics tables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-images-only-no-wnet">Sanity check : Images only (no WNet)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Statistics tables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-plots">Combined plots</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-analysis">Statistical analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -2069,8 +2072,8 @@ Warning: Value in 1.0 is too low or too high in hex color FF4D00
 </div>
 </div>
 </section>
-<section id="boxplot-and-statistics">
-<h3>Boxplot and statistics<a class="headerlink" href="#boxplot-and-statistics" title="Link to this heading">#</a></h3>
+<section id="statistics-tables">
+<h3>Statistics tables<a class="headerlink" href="#statistics-tables" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_wnet</span><span class="p">,</span> <span class="n">df_others</span><span class="p">])</span>
@@ -2495,7 +2498,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">stats_df</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_tables</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">stats_df</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
     <span class="n">table_df</span> <span class="o">=</span> <span class="n">stats_df</span><span class="p">[</span><span class="n">stats_df</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">dataset</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="n">table_df</span> <span class="o">=</span> <span class="n">table_df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;thresh&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">)</span>
     <span class="c1"># add the mean as an extra &quot;threshold&quot; - getting the mean across all thresholds</span>
@@ -2506,6 +2510,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     <span class="n">latex_table</span> <span class="o">=</span> <span class="n">table_df</span><span class="o">.</span><span class="n">to_latex</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset: </span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">latex_table</span><span class="p">)</span>
+    <span class="n">dataset_tables</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span> <span class="o">=</span> <span class="n">table_df</span>
 </pre></div>
 </div>
 </div>
@@ -2848,25 +2853,6 @@ WNet3D &amp; 0.838000 &amp; 0.808000 &amp; 0.778000 &amp; 0.739000 &amp; 0.69500
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="n">DPI</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">SIMPLE_COLORMAP</span><span class="p">)</span>
-<span class="n">_format_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Dice coefficient&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;F1 score across IoU thresholds&quot;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1280174086.py (2): The palette list has more values (4) than needed (3), which may not be intended.
-</pre></div>
-</div>
-<img alt="../_images/f84cde8a1a54f0dce3731a2a4fa20312b5e742f5c5ae39eb449e6b98b11eb41c.png" src="../_images/f84cde8a1a54f0dce3731a2a4fa20312b5e742f5c5ae39eb449e6b98b11eb41c.png" />
-</div>
-</div>
 </section>
 </section>
 <hr class="docutils" />
@@ -2999,6 +2985,18 @@ Validating on Otsu Threshold
 <span class="n">df_im_only</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
 <span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">names_stats</span>
 <span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Otsu Threshold&quot;</span>
+
+<span class="k">def</span> <span class="nf">replace_model_name</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s2">&quot;w/ post-processing&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="s2">&quot;Otsu Threshold - post-processing&quot;</span>
+    <span class="k">elif</span> <span class="s2">&quot;w/o post-processing&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="s2">&quot;Otsu Threshold&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span>
+
+<span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_im_only</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">replace_model_name</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; w/o post-processing&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+<span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; w/ post-processing&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
 <span class="n">df_w_tresh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_wnet</span><span class="p">,</span> <span class="n">df_im_only</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -3083,8 +3081,8 @@ Validating on Otsu Threshold
       <td>0.702076</td>
       <td>0.488203</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.2</th>
@@ -3102,8 +3100,8 @@ Validating on Otsu Threshold
       <td>0.724600</td>
       <td>0.484073</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.3</th>
@@ -3121,8 +3119,8 @@ Validating on Otsu Threshold
       <td>0.740561</td>
       <td>0.478793</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.4</th>
@@ -3140,8 +3138,8 @@ Validating on Otsu Threshold
       <td>0.762480</td>
       <td>0.466842</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.5</th>
@@ -3159,8 +3157,8 @@ Validating on Otsu Threshold
       <td>0.802311</td>
       <td>0.435328</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.6</th>
@@ -3178,8 +3176,8 @@ Validating on Otsu Threshold
       <td>0.829820</td>
       <td>0.406266</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.7</th>
@@ -3197,8 +3195,8 @@ Validating on Otsu Threshold
       <td>0.855345</td>
       <td>0.365700</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.8</th>
@@ -3216,8 +3214,8 @@ Validating on Otsu Threshold
       <td>0.884360</td>
       <td>0.295401</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.9</th>
@@ -3235,8 +3233,8 @@ Validating on Otsu Threshold
       <td>0.921066</td>
       <td>0.125794</td>
       <td>False</td>
-      <td>Mouse skull w/ post-processing</td>
-      <td>Otsu Threshold</td>
+      <td>Mouse skull</td>
+      <td>Otsu Threshold - post-processing</td>
     </tr>
     <tr>
       <th>0.1</th>
@@ -3254,7 +3252,7 @@ Validating on Otsu Threshold
       <td>0.666518</td>
       <td>0.444296</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3273,7 +3271,7 @@ Validating on Otsu Threshold
       <td>0.693192</td>
       <td>0.439499</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3292,7 +3290,7 @@ Validating on Otsu Threshold
       <td>0.721485</td>
       <td>0.429752</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3311,7 +3309,7 @@ Validating on Otsu Threshold
       <td>0.741490</td>
       <td>0.419337</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3330,7 +3328,7 @@ Validating on Otsu Threshold
       <td>0.781896</td>
       <td>0.387241</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3349,7 +3347,7 @@ Validating on Otsu Threshold
       <td>0.820358</td>
       <td>0.350471</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3368,7 +3366,7 @@ Validating on Otsu Threshold
       <td>0.846660</td>
       <td>0.312787</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3387,7 +3385,7 @@ Validating on Otsu Threshold
       <td>0.877741</td>
       <td>0.242223</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3406,7 +3404,7 @@ Validating on Otsu Threshold
       <td>0.920789</td>
       <td>0.089152</td>
       <td>False</td>
-      <td>Mouse skull w/o post-processing</td>
+      <td>Mouse skull</td>
       <td>Otsu Threshold</td>
     </tr>
     <tr>
@@ -3755,6 +3753,8 @@ Validating on Otsu Threshold
 </table>
 </div></div></div>
 </div>
+<section id="id1">
+<h3>Statistics tables<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">df_im_only</span><span class="p">[</span><span class="s2">&quot;Dataset&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
@@ -3768,6 +3768,7 @@ Validating on Otsu Threshold
     <span class="n">latex_table</span> <span class="o">=</span> <span class="n">table_df</span><span class="o">.</span><span class="n">to_latex</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset: </span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">latex_table</span><span class="p">)</span>
+    <span class="n">dataset_tables</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dataset_tables</span><span class="p">[</span><span class="n">dataset</span><span class="p">],</span> <span class="n">table_df</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -3818,7 +3819,20 @@ Validating on Otsu Threshold
   <tbody>
     <tr>
       <th>Otsu Threshold</th>
-      <td>0.69537</td>
+      <td>0.666592</td>
+      <td>0.634021</td>
+      <td>0.595650</td>
+      <td>0.565533</td>
+      <td>0.495259</td>
+      <td>0.427217</td>
+      <td>0.369437</td>
+      <td>0.275962</td>
+      <td>0.096821</td>
+      <td>0.458499</td>
+    </tr>
+    <tr>
+      <th>Otsu Threshold - post-processing</th>
+      <td>0.695370</td>
       <td>0.668056</td>
       <td>0.646528</td>
       <td>0.612269</td>
@@ -3831,83 +3845,14 @@ Validating on Otsu Threshold
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset: Mouse skull w/ post-processing
-\begin{tabular}{lrrrrrrrrrr}
-\toprule
-thresh &amp; 0.100000 &amp; 0.200000 &amp; 0.300000 &amp; 0.400000 &amp; 0.500000 &amp; 0.600000 &amp; 0.700000 &amp; 0.800000 &amp; 0.900000 &amp; Mean \\
-Model &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  \\
-\midrule
-Otsu Threshold &amp; 0.695000 &amp; 0.668000 &amp; 0.647000 &amp; 0.612000 &amp; 0.543000 &amp; 0.490000 &amp; 0.428000 &amp; 0.334000 &amp; 0.137000 &amp; 0.506000 \\
-\bottomrule
-\end{tabular}
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>thresh</th>
-      <th>0.1</th>
-      <th>0.2</th>
-      <th>0.3</th>
-      <th>0.4</th>
-      <th>0.5</th>
-      <th>0.6</th>
-      <th>0.7</th>
-      <th>0.8</th>
-      <th>0.9</th>
-      <th>Mean</th>
-    </tr>
-    <tr>
-      <th>Model</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Otsu Threshold</th>
-      <td>0.666592</td>
-      <td>0.634021</td>
-      <td>0.59565</td>
-      <td>0.565533</td>
-      <td>0.495259</td>
-      <td>0.427217</td>
-      <td>0.369437</td>
-      <td>0.275962</td>
-      <td>0.096821</td>
-      <td>0.458499</td>
-    </tr>
-  </tbody>
-</table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset: Mouse skull w/o post-processing
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset: Mouse skull
 \begin{tabular}{lrrrrrrrrrr}
 \toprule
 thresh &amp; 0.100000 &amp; 0.200000 &amp; 0.300000 &amp; 0.400000 &amp; 0.500000 &amp; 0.600000 &amp; 0.700000 &amp; 0.800000 &amp; 0.900000 &amp; Mean \\
 Model &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  &amp;  \\
 \midrule
 Otsu Threshold &amp; 0.667000 &amp; 0.634000 &amp; 0.596000 &amp; 0.566000 &amp; 0.495000 &amp; 0.427000 &amp; 0.369000 &amp; 0.276000 &amp; 0.097000 &amp; 0.458000 \\
+Otsu Threshold - post-processing &amp; 0.695000 &amp; 0.668000 &amp; 0.647000 &amp; 0.612000 &amp; 0.543000 &amp; 0.490000 &amp; 0.428000 &amp; 0.334000 &amp; 0.137000 &amp; 0.506000 \\
 \bottomrule
 \end{tabular}
 </pre></div>
@@ -4087,6 +4032,7 @@ Otsu Threshold &amp; 0.798000 &amp; 0.773000 &amp; 0.733000 &amp; 0.702000 &amp;
 <img alt="../_images/de14942064e063def3732e2cba45fd710b7de9f7a089d113275fa1ff853808b5.png" src="../_images/de14942064e063def3732e2cba45fd710b7de9f7a089d113275fa1ff853808b5.png" />
 </div>
 </div>
+</section>
 <section id="combined-plots">
 <h3>Combined plots<a class="headerlink" href="#combined-plots" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -4137,6 +4083,705 @@ Otsu Threshold &amp; 0.798000 &amp; 0.773000 &amp; 0.733000 &amp; 0.702000 &amp;
 </div>
 </div>
 </section>
+</section>
+<section id="statistical-analysis">
+<h2>Statistical analysis<a class="headerlink" href="#statistical-analysis" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plots</span> <span class="kn">import</span> <span class="n">_format_plot</span>
+
+<span class="n">stats_test_dfs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">dataset_tables</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">test_df</span> <span class="o">=</span> <span class="n">dataset_tables</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">test_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;Mean&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">test_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">test_df</span> <span class="o">=</span> <span class="n">test_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Threshold&quot;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;F1&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">test_df</span><span class="p">)</span>
+    <span class="n">stats_test_dfs</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Threshold</th>
+      <th>F1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CellPose</td>
+      <td>0.1</td>
+      <td>0.137</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CellPose- post-processing</td>
+      <td>0.1</td>
+      <td>0.386</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>StarDist</td>
+      <td>0.1</td>
+      <td>0.573</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>StarDist- post-processing</td>
+      <td>0.1</td>
+      <td>0.689</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>WNet3D</td>
+      <td>0.1</td>
+      <td>0.766</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>StarDist- post-processing</td>
+      <td>0.9</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>WNet3D</td>
+      <td>0.9</td>
+      <td>0.033</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>WNet3D - post-processing</td>
+      <td>0.9</td>
+      <td>0.073</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>Otsu Threshold</td>
+      <td>0.9</td>
+      <td>0.097</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>Otsu Threshold - post-processing</td>
+      <td>0.9</td>
+      <td>0.137</td>
+    </tr>
+  </tbody>
+</table>
+<p>72 rows × 3 columns</p>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Threshold</th>
+      <th>F1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CellPose</td>
+      <td>0.1</td>
+      <td>0.896</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>StarDist</td>
+      <td>0.1</td>
+      <td>0.841</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>WNet3D</td>
+      <td>0.1</td>
+      <td>0.876</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Otsu Threshold</td>
+      <td>0.1</td>
+      <td>0.872</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CellPose</td>
+      <td>0.2</td>
+      <td>0.866</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>StarDist</td>
+      <td>0.2</td>
+      <td>0.822</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>WNet3D</td>
+      <td>0.2</td>
+      <td>0.856</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Otsu Threshold</td>
+      <td>0.2</td>
+      <td>0.847</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>CellPose</td>
+      <td>0.3</td>
+      <td>0.832</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>StarDist</td>
+      <td>0.3</td>
+      <td>0.786</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>WNet3D</td>
+      <td>0.3</td>
+      <td>0.834</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Otsu Threshold</td>
+      <td>0.3</td>
+      <td>0.817</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>CellPose</td>
+      <td>0.4</td>
+      <td>0.778</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>StarDist</td>
+      <td>0.4</td>
+      <td>0.686</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>WNet3D</td>
+      <td>0.4</td>
+      <td>0.790</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Otsu Threshold</td>
+      <td>0.4</td>
+      <td>0.772</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>CellPose</td>
+      <td>0.5</td>
+      <td>0.698</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>StarDist</td>
+      <td>0.5</td>
+      <td>0.536</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>WNet3D</td>
+      <td>0.5</td>
+      <td>0.729</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Otsu Threshold</td>
+      <td>0.5</td>
+      <td>0.706</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>CellPose</td>
+      <td>0.6</td>
+      <td>0.576</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>StarDist</td>
+      <td>0.6</td>
+      <td>0.326</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>WNet3D</td>
+      <td>0.6</td>
+      <td>0.632</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Otsu Threshold</td>
+      <td>0.6</td>
+      <td>0.605</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>CellPose</td>
+      <td>0.7</td>
+      <td>0.362</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>StarDist</td>
+      <td>0.7</td>
+      <td>0.110</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>WNet3D</td>
+      <td>0.7</td>
+      <td>0.492</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Otsu Threshold</td>
+      <td>0.7</td>
+      <td>0.474</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>CellPose</td>
+      <td>0.8</td>
+      <td>0.117</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>StarDist</td>
+      <td>0.8</td>
+      <td>0.011</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>WNet3D</td>
+      <td>0.8</td>
+      <td>0.249</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Otsu Threshold</td>
+      <td>0.8</td>
+      <td>0.246</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>CellPose</td>
+      <td>0.9</td>
+      <td>0.010</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>StarDist</td>
+      <td>0.9</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>WNet3D</td>
+      <td>0.9</td>
+      <td>0.034</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Otsu Threshold</td>
+      <td>0.9</td>
+      <td>0.026</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Model</th>
+      <th>Threshold</th>
+      <th>F1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CellPose</td>
+      <td>0.1</td>
+      <td>0.691</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>StarDist</td>
+      <td>0.1</td>
+      <td>0.850</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>WNet3D</td>
+      <td>0.1</td>
+      <td>0.838</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Otsu Threshold</td>
+      <td>0.1</td>
+      <td>0.798</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CellPose</td>
+      <td>0.2</td>
+      <td>0.663</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>StarDist</td>
+      <td>0.2</td>
+      <td>0.833</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>WNet3D</td>
+      <td>0.2</td>
+      <td>0.808</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Otsu Threshold</td>
+      <td>0.2</td>
+      <td>0.773</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>CellPose</td>
+      <td>0.3</td>
+      <td>0.624</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>StarDist</td>
+      <td>0.3</td>
+      <td>0.803</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>WNet3D</td>
+      <td>0.3</td>
+      <td>0.778</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Otsu Threshold</td>
+      <td>0.3</td>
+      <td>0.733</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>CellPose</td>
+      <td>0.4</td>
+      <td>0.594</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>StarDist</td>
+      <td>0.4</td>
+      <td>0.764</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>WNet3D</td>
+      <td>0.4</td>
+      <td>0.739</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Otsu Threshold</td>
+      <td>0.4</td>
+      <td>0.702</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>CellPose</td>
+      <td>0.5</td>
+      <td>0.553</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>StarDist</td>
+      <td>0.5</td>
+      <td>0.700</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>WNet3D</td>
+      <td>0.5</td>
+      <td>0.695</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Otsu Threshold</td>
+      <td>0.5</td>
+      <td>0.663</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>CellPose</td>
+      <td>0.6</td>
+      <td>0.497</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>StarDist</td>
+      <td>0.6</td>
+      <td>0.611</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>WNet3D</td>
+      <td>0.6</td>
+      <td>0.617</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Otsu Threshold</td>
+      <td>0.6</td>
+      <td>0.590</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>CellPose</td>
+      <td>0.7</td>
+      <td>0.417</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>StarDist</td>
+      <td>0.7</td>
+      <td>0.492</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>WNet3D</td>
+      <td>0.7</td>
+      <td>0.512</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Otsu Threshold</td>
+      <td>0.7</td>
+      <td>0.507</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>CellPose</td>
+      <td>0.8</td>
+      <td>0.290</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>StarDist</td>
+      <td>0.8</td>
+      <td>0.272</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>WNet3D</td>
+      <td>0.8</td>
+      <td>0.338</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Otsu Threshold</td>
+      <td>0.8</td>
+      <td>0.336</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>CellPose</td>
+      <td>0.9</td>
+      <td>0.062</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>StarDist</td>
+      <td>0.9</td>
+      <td>0.019</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>WNet3D</td>
+      <td>0.9</td>
+      <td>0.059</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Otsu Threshold</td>
+      <td>0.9</td>
+      <td>0.077</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plots</span> <span class="kn">import</span> <span class="n">_format_plot</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">kruskal</span>
+<span class="kn">from</span> <span class="nn">scikit_posthocs</span> <span class="kn">import</span> <span class="n">posthoc_conover</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+
+<span class="k">def</span> <span class="nf">plot_boxplot_and_test</span><span class="p">(</span><span class="n">test_df</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="n">DPI</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">test_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;F1&quot;</span><span class="p">,</span>
+                <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;tab10&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">_format_plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;F1&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;F1 distribution for </span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kruskal-Wallis H test for </span><span class="si">{</span><span class="n">dataset</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kruskal</span><span class="p">(</span><span class="o">*</span><span class="n">test_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)[</span><span class="s2">&quot;F1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">list</span><span class="p">)))</span>
+
+<span class="n">posthoc_dfs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">stats_test_dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">dataset</span> <span class="o">==</span> <span class="s2">&quot;Mouse skull&quot;</span><span class="p">:</span>
+        <span class="n">test_df</span> <span class="o">=</span> <span class="n">stats_test_dfs</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">df_postproc</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;post-processing&quot;</span><span class="p">)]</span>
+        <span class="n">df_no_postproc</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">[</span><span class="o">~</span><span class="n">test_df</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;post-processing&quot;</span><span class="p">)]</span>
+        <span class="n">plot_boxplot_and_test</span><span class="p">(</span><span class="n">df_postproc</span><span class="p">,</span> <span class="n">dataset</span><span class="o">+</span> <span class="s2">&quot; - post-processing&quot;</span><span class="p">)</span>
+        <span class="n">plot_boxplot_and_test</span><span class="p">(</span><span class="n">df_no_postproc</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="n">posthoc_dfs</span><span class="p">[</span><span class="s2">&quot;Mouse skull&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_no_postproc</span>
+        <span class="n">posthoc_dfs</span><span class="p">[</span><span class="s2">&quot;Mouse skull - post-processing&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_postproc</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">test_df</span> <span class="o">=</span> <span class="n">stats_test_dfs</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">plot_boxplot_and_test</span><span class="p">(</span><span class="n">test_df</span><span class="p">,</span> <span class="n">dataset</span><span class="p">)</span>
+        <span class="n">posthoc_dfs</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cefbbd94e75f5c2d64024296a5b7f510ec291b0de7bf14abeeedd91fb67627c3.png" src="../_images/cefbbd94e75f5c2d64024296a5b7f510ec291b0de7bf14abeeedd91fb67627c3.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kruskal-Wallis H test for Mouse skull - post-processing
+KruskalResult(statistic=10.12823263531297, pvalue=0.017506978718827077)
+</pre></div>
+</div>
+<img alt="../_images/2807d0e392657384b48b6e1ef1176ea71b4df64aaacd248699fb110d6125a409.png" src="../_images/2807d0e392657384b48b6e1ef1176ea71b4df64aaacd248699fb110d6125a409.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kruskal-Wallis H test for Mouse skull
+KruskalResult(statistic=15.782311465797115, pvalue=0.0012566686698318734)
+</pre></div>
+</div>
+<img alt="../_images/e4b7ef606b424e43c1d299f1e875489a2d454fb137362933861801108c30be97.png" src="../_images/e4b7ef606b424e43c1d299f1e875489a2d454fb137362933861801108c30be97.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kruskal-Wallis H test for Platynereis ISH
+KruskalResult(statistic=1.6026026026026017, pvalue=0.6587998410905409)
+</pre></div>
+</div>
+<img alt="../_images/dfdf84ba984eb5b03ff56435f7e9b9f8ad5ac11e54c930c43eb56630867fe66a.png" src="../_images/dfdf84ba984eb5b03ff56435f7e9b9f8ad5ac11e54c930c43eb56630867fe66a.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kruskal-Wallis H test for Platynereis
+KruskalResult(statistic=3.0549477267201435, pvalue=0.3832306625105366)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scikit_posthocs</span> <span class="kn">import</span> <span class="n">posthoc_conover</span>
+<span class="kn">import</span> <span class="nn">matplotlib.colors</span> <span class="k">as</span> <span class="nn">colors</span>
+<span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>
+<span class="k">for</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">posthoc_dfs</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="n">DPI</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">posthoc_conover</span><span class="p">(</span><span class="n">posthoc_dfs</span><span class="p">[</span><span class="n">dataset</span><span class="p">],</span> <span class="n">val_col</span><span class="o">=</span><span class="s2">&quot;F1&quot;</span><span class="p">,</span> <span class="n">group_col</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="n">p_adjust</span><span class="o">=</span><span class="s2">&quot;Holm&quot;</span><span class="p">)</span>
+
+    <span class="n">low_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">mid_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">high_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">equals_1_color</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">colors_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">low_color</span><span class="p">,</span> <span class="n">mid_color</span><span class="p">,</span> <span class="n">high_color</span><span class="p">,</span> <span class="n">high_color</span><span class="p">,</span> <span class="n">equals_1_color</span><span class="p">]</span>
+    <span class="n">cmap</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">colors_list</span><span class="p">)))</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">diag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag_indices</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">diag</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;.4f&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="n">patches</span> <span class="o">=</span> <span class="p">[</span><span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">low_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Above 0 (significant)&#39;</span><span class="p">),</span>
+            <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">mid_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Below 0.05 (significant)&#39;</span><span class="p">),</span>
+            <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">high_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Above 0.05 (not significant)&#39;</span><span class="p">),</span>
+            <span class="n">mpatches</span><span class="o">.</span><span class="n">Patch</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">equals_1_color</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Equals 1 (not significant)&#39;</span><span class="p">)]</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">patches</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
+    <span class="c1"># transparent background</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/57a17903869c5f8520756fe20ad607286bbf18a104e0144ffc02a05f6fb15f82.png" src="../_images/57a17903869c5f8520756fe20ad607286bbf18a104e0144ffc02a05f6fb15f82.png" />
+<img alt="../_images/051a34fc0065075f3af5a4dc96312867ad600973b2998028c86896e7c5a49309.png" src="../_images/051a34fc0065075f3af5a4dc96312867ad600973b2998028c86896e7c5a49309.png" />
+<img alt="../_images/c748bc9c56329d57703ef1e084ca8a8b70eb0fda3f51aa934c6bd9bd2bf56157.png" src="../_images/c748bc9c56329d57703ef1e084ca8a8b70eb0fda3f51aa934c6bd9bd2bf56157.png" />
+<img alt="../_images/6ea7a03d6b460472526f98958b58e94f5882a848eb5189308b0839db086900b9.png" src="../_images/6ea7a03d6b460472526f98958b58e94f5882a848eb5189308b0839db086900b9.png" />
+</div>
+</div>
 </section>
 </section>
 
@@ -4213,13 +4858,15 @@ Otsu Threshold &amp; 0.798000 &amp; 0.773000 &amp; 0.733000 &amp; 0.702000 &amp;
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons-on-additional-datasets">Comparisons on additional datasets</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boxplot-and-statistics">Boxplot and statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-tables">Statistics tables</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sanity-check-images-only-no-wnet">Sanity check : Images only (no WNet)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Statistics tables</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-plots">Combined plots</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-analysis">Statistical analysis</a></li>
 </ul>
   </nav></div>
 
