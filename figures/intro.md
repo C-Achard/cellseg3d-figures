@@ -48,12 +48,21 @@ The data used for the screenshots may be shared upon request.
 - Figure 1 :
   - Fig 1a : napari screenshots
   - Fig 1c : napari screenshots
-  - Fig 1d : Custom model schema made in PowerPoint and edited in Figma
-  - Fig 1e : napari screenshots
+  - Fig 1d : Custom model schema made in PowerPoint and edited in Figma + napari screenshots
+
 - Figure 2:
-  - Fig 2a : napari screenshots & PowerPoint schema
-  - Fig 2c : napari screenshots
-  - Fig 2d : napari screenshots
+  - Fig 2c : napari screenshots & PowerPoint
+
+- Figure 3:
+  - Fig 3a : napari screenshots
+
+- Figure 4:
+  - Fig 4a : napari-brainreg plugin, napari screenshots
+  - Fig 4b : napari screenshots, Jupyter notebook plot available [here](https://github.com/AdaptiveMotorControlLab/CellSeg3D/blob/main/notebooks/label_stats_csv_plot.ipynb)
+
+- Supplemental Figure 1:
+  - Fig S1g : napari screenshots
 
 - Supplemental Figure 2:
   - Fig S2a : napari screenshots taken during training with the cellseg3d plugin
+  - Fig S2b : napari screenshots
