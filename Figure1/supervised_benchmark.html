@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -67,7 +64,6 @@
     <link rel="prev" title="Home - CellSeg3D figures" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +154,21 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="CellSeg3D - Figures - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="CellSeg3D - Figures - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="CellSeg3D - Figures - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -184,14 +195,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -303,16 +309,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -349,6 +363,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1 Score</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#panoptic-quality">Panoptic Quality</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wnet3d-no-artifacts">WNet3D - No artifacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otsu-threshold-no-artifacts">Otsu Threshold - No artifacts</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests-outdated-unused">Statistical tests (outdated &amp; unused)</a><ul class="nav section-nav flex-column">
@@ -370,17 +385,17 @@
 <h1>Supervised &amp; self-supervised model performance<a class="headerlink" href="#supervised-self-supervised-model-performance" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">tifffile</span> <span class="kn">import</span> <span class="n">imread</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tifffile</span><span class="w"> </span><span class="kn">import</span> <span class="n">imread</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span>
-<span class="kn">from</span> <span class="nn">stardist.matching</span> <span class="kn">import</span> <span class="n">matching_dataset</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyclesperanto_prototype</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cle</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">stardist.matching</span><span class="w"> </span><span class="kn">import</span> <span class="n">matching_dataset</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../..&quot;</span><span class="p">)</span>
 
-<span class="kn">from</span> <span class="nn">utils</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">plots</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">plots</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Used GPU: &quot;</span><span class="p">,</span> <span class="n">cle</span><span class="o">.</span><span class="n">get_device</span><span class="p">())</span>
 <span class="n">show_params</span><span class="p">()</span>
 <span class="c1">#################</span>
@@ -421,7 +436,7 @@ Plot parameters (set in plots.py) :
 <span class="n">fold2_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="s2">&quot;fold2&quot;</span>
 <span class="n">fold3_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="s2">&quot;fold3&quot;</span>
 
-<span class="k">def</span> <span class="nf">get_fold_data</span><span class="p">(</span><span class="n">fold_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_fold_data</span><span class="p">(</span><span class="n">fold_path</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fold_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;label&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">],</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fold_path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="s2">&quot;label&quot;</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
 
 <span class="n">images</span> <span class="o">=</span> <span class="p">[]</span>
@@ -438,7 +453,7 @@ Plot parameters (set in plots.py) :
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fold_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">fold1_path</span><span class="p">,</span> <span class="n">fold2_path</span><span class="p">,</span> <span class="n">fold3_path</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">get_predictions</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_predictions</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">path</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.tif&quot;</span><span class="p">)]</span>
 <span class="c1">#################</span>
 <span class="n">swin_paths</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="o">/</span> <span class="s2">&quot;Swin&quot;</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fold_paths</span><span class="p">]</span>
@@ -466,7 +481,7 @@ Plot parameters (set in plots.py) :
 <p>Check if a simple threshold-based segmentation yields competitive results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pyclesperanto_prototype</span> <span class="k">as</span> <span class="nn">cle</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyclesperanto_prototype</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cle</span> 
 <span class="n">threshold_only</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cle</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">images</span><span class="p">]</span>
 <span class="n">threshold_only</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cle</span><span class="o">.</span><span class="n">voronoi_otsu_labeling</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">spot_sigma</span><span class="o">=</span><span class="mf">0.65</span><span class="p">,</span> <span class="n">outline_sigma</span><span class="o">=</span><span class="mf">0.65</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">threshold_only</span><span class="p">]</span>
 </pre></div>
@@ -964,7 +979,7 @@ Dice Coefficient: 0.7887478958953774
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4ff20c1d5403b1e2a080ea49b6a826839510f6a843c8bd4c64f44de9d3094b9f.png" src="../_images/4ff20c1d5403b1e2a080ea49b6a826839510f6a843c8bd4c64f44de9d3094b9f.png" />
+<img alt="../_images/2e5a9b61d578499704eecd0a92d71a43f6da551f93a975abb99349db4002d474.png" src="../_images/2e5a9b61d578499704eecd0a92d71a43f6da551f93a975abb99349db4002d474.png" />
 </div>
 </div>
 </section>
@@ -981,7 +996,7 @@ Dice Coefficient: 0.7887478958953774
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/38f6f30605408b13af4aea6fde84757f3b006ba31ed61e8efe56976f743331b1.png" src="../_images/38f6f30605408b13af4aea6fde84757f3b006ba31ed61e8efe56976f743331b1.png" />
+<img alt="../_images/84fcbed71c2611165a3cf92b6147b556ff3e817ae99e7acc51a5e30ee48ac0e7.png" src="../_images/84fcbed71c2611165a3cf92b6147b556ff3e817ae99e7acc51a5e30ee48ac0e7.png" />
 </div>
 </div>
 </section>
@@ -998,7 +1013,7 @@ Dice Coefficient: 0.7887478958953774
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/58b71eb20e47bb04146bc770688cc4946f2ec39d79e9ecebb65a5f053405a6fb.png" src="../_images/58b71eb20e47bb04146bc770688cc4946f2ec39d79e9ecebb65a5f053405a6fb.png" />
+<img alt="../_images/26ffc8c6e7d96bf5639bb515b49d3c3b5b961dbb81f6c6555e5ac83a23e859d6.png" src="../_images/26ffc8c6e7d96bf5639bb515b49d3c3b5b961dbb81f6c6555e5ac83a23e859d6.png" />
 </div>
 </div>
 </section>
@@ -1015,7 +1030,7 @@ Dice Coefficient: 0.7887478958953774
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/24d837b4db9673d4c3ce8b1094d85ab518f9ec6faf5fc099d1e6e2313d488378.png" src="../_images/24d837b4db9673d4c3ce8b1094d85ab518f9ec6faf5fc099d1e6e2313d488378.png" />
+<img alt="../_images/22d347c8220b418f3544b482637def3291d595691d1a76d6e08d6529ea17049c.png" src="../_images/22d347c8220b418f3544b482637def3291d595691d1a76d6e08d6529ea17049c.png" />
 </div>
 </div>
 </section>
@@ -1030,9 +1045,22 @@ Dice Coefficient: 0.7887478958953774
 <span class="n">partial_df</span> <span class="o">=</span> <span class="n">dataset_matching_stats_to_df</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
 <span class="n">partial_df</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;WNet3D - No artifacts&quot;</span>
 <span class="n">partial_df</span><span class="p">[</span><span class="s2">&quot;Fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">partial_df</span><span class="p">[</span><span class="s2">&quot;thresh&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">partial_df</span><span class="o">.</span><span class="n">index</span>
-<span class="n">partial_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold&quot;</span><span class="p">,</span> <span class="s2">&quot;thresh&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># copy rows from WNet entries for fold 2/3</span>
+<span class="n">rows_fold2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">&quot;WNet3D&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">rows_fold3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">&quot;WNet3D&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">rows_fold2</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;WNet3D - No artifacts&quot;</span>
+<span class="n">rows_fold2</span><span class="p">[</span><span class="s2">&quot;Fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">rows_fold3</span><span class="p">[</span><span class="s2">&quot;Fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">rows_fold3</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;WNet3D - No artifacts&quot;</span>
+<span class="n">partial_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">partial_df</span><span class="p">,</span> <span class="n">rows_fold2</span><span class="p">,</span> <span class="n">rows_fold3</span><span class="p">])</span>
+<span class="n">partial_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold&quot;</span><span class="p">,</span> <span class="n">partial_df</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">partial_df</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1321758596.py (9): indexing past lexsort depth may impact performance.
+1321758596.py (10): indexing past lexsort depth may impact performance.
 </pre></div>
 </div>
 </div>
@@ -1208,95 +1236,127 @@ Dice Coefficient: 0.7887478958953774
     </tr>
     <tr>
       <th rowspan="5" valign="top">WNet3D - No artifacts</th>
-      <th rowspan="5" valign="top">1</th>
+      <th rowspan="5" valign="top">3</th>
       <th>0.5</th>
       <td>iou</td>
-      <td>376</td>
-      <td>2190</td>
-      <td>854</td>
-      <td>0.853468</td>
-      <td>0.719448</td>
-      <td>0.640351</td>
-      <td>0.780749</td>
-      <td>3044</td>
-      <td>2566</td>
-      <td>0.560445</td>
-      <td>0.778992</td>
-      <td>0.608197</td>
+      <td>974</td>
+      <td>4656</td>
+      <td>2253</td>
+      <td>0.826998</td>
+      <td>0.673904</td>
+      <td>0.590638</td>
+      <td>0.742643</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.518749</td>
+      <td>0.769767</td>
+      <td>0.571662</td>
       <td>False</td>
     </tr>
     <tr>
       <th>0.6</th>
       <td>iou</td>
-      <td>660</td>
-      <td>1906</td>
-      <td>1138</td>
-      <td>0.742790</td>
-      <td>0.626150</td>
-      <td>0.514579</td>
-      <td>0.679501</td>
-      <td>3044</td>
-      <td>2566</td>
-      <td>0.510604</td>
-      <td>0.815466</td>
-      <td>0.554110</td>
+      <td>1640</td>
+      <td>3990</td>
+      <td>2919</td>
+      <td>0.708703</td>
+      <td>0.577508</td>
+      <td>0.466721</td>
+      <td>0.636414</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.467688</td>
+      <td>0.809838</td>
+      <td>0.515393</td>
       <td>False</td>
     </tr>
     <tr>
       <th>0.7</th>
       <td>iou</td>
-      <td>1012</td>
-      <td>1554</td>
-      <td>1490</td>
-      <td>0.605612</td>
-      <td>0.510512</td>
-      <td>0.383136</td>
-      <td>0.554011</td>
-      <td>3044</td>
-      <td>2566</td>
-      <td>0.435460</td>
-      <td>0.852986</td>
-      <td>0.472564</td>
+      <td>2400</td>
+      <td>3230</td>
+      <td>3679</td>
+      <td>0.573712</td>
+      <td>0.467506</td>
+      <td>0.346976</td>
+      <td>0.515193</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.396466</td>
+      <td>0.848045</td>
+      <td>0.436907</td>
       <td>False</td>
     </tr>
     <tr>
       <th>0.8</th>
       <td>iou</td>
-      <td>1463</td>
-      <td>1103</td>
-      <td>1941</td>
-      <td>0.429852</td>
-      <td>0.362352</td>
-      <td>0.244730</td>
-      <td>0.393226</td>
-      <td>3044</td>
-      <td>2566</td>
-      <td>0.324968</td>
-      <td>0.896830</td>
-      <td>0.352657</td>
+      <td>3397</td>
+      <td>2233</td>
+      <td>4676</td>
+      <td>0.396625</td>
+      <td>0.323202</td>
+      <td>0.216670</td>
+      <td>0.356169</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.288912</td>
+      <td>0.893907</td>
+      <td>0.318382</td>
       <td>False</td>
     </tr>
     <tr>
       <th>0.9</th>
       <td>iou</td>
-      <td>2071</td>
-      <td>495</td>
-      <td>2549</td>
-      <td>0.192907</td>
-      <td>0.162615</td>
-      <td>0.096774</td>
-      <td>0.176471</td>
-      <td>3044</td>
-      <td>2566</td>
-      <td>0.156949</td>
-      <td>0.965155</td>
-      <td>0.170321</td>
+      <td>4704</td>
+      <td>926</td>
+      <td>5983</td>
+      <td>0.164476</td>
+      <td>0.134028</td>
+      <td>0.079738</td>
+      <td>0.147699</td>
+      <td>6909</td>
+      <td>5630</td>
+      <td>0.129802</td>
+      <td>0.968467</td>
+      <td>0.143042</td>
       <td>False</td>
     </tr>
   </tbody>
 </table>
-<p>225 rows × 14 columns</p>
+<p>243 rows × 14 columns</p>
 </div></div></div>
+</div>
+</section>
+<section id="otsu-threshold-no-artifacts">
+<h3>Otsu Threshold - No artifacts<a class="headerlink" href="#otsu-threshold-no-artifacts" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate stats for WNet3D on an extra fold, where visual is restricted to [50:, :, :]</span>
+<span class="n">stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">matching_dataset</span><span class="p">(</span>
+    <span class="n">GT_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">50</span><span class="p">,:,:],</span> <span class="n">threshold_only</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="mi">50</span><span class="p">,:,:],</span> <span class="n">thresh</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">taus</span><span class="p">]</span>
+<span class="n">partial_df</span> <span class="o">=</span> <span class="n">dataset_matching_stats_to_df</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+<span class="n">partial_df</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Otsu Threshold - No artifacts&quot;</span>
+<span class="n">partial_df</span><span class="p">[</span><span class="s2">&quot;Fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">rows_fold2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">&quot;Otsu Threshold&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">rows_fold3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">&quot;Otsu Threshold&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">rows_fold2</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Otsu Threshold - No artifacts&quot;</span>
+<span class="n">rows_fold2</span><span class="p">[</span><span class="s2">&quot;Fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">rows_fold3</span><span class="p">[</span><span class="s2">&quot;Fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">rows_fold3</span><span class="p">[</span><span class="s2">&quot;Model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Otsu Threshold - No artifacts&quot;</span>
+<span class="n">partial_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">partial_df</span><span class="p">,</span> <span class="n">rows_fold2</span><span class="p">,</span> <span class="n">rows_fold3</span><span class="p">])</span>
+<span class="n">partial_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s2">&quot;Model&quot;</span><span class="p">,</span> <span class="s2">&quot;Fold&quot;</span><span class="p">,</span> <span class="n">partial_df</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">partial_df</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2306530423.py (9): indexing past lexsort depth may impact performance.
+2306530423.py (10): indexing past lexsort depth may impact performance.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1307,12 +1367,12 @@ Dice Coefficient: 0.7887478958953774
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/cfae84f80de0ac63d390e37c76ad2a655bcd1d7805030cc71cb9dc8a99c8b146.png" src="../_images/cfae84f80de0ac63d390e37c76ad2a655bcd1d7805030cc71cb9dc8a99c8b146.png" />
+<img alt="../_images/dfff36218114fe140dbe1c08a4b17410e764c6abdf8c1ded374d20a68e9e3d4c.png" src="../_images/dfff36218114fe140dbe1c08a4b17410e764c6abdf8c1ded374d20a68e9e3d4c.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_no_learning</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Otsu Threshold&quot;</span><span class="p">,</span> <span class="s2">&quot;StarDist&quot;</span><span class="p">,</span> <span class="s2">&quot;Cellpose&quot;</span><span class="p">,</span> <span class="s2">&quot;SegResNet&quot;</span><span class="p">,</span> <span class="s2">&quot;SwinUNetR&quot;</span><span class="p">,</span> <span class="s2">&quot;WNet3D - No artifacts&quot;</span><span class="p">,</span> <span class="s2">&quot;WNet3D&quot;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_no_learning</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Otsu Threshold&quot;</span><span class="p">,</span> <span class="s2">&quot;Otsu Threshold - No artifacts&quot;</span><span class="p">,</span> <span class="s2">&quot;WNet3D - No artifacts&quot;</span><span class="p">,</span> <span class="s2">&quot;WNet3D&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1320,7 +1380,7 @@ Dice Coefficient: 0.7887478958953774
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">VO_CMAP</span> <span class="o">=</span> <span class="n">COLORMAP</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">VO_CMAP</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">VO_CMAP</span>
+<span class="n">VO_CMAP</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;gray&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">VO_CMAP</span><span class="p">[</span><span class="mi">4</span><span class="p">:]</span>
 </pre></div>
 </div>
 </div>
@@ -1336,7 +1396,7 @@ Dice Coefficient: 0.7887478958953774
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/041512758c73b0f030cf02be51d4b5750d5bd856fd43dcc41b80151256726080.png" src="../_images/041512758c73b0f030cf02be51d4b5750d5bd856fd43dcc41b80151256726080.png" />
+<img alt="../_images/7bd539f59b940ab52e64a036708a9fe6fc275f598c3195aba5c92baa2ae7f287.png" src="../_images/7bd539f59b940ab52e64a036708a9fe6fc275f598c3195aba5c92baa2ae7f287.png" />
 </div>
 </div>
 </section>
@@ -1357,16 +1417,14 @@ Dice Coefficient: 0.7887478958953774
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>27598755.py (1): 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-
-27598755.py (1): The palette list has more values (10) than needed (9), which may not be intended.
 </pre></div>
 </div>
-<img alt="../_images/a0b08d36326487d545e339147f844de8f9612ab41f7c8c2030428260e1b4cbfa.png" src="../_images/a0b08d36326487d545e339147f844de8f9612ab41f7c8c2030428260e1b4cbfa.png" />
+<img alt="../_images/760c676246a8d7f873497ac2e7ccfe7baefee3ba130badfa1421f0c703957836.png" src="../_images/760c676246a8d7f873497ac2e7ccfe7baefee3ba130badfa1421f0c703957836.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">f_oneway</span><span class="p">,</span> <span class="n">kruskal</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">f_oneway</span><span class="p">,</span> <span class="n">kruskal</span>
 
 <span class="n">models_f1_means</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Model&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">f1</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
@@ -1390,7 +1448,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kruskal test:  F_onewayResult(statistic=0.4660165757160163, pvalue=0.7605465068261601)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kruskal test:  F_onewayResult(statistic=0.4431995081645192, pvalue=0.777181391641984)
 </pre></div>
 </div>
 </div>
@@ -1420,7 +1478,7 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 - SwinUNetR
 - WNet3D
 - WNet3D - No artifacts
-Kruskal-Wallis test:  KruskalResult(statistic=5.021370796083488, pvalue=0.41327764021418123)
+Kruskal-Wallis test:  KruskalResult(statistic=4.824842539418781, pvalue=0.4376286539608427)
 </pre></div>
 </div>
 </div>
@@ -1449,7 +1507,7 @@ Kruskal-Wallis test:  KruskalResult(statistic=5.021370796083488, pvalue=0.413277
 - SwinUNetR
 - WNet3D
 - WNet3D - No artifacts
-Kruskal-Wallis test:  KruskalResult(statistic=3.710657202182631, pvalue=0.4465777918818482)
+Kruskal-Wallis test:  KruskalResult(statistic=3.5792905060017897, pvalue=0.46592490089849237)
 </pre></div>
 </div>
 </div>
@@ -1537,8 +1595,7 @@ Kruskal-Wallis test:  KruskalResult(statistic=0.6194921208470987, pvalue=0.73363
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1560,6 +1617,7 @@ Kruskal-Wallis test:  KruskalResult(statistic=0.6194921208470987, pvalue=0.73363
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f1-score">F1 Score</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#panoptic-quality">Panoptic Quality</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wnet3d-no-artifacts">WNet3D - No artifacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#otsu-threshold-no-artifacts">Otsu Threshold - No artifacts</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-tests-outdated-unused">Statistical tests (outdated &amp; unused)</a><ul class="nav section-nav flex-column">
@@ -1614,8 +1672,8 @@ By Cyril Achard, Mackenzie W. Mathis | Mathis Laboratory of Adaptive Intelligenc
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
